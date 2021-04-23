@@ -153,7 +153,7 @@
         <v-spacer></v-spacer>
       </v-row>
     </div>
-    <HouseResult :formDatahouse="formDatahouse" />
+    <HouseResult :formhouseforali="formhouseforali" />
   </div>
 </template>
 
@@ -171,14 +171,16 @@ export default {
         roomnumber: null,
         year: null
       },
+      formhouseforali:{
+
+      },
       metrazrules: [
         value => !!value || "متراژ مورد نظر خود را وارد کنید",
         value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
       ],
       mataghrulse: [
         value => !!value || "منطقه مورد نظر خود را وارد کنید",
-        value =>
-          value.length >= 3 || "منطقه شما باید بیشتر از سه حروف داشته باشد"
+        
       ],
       tedadeotaghrules: [
         value => !!value || "تعداد اتاق  مورد نظر خود را وارد کنید",
@@ -195,7 +197,7 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        fetch(" http://localhost:3000/housedata", {
+        fetch("http://localhost:3000/housedata", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -207,16 +209,13 @@ export default {
           })
           .then(data => {
             console.log(data);
-            this.formDatahouse = {
-              area: null,
-              neighberhood: "",
-              roomnumber: null,
-              year: null
-            };
+            this.formhouseforali=data;
+            console.log(this.formhouseforali)
           })
           .catch(error => console.log(error));
-        event.target.reset();
+           this.$refs.formhouse.reset();
       }
+     
     }
   }
 };
