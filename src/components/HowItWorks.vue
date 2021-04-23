@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card style="background: rgba(194, 161, 140, 0.19); height:400px;">
+    <v-card style="background: rgba(194, 161, 140, 0.19);">
       <br>
         <v-container>
           <v-card-title
