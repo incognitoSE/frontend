@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<template>
+  <div>
+    <ul>
+      <li>{{ formhouseforali.area }}</li>
+    </ul>
+  </div>
+=======
 <template style="background: rgba(194, 161, 140, 0.19);">
   <v-card style="background: #2D3B47">
     <v-container>
@@ -72,6 +80,7 @@
       </v-row>
     </v-container>
   </v-card>
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
 </template>
 
 <script>

@@ -1,5 +1,16 @@
 <template>
   <div>
+<<<<<<< HEAD
+    <v-card style="background: rgba(194, 161, 140, 0.19); height:400px;">
+      <br />
+      <v-container>
+        <v-card-title
+          ><v-spacer></v-spacer>
+          <h1>چگونه کار میکند؟</h1>
+          <v-spacer></v-spacer
+        ></v-card-title>
+        <div>
+=======
     <v-card style="background: rgba(194, 161, 140, 0.19);">
       <br>
         <v-container>
@@ -9,6 +20,7 @@
         <v-spacer></v-spacer
       ></v-card-title>
       <div>
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
           <v-row>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
@@ -16,7 +28,10 @@
             <v-col
               ><v-card-title>
                 <v-avatar style="width:100px;height:110px; margin-left: 22px;">
-                  <img src="@/assets/analytic1-removebg-preview.png" alt="John" />
+                  <img
+                    src="@/assets/analytic1-removebg-preview.png"
+                    alt="John"
+                  />
                 </v-avatar>
               </v-card-title>
               <div>
@@ -48,7 +63,7 @@
                   src="@/assets/services-removebg-preview.png"
                   alt="John"
                 />
-              </v-card-title >
+              </v-card-title>
               <div class="text-lg-right">
                 <h3>سرویس مورد نظر خود را انتخاب کنید</h3>
               </div>
@@ -58,7 +73,7 @@
             <v-col
               ><v-card-title style=" margin-left: 26px; margin-bottom: -17px; ">
                 <v-avatar style="width:130px;height:130px;  ">
-                  <img src="@/assets/em4-removebg-previews.png"   alt="John" />
+                  <img src="@/assets/em4-removebg-previews.png" alt="John" />
                 </v-avatar>
               </v-card-title>
               <div class="text-lg-right">
@@ -70,11 +85,9 @@
             </v-col>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-      
           </v-row>
-          </div>
-        </v-container>
-      
+        </div>
+      </v-container>
     </v-card>
   </div>
 </template>

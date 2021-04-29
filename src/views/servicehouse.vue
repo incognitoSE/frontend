@@ -14,8 +14,7 @@ export default {
     houseservices
   },
   data() {
-    return {
-    };
+    return {};
   }
 };
 </script>

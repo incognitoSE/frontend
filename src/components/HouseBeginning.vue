@@ -1,12 +1,29 @@
 <template>
   <div>
     <div id="main_div">
-      <img src="../assets/housebeginningimg.jpg" alt="house" />
-      <v-row class="divform" justify="center">
-        <v-spacer></v-spacer>
-        <h1 class="h1class" style="color: rgba(45, 59, 71, 1)">سرویس خانه</h1>
-        <v-spacer></v-spacer>
-        <v-form class="houseform" @submit="onsubmitinfohouse" ref="formhouse">
+      <img
+        src="../assets/Hnet.com-image (17).jpg"
+        alt="house"
+        class="imgcls  hidden-md-and-down"
+      />
+      <img
+        src="../assets/Hnet.com-image (22).jpg"
+        alt="house"
+        class="imgcls  hidden-lg-and-up"
+      />
+      <v-row class="divform">
+        <v-form
+          class="houseform mx-7"
+          @submit="onsubmitinfohouse"
+          ref="formhouse"
+        >
+          <h1
+            class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
+            style="color:rgba(45, 59, 71, 1)"
+          >
+            سرویس خانه
+          </h1>
+
           <v-row>
             <v-spacer></v-spacer>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
@@ -14,13 +31,14 @@
             <v-col cols="11" md="10" lg="11">
               <v-text-field
                 placeholder="متراژ"
-                class=" ml-9"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                 min="50"
                 step="1"
                 shaped
                 v-model.number="formDatahouse.area"
                 :rules="metrazrules"
                 reverse
+                clearable
                 :maxlength="12"
               ></v-text-field>
             </v-col>
@@ -33,17 +51,20 @@
             <v-spacer></v-spacer><v-spacer class="hidden-lg-and-up"></v-spacer>
             <v-spacer class="hidden-md-and-down"></v-spacer>
             <v-col cols="11" md="10" lg="11">
-              <v-text-field
+              <v-combobox
+                :items="itemsm"
+                dense
                 type="text"
                 placeholder="منطقه"
-                class=" ml-9"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                 v-model="formDatahouse.neighberhood"
                 :rules="mataghrulse"
                 shaped
                 reverse
+                clearable
                 :maxlength="12"
               >
-              </v-text-field>
+              </v-combobox>
             </v-col>
             <v-spacer></v-spacer>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
@@ -56,14 +77,16 @@
             <v-spacer class="hidden-md-and-down"></v-spacer>
             <v-col cols="11" md="10" lg="11">
               <v-text-field
+                dense
                 placeholder="تعداد اتاق"
                 min="1"
                 step="1"
-                class="ml-9"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                 shaped
                 v-model.number="formDatahouse.roomnumber"
                 :rules="tedadeotaghrules"
                 reverse
+                clearable
                 :maxlength="12"
               ></v-text-field>
             </v-col>
@@ -79,15 +102,17 @@
 
             <v-col cols="11" md="10" lg="11">
               <v-text-field
+                dense
                 placeholder="سال ساخت"
                 min="1200"
                 max="5000"
                 step="1"
-                class="ml-9"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                 shaped
                 v-model.number="formDatahouse.year"
                 :rules="salesaketrules"
                 reverse
+                clearable
                 :maxlength="12"
               ></v-text-field>
             </v-col>
@@ -132,20 +157,21 @@
           <v-spacer class="hidden-md-and-up"></v-spacer>
           <v-btn
             type="submit"
-            style="color: rgba(45, 59, 71, 1)"
-            class="btnformhouse ml-12 hidden-md-and-down"
+            color="rgba(45, 59, 71, 1)"
+            class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
+            large
           >
-            <h3>تخمین قیمت</h3></v-btn
+            <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
           >
           <v-spacer class="hidden-md-and-up"></v-spacer>
           <v-spacer class="hidden-lg-and-up"></v-spacer>
           <v-btn
             type="submit"
-            style="color: rgba(45, 59, 71, 1)"
-            class="btnformhouse mb-2 hidden-lg-and-up"
+            color="rgba(45, 59, 71, 1)"
+            class="btnformhouse   hidden-lg-and-up"
             small
           >
-            <h3>تخمین قیمت</h3></v-btn
+            <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
           >
           <v-spacer class="hidden-lg-and-up"></v-spacer>
         </v-form>
@@ -153,6 +179,10 @@
         <v-spacer></v-spacer>
       </v-row>
     </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
     <HouseResult :formhouseforali="formhouseforali" />
   </div>
 </template>
@@ -171,12 +201,34 @@ export default {
         roomnumber: null,
         year: null
       },
+<<<<<<< HEAD
       formhouseforali: {},
+=======
+<<<<<<< HEAD
+      itemsm: ["سعادت آباد", "نواب", "جردن"],
+      formhouseforali: {},
+=======
+      formhouseforali:{
+
+      },
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
+>>>>>>> 500535fc09386aacc0ea86bca94b8b2d41d1a229
       metrazrules: [
         value => !!value || "متراژ مورد نظر خود را وارد کنید",
         value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
       ],
+<<<<<<< HEAD
       mataghrulse: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
+=======
+<<<<<<< HEAD
+      mataghrulse: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
+=======
+      mataghrulse: [
+        value => !!value || "منطقه مورد نظر خود را وارد کنید",
+        
+      ],
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
+>>>>>>> 500535fc09386aacc0ea86bca94b8b2d41d1a229
       tedadeotaghrules: [
         value => !!value || "تعداد اتاق  مورد نظر خود را وارد کنید",
         value => value >= 1 || "تعداد اتاق ها باید حداقل 1 باشد"
@@ -204,11 +256,27 @@ export default {
           })
           .then(data => {
             console.log(data);
+<<<<<<< HEAD
             this.formhouseforali = data;
             console.log(this.formhouseforali);
           })
           .catch(error => console.log(error));
         this.$refs.formhouse.reset();
+=======
+<<<<<<< HEAD
+            this.formhouseforali = data;
+            console.log(this.formhouseforali);
+          })
+          .catch(error => console.log(error));
+        this.$refs.formhouse.reset();
+=======
+            this.formhouseforali=data;
+            console.log(this.formhouseforali)
+          })
+          .catch(error => console.log(error));
+           this.$refs.formhouse.reset();
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
+>>>>>>> 500535fc09386aacc0ea86bca94b8b2d41d1a229
       }
     }
   }
@@ -224,15 +292,9 @@ export default {
   font-family: IRANSans;
   color: #2d3b47;
 }
-h3 {
-  font-family: IRANSans !important;
-}
-h1 {
-  font-family: IRANSans !important;
-}
-div {
-  font-family: IRANSans !important;
-  text-align: right;
+.h1class {
+  text-align: center;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 }
 #main_div {
   display: flex;
@@ -260,35 +322,23 @@ div {
   position: absolute;
   float: right;
   right: 155px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #cfd8dc;
   padding: 5px;
-  width: 250px;
-  height: 300px;
-  max-width: 25%;
-  max-height: 80%;
-  z-index: 10;
+  width: 340px;
+  height: 540px;
+  max-width: 50%;
+  max-height: 87%;
+  z-index: 30;
   text-align: center;
   box-shadow: 12px 12px 2px 1px rgba(101, 101, 122, 0.2);
-  background-image: linear-gradient(
-    to bottom,
-    rgb(228, 233, 238),
-    rgba(180, 176, 176, 0.75)
-  );
-  overflow: auto;
+  /**  overflow: auto;*/
+}
+.mytext {
+  width: 200px;
 }
 .btnformhouse {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(228, 233, 238),
-    rgba(180, 176, 176, 0.75)
-  );
-  margin-left: 15px;
+  width: 180px;
 }
-/**input::placeholder {
-  text-align: center;
-  color: rgb(127, 148, 167);
-}**/
-
 ::placeholder {
   text-align: center;
   color: rgb(127, 148, 167);
@@ -308,34 +358,97 @@ input[type="number"] {
 }
 
 *:focus {
-  /**border: 2px solid rgb(177, 189, 202);*/
   outline: none;
   background-color: rgb(169, 173, 177);
 }
 input:hover {
   background-color: rgb(169, 173, 177);
 }
-@media screen and (max-width: 900px) {
-  /** .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }**/
+
+@media screen and (min-width: 230px) and (max-width: 660px) {
   .divform {
     position: absolute;
     float: right;
-    right: 70px;
-    top: 4px;
-    width: 150px;
+    right:25px;
+    top: 15px;
+    width: 280px;
+    height: 400px;
     max-height: 90%;
-    overflow: auto;
+    max-width: 45%;
   }
-
+  .mytext {
+    width: 120px;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
   .h1class {
-    font-size: 18px;
-    margin-left: 40px;
+    font-size: 20px;
+    margin-right: 4px;
+    margin-left: 10px;
+    margin-bottom: 0%;
+  }
+  .btnformhouse {
+    margin-top: 0%;
+    width: 100px;
+    margin-left: 16px;
+  }
+}
+@media screen and (min-width: 760px) and (max-width: 980px) {
+  .divform {
+    position: absolute;
+    float: right;
+    right:35px;
+    top: 80px;
+    width: 340px;
+    height: 490px;
+    max-height: 80%;
+    max-width: 45%;
+  }
+  .mytext {
+    width: 250px;
+    text-align: center;
+    margin-left: 10px;
+  }
+  .h1class {
+    font-size: 40px;
+    margin-right: 4px;
+    margin-left: 10px;
   }
   .btnformhouse {
     margin-bottom: 4px;
+    width: 230px;
+    margin-left: 16px;
+    margin-top: 10px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 760px) and (min-width: 660px) {
+  .divform {
+    position: absolute;
+    float: right;
+    right: 40px;
+    top: 55px;
+    width: 290px;
+    height: 470px;
+    max-height: 95%;
+    max-width: 45%;
+  }
+  .mytext {
+    width: 205px;
+   
+  }
+  .h1class {
+    font-size: 30px;
+    margin-right: 4px;
+  }
+  .btnformhouse {
+    margin-bottom: 2px;
+    width: 190px;
+    
+    margin-left: 17px;
   }
 }
 </style>

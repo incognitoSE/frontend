@@ -1,0 +1,19 @@
+version: v1.0
+name: Docker
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: docker build
+          commands:
+            - checkout
+            - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
+            - 'docker pull "${DOCKER_USERNAME}/incognito-frontend:latest" || true'
+            - 'docker build --cache-from "${DOCKER_USERNAME}/incognito-frontend:latest" -t "${DOCKER_USERNAME}/incognito-frontend:latest" .'
+            - 'docker push "${DOCKER_USERNAME}/incognito-frontend:latest"'
+      secrets:
+        - name: dockerhub

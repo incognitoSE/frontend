@@ -56,15 +56,14 @@
       <router-view></router-view>
     </v-content> -->
     <!-- <v-container> -->
-    <v-row dense no-gutters >
-      <v-col cols="12" >
+    <v-row dense no-gutters>
+      <v-col cols="12">
         <!-- <v-container> -->
         <v-carousel
           cycle
           class="myslideshow"
           show-arrows-on-hover
           hide-delimiter-background
-          
         >
           <v-carousel-item
             v-for="(pic, i) in slideshowpic"
@@ -73,7 +72,6 @@
             elevation="24"
             style="boxshadow: 5px #2d3b47 ; border: groove"
           >
-          
           </v-carousel-item>
         </v-carousel>
         <!-- </v-container> -->
