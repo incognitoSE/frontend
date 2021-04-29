@@ -179,7 +179,10 @@
         <v-spacer></v-spacer>
       </v-row>
     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
     <HouseResult :formhouseforali="formhouseforali" />
   </div>
 </template>
@@ -198,13 +201,26 @@ export default {
         roomnumber: null,
         year: null
       },
+<<<<<<< HEAD
       itemsm: ["سعادت آباد", "نواب", "جردن"],
       formhouseforali: {},
+=======
+      formhouseforali:{
+
+      },
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
       metrazrules: [
         value => !!value || "متراژ مورد نظر خود را وارد کنید",
         value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
       ],
+<<<<<<< HEAD
       mataghrulse: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
+=======
+      mataghrulse: [
+        value => !!value || "منطقه مورد نظر خود را وارد کنید",
+        
+      ],
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
       tedadeotaghrules: [
         value => !!value || "تعداد اتاق  مورد نظر خود را وارد کنید",
         value => value >= 1 || "تعداد اتاق ها باید حداقل 1 باشد"
@@ -220,7 +236,7 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        fetch(" http://localhost:3000/housedata", {
+        fetch("http://localhost:3000/housedata", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -232,12 +248,21 @@ export default {
           })
           .then(data => {
             console.log(data);
+<<<<<<< HEAD
             this.formhouseforali = data;
             console.log(this.formhouseforali);
           })
           .catch(error => console.log(error));
         this.$refs.formhouse.reset();
+=======
+            this.formhouseforali=data;
+            console.log(this.formhouseforali)
+          })
+          .catch(error => console.log(error));
+           this.$refs.formhouse.reset();
+>>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
       }
+     
     }
   }
 };
