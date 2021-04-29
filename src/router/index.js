@@ -23,22 +23,19 @@ const routes = [
     path: "/login",
     name: "loginPage",
     component: () =>
-    import(/* webpackChunkName: "about" */ "../views/login.vue")
-
+      import(/* webpackChunkName: "about" */ "../views/login.vue")
   },
   {
     path: "/dashboard",
     name: "dashboard",
     component: () =>
-    import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
-
+      import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
   },
   {
     path: "/servicehouse",
     name: "servicehouse",
     component: () =>
-    import(/* webpackChunkName: "about" */ "../views/servicehouse.vue")
-
+      import(/* webpackChunkName: "about" */ "../views/servicehouse.vue")
   },
   {
     path: "/services",
@@ -48,7 +45,7 @@ const routes = [
   {
     path: "/questions",
     component: Home
-  },
+  }
 ];
 
 const router = new VueRouter({

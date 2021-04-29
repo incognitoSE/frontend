@@ -126,7 +126,6 @@ export default {
 }
 * {
   font-family: IRANSans;
-  
 }
 div {
   font-family: IRANSans !important;

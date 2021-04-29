@@ -1,10 +1,9 @@
 <template>
   <div>
     <HelloWorld />
-     <ShowUse />
+    <ShowUse />
     <div id="services">
       <ServiceShows />
-     
     </div>
     <WhyUse />
     <HowItWorks />

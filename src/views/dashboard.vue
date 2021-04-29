@@ -1,8 +1,8 @@
 <template>
   <v-app>
-      <br>
-      <h1>dashboard</h1>
-      <br>
+    <br />
+    <h1>dashboard</h1>
+    <br />
     <v-data-table
       :headers="headers"
       :items="desserts"

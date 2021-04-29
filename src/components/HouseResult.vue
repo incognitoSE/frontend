@@ -1,15 +1,18 @@
 <template>
   <div>
-      <ul>
-          <li>{{ formDatahouse.area }}</li>
-      </ul>
+    <ul>
+      <li>{{ formhouseforali.area }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    formDatahouse: Object
+    formhouseforali: Object
+  },
+  data() {
+    return {};
   }
 };
 </script>

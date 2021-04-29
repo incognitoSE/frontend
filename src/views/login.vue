@@ -1,6 +1,5 @@
 <template>
   <v-app>
-  
     <v-content>
       <v-card width="400" class="mx-auto mt-5">
         <v-card-title><h1>login</h1></v-card-title>
@@ -27,15 +26,12 @@
         </v-card-actions>
       </v-card>
     </v-content>
-
-   
   </v-app>
 </template>
 
 <script>
 export default {
-
-      name: "loginPage",
+  name: "loginPage",
 
   components: {},
 

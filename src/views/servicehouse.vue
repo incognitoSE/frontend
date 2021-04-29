@@ -11,8 +11,7 @@ export default {
     HouseBeginning
   },
   data() {
-    return {
-    };
+    return {};
   }
 };
 </script>
