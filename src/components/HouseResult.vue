@@ -18,14 +18,17 @@
               <v-list-item-content>
                 <v-list-item-title style="text-align: center;">
                   <div class="counter">
-                    <i class="fa fa-coffee fa-2x" style="text-align: center;"></i>
+                    <i
+                      class="fa fa-coffee fa-2x"
+                      style="text-align: center;"
+                    ></i>
                     <h2
                       class="timer count-title count-number"
                       data-to="1700"
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                      2300$ {{ formhouseforali.area }}
+                      {{ price }}
                     </h2>
                     <p class="count-text ">{{ formhouseforali.area }}</p>
                   </div>
@@ -38,22 +41,30 @@
         <v-col>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title style="color: white"> {{ formhouseforali.area }}متراژ: 140 متر مربع</v-list-item-title>
+              <v-list-item-title style="color: white">
+                {{ formhouseforali.area }}متراژ: 140 متر مربع</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title style="color: white">{{ formhouseforali.area }}منطقه: جردن</v-list-item-title>
+              <v-list-item-title style="color: white"
+                >{{ formhouseforali.area }}منطقه: جردن</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title style="color: white">تعداد اتاق: 2</v-list-item-title>
+              <v-list-item-title style="color: white"
+                >تعداد اتاق: 2</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title style="color: white">سال ساخت: 2009</v-list-item-title>
+              <v-list-item-title style="color: white"
+                >سال ساخت: 2009</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
         </v-col>
@@ -64,12 +75,25 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   props: {
     formhouseforali: Object
   },
   data() {
-    return {};
+    return {
+      price: ""
+    };
+  },
+  created() {
+    axios
+      .get("http://127.0.0.1:8000/HEstimator/api/")
+      .then(response => {
+        this.price = response.data;
+      })
+      .catch(error => {
+        console.log("there was an error" + error.response);
+      });
   }
 };
 </script>

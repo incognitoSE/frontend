@@ -171,17 +171,12 @@ export default {
         roomnumber: null,
         year: null
       },
-      formhouseforali:{
-
-      },
+      formhouseforali: {},
       metrazrules: [
         value => !!value || "متراژ مورد نظر خود را وارد کنید",
         value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
       ],
-      mataghrulse: [
-        value => !!value || "منطقه مورد نظر خود را وارد کنید",
-        
-      ],
+      mataghrulse: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
       tedadeotaghrules: [
         value => !!value || "تعداد اتاق  مورد نظر خود را وارد کنید",
         value => value >= 1 || "تعداد اتاق ها باید حداقل 1 باشد"
@@ -197,7 +192,7 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        fetch("http://localhost:3000/housedata", {
+        fetch("http://127.0.0.1:8000/HEstimator/api/HouseViewList", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -209,13 +204,12 @@ export default {
           })
           .then(data => {
             console.log(data);
-            this.formhouseforali=data;
-            console.log(this.formhouseforali)
+            this.formhouseforali = data;
+            console.log(this.formhouseforali);
           })
           .catch(error => console.log(error));
-           this.$refs.formhouse.reset();
+        this.$refs.formhouse.reset();
       }
-     
     }
   }
 };
