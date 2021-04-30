@@ -3,12 +3,11 @@
     <v-card tile>
       <!-- <v-app > -->
       <v-app-bar app color="#2D3B47" elevate-on-scroll>
-        <v-btn to="/signup" rounded small text style="color: #ffffff"
-          >ثبت نام</v-btn
-        >
+        <SingUp />
         <v-btn to="/signin" rounded small text style="color: #ffffff"
           >ورود</v-btn
         >
+        
         <v-spacer></v-spacer>
         <!-- <v-btn small text rounded style="color: #ffffff">
           <a href="/#services">سرویس ها</a>
@@ -85,7 +84,11 @@
 </template>
 
 <script>
+import SingUp from "@/components/SingUp.vue";
 export default {
+  components: {
+    SingUp
+  },
   data() {
     return {
       icons: [
@@ -141,4 +144,5 @@ div {
   font-family: IRANSans !important;
   text-align: right;
 }
+
 </style>

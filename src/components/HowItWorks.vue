@@ -1,16 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <v-card style="background: rgba(194, 161, 140, 0.19); height:400px;">
-      <br />
-      <v-container>
-        <v-card-title
-          ><v-spacer></v-spacer>
-          <h1>چگونه کار میکند؟</h1>
-          <v-spacer></v-spacer
-        ></v-card-title>
-        <div>
-=======
     <v-card style="background: rgba(194, 161, 140, 0.19);">
       <br>
         <v-container>
@@ -20,7 +9,6 @@
         <v-spacer></v-spacer
       ></v-card-title>
       <div>
->>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
           <v-row>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>

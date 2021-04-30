@@ -6,10 +6,6 @@
           <v-spacer></v-spacer>
 
           <v-col
-<<<<<<< HEAD
-            ><v-card-title style="margin-left:45px;"
-              ><h1>+570</h1></v-card-title
-=======
             ><v-card-title style="margin-left:45px;">
               <v-list-item>
                 <v-list-item-content>
@@ -31,7 +27,6 @@
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item></v-card-title
->>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
             >
             <v-card-text><p>تعداد کاربران سامانه</p></v-card-text></v-col
           >
@@ -39,9 +34,6 @@
           <v-spacer></v-spacer>
           <v-col
             ><v-card-title style="margin-left: 20px;"
-<<<<<<< HEAD
-              ><h1>+1300</h1></v-card-title
-=======
               > <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title style="text-align: center;">
@@ -61,8 +53,7 @@
                     </div>
                   </v-list-item-title>
                 </v-list-item-content>
-              </v-list-item></v-card-title
->>>>>>> 17ef25a16a4717a60220b139d1971bcad31eab4a
+              </v-list-item></v-card-title>
             >
             <v-card-text><p>تعداد استفاده از سرویس</p></v-card-text>
           </v-col>
