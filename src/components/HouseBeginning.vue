@@ -236,7 +236,6 @@ export default {
           })
           .catch(error => console.log(error));
         this.$refs.formhouse.reset();
-
       }
     }
   }
@@ -277,7 +276,6 @@ export default {
   margin-top: 3px;
   margin-bottom: 3px;
 }
-
 .divform {
   position: absolute;
   float: right;
@@ -316,7 +314,6 @@ input {
 input[type="number"] {
   width: 80%;
 }
-
 *:focus {
   outline: none;
   background-color: rgb(169, 173, 177);
@@ -324,7 +321,6 @@ input[type="number"] {
 input:hover {
   background-color: rgb(169, 173, 177);
 }
-
 @media screen and (min-width: 230px) and (max-width: 660px) {
   .divform {
     position: absolute;
@@ -384,7 +380,6 @@ input:hover {
     height: 100px;
   }
 }
-
 @media screen and (max-width: 760px) and (min-width: 660px) {
   .divform {
     position: absolute;

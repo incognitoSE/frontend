@@ -27,6 +27,8 @@
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item></v-card-title
+            ><v-card-title style="margin-left:45px;"
+              ><h1>+570</h1></v-card-title
             >
             <v-card-text><p>تعداد کاربران سامانه</p></v-card-text></v-col
           >
