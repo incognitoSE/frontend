@@ -1,5 +1,5 @@
 <template style="background: rgba(194, 161, 140, 0.19);">
-  <v-card style="background: #2D3B47">
+  <v-card tile style="background: #2D3B47">
     <v-container>
       <v-row>
         <v-spacer></v-spacer>

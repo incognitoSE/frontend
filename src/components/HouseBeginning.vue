@@ -219,7 +219,7 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        fetch("http://127.0.0.1:8000/HEstimator/api/HouseViewList", {
+        fetch("", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

@@ -2,13 +2,11 @@
   <div>
     <v-card tile>
       <v-app-bar app color="#2D3B47" elevate-on-scroll>
-        <v-btn to="/signup" rounded small text style="color: #ffffff"
-          >ثبت نام</v-btn
-        >
-        <!-- <v-btn to="/signin" rounded small text style="color: #ffffff"
-          >ورود</v-btn
-        > -->
+        <SingUp />
+
         <login />
+        <v-spacer></v-spacer>
+
         <v-spacer></v-spacer>
         <v-btn link href="#services" rounded small text style="color:#ffffff"
           >سرویس ها</v-btn
@@ -49,9 +47,11 @@
 </template>
 
 <script>
+import SingUp from "@/components/SingUp.vue";
 import login from "@/components/login.vue";
 export default {
   components: {
+    SingUp,
     login
   },
   data() {
