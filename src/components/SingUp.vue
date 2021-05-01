@@ -6,69 +6,73 @@
       >
     </template>
     <v-form @submit="onsubmitinfsingup" ref="formsingup">
-      <v-card>
-        <v-card-title>
-          <v-spacer></v-spacer>
-          <span class="headline" style="color: rgba(45, 59, 71, 1)"
-            ><h1>ثبت نام</h1></span
-          >
-          <v-spacer></v-spacer>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  placeholder="نام و نام خانوادگی"
-                  type="text"
-                  v-model="formDatasingup.name"
-                  required
-                  reverse
-                  solo
-                  prepend-inner-icon="mdi-account-circle"
-                  :rules="namerules"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  placeholder="ایمیل"
-                  type="email"
-                  v-model="formDatasingup.email"
-                  required
-                  prepend-inner-icon="mdi-email"
-                  reverse
-                  solo
-                  :rules="emailrulse"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  placeholder="رمز"
-                  :type="showpassword ? 'text' : 'password'"
-                  v-model="formDatasingup.password"
-                  required
-                  prepend-inner-icon="mdi-lock"
-                  :append-icon="showpassword ? 'mdi-eye' : 'mdi-eye-off'"
-                  @click:append="showpassword = !showpassword"
-                  reverse
-                  solo
-                  :rules="[passwordrules.required, passwordrules.password]"
-                ></v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card-text>
-        <v-divider></v-divider>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn type="submit" color="rgba(45, 59, 71, 1)">
-            <h3 style="color:#CFD8DC">ثبت نام</h3></v-btn
-          >
-          <v-btn color="rgba(45, 59, 71, 1)" @click="dialog = false">
-            <h3 style="color:#CFD8DC">بستن</h3>
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+      <v-container style="background-color:#C4c4c4">
+        <v-card>
+          <v-card-title>
+            <v-spacer></v-spacer>
+            <span class="headline" style="color: rgba(45, 59, 71, 1)"
+              ><h1>ثبت نام</h1></span
+            >
+            <v-spacer></v-spacer>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field
+                    placeholder="نام و نام خانوادگی"
+                    type="text"
+                    v-model="formDatasingup.name"
+                    required
+                    reverse
+                    solo
+                    class="fa fa-cloud"
+                    prepend-inner-icon="mdi-account-circle"
+                    :rules="namerules"
+                  >
+                  </v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field
+                    placeholder="ایمیل"
+                    type="email"
+                    v-model="formDatasingup.email"
+                    required
+                    prepend-inner-icon="mdi-email"
+                    reverse
+                    solo
+                    :rules="emailrulse"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field
+                    placeholder="رمز"
+                    :type="showpassword ? 'text' : 'password'"
+                    v-model="formDatasingup.password"
+                    required
+                    prepend-inner-icon="mdi-lock"
+                    :append-icon="showpassword ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="showpassword = !showpassword"
+                    reverse
+                    solo
+                    :rules="[passwordrules.required, passwordrules.password]"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn type="submit" color="rgba(45, 59, 71, 1)">
+              <h3 style="color:#CFD8DC">ثبت نام</h3></v-btn
+            >
+            <v-btn color="rgba(45, 59, 71, 1)" @click="onclosesingup">
+              <h3 style="color:#CFD8DC">بستن</h3>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-container>
     </v-form>
   </v-dialog>
 </template>
@@ -135,6 +139,10 @@ export default {
           .catch(error => console.log(error));
         this.$refs.formsingup.reset();
       }
+    },
+    onclosesingup() {
+      this.dialog = false;
+      this.$refs.formsingup.reset();
     }
   }
 };
