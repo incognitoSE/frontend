@@ -1,61 +1,30 @@
 <template>
   <div>
     <v-card tile>
-      <!-- <v-app > -->
       <v-app-bar app color="#2D3B47" elevate-on-scroll>
         <v-btn to="/signup" rounded small text style="color: #ffffff"
           >ثبت نام</v-btn
         >
-        <v-btn to="/signin" rounded small text style="color: #ffffff"
+        <!-- <v-btn to="/signin" rounded small text style="color: #ffffff"
           >ورود</v-btn
-        >
-        <v-spacer></v-spacer>
-        <!-- <v-btn small text rounded style="color: #ffffff">
-          <a href="/#services">سرویس ها</a>
-        </v-btn> -->
-        <!-- <router-link :to="{ path: '', hash: '#Services' }"
-          >سرویس ها</router-link
         > -->
+        <login />
+        <v-spacer></v-spacer>
         <v-btn link href="#services" rounded small text style="color:#ffffff"
           >سرویس ها</v-btn
         >
         <v-btn link href="#questions" rounded small text style="color:#ffffff"
           >سوالات متداول</v-btn
         >
-        <!-- <a
-          href="#services"
-          style="  text-decoration-line: none;
-                   color: #ffffff;
-                   font-size: 12px;
-                   margin: 12px;"
-          >سرویس ها</a
-        >
-        <a
-          href="#questions"
-          style="  text-decoration-line: none;
-                   color: #ffffff;
-                   font-size: 12px;
-                   margin: 12px;"
-          >سوال های متداول</a
-        > -->
-        <!-- <v-btn small text rounded style="color: #ffffff">سوالات متداول</v-btn> -->
         <v-btn small text rounded style="color: #ffffff">درباره ما</v-btn>
         <v-avatar tile size="90px" style="border=0">
           <v-img contain src="@/assets/logo.jpg" />
         </v-avatar>
-        <!-- <v-row dense no-gutters>
-        <router-view></router-view>
-        </v-row> -->
       </v-app-bar>
-      <!-- </v-app> -->
     </v-card>
     <v-row dense no-gutters>
       <router-view></router-view>
     </v-row>
-    <!-- <v-content>
-      <router-view></router-view>
-    </v-content> -->
-    <!-- <v-container> -->
     <v-row dense no-gutters>
       <v-col cols="12">
         <!-- <v-container> -->
@@ -74,18 +43,17 @@
           >
           </v-carousel-item>
         </v-carousel>
-        <!-- </v-container> -->
       </v-col>
     </v-row>
-    <!-- <v-row dense no-gutters>
-      <router-view></router-view>
-    </v-row> -->
-    <!-- </v-container> -->
   </div>
 </template>
 
 <script>
+import login from "@/components/login.vue";
 export default {
+  components: {
+    login
+  },
   data() {
     return {
       icons: [

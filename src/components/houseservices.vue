@@ -1,10 +1,10 @@
 <template>
   <div>
-    <br>
-    <h1  style="text-align: center" >خانه های مشابه</h1>
-    
+    <br />
+    <h1 style="text-align: center">خانه های مشابه</h1>
+
     <div v-if="samples">
-      <v-carousel hide-delimiter-background>
+      <v-carousel>
         <v-carousel-item v-for="(sample, i) in samples" :key="i">
           <v-sheet
             height="100%"
@@ -89,30 +89,32 @@
 export default {
   data() {
     return {
-      samples: [{
-          "neighbourhood": "اکباتان",
-          "year": 2001,
-          "area": 160,
-          "room": 3,
-          "price": 45000,
-          "link": "https://codeforces.com"
-        },
-         {
-          "neighbourhood": "اکباتان",
-          "year": 2001,
-          "area": 160,
-          "room": 3,
-          "price": 45000,
-          "link": "https://codeforces.com"
+      samples: [
+        {
+          neighbourhood: "اکباتان",
+          year: 2001,
+          area: 160,
+          room: 3,
+          price: 45000,
+          link: "https://codeforces.com"
         },
         {
-          "neighbourhood": "انقلاب",
-          "year": 2009,
-          "area": 130,
-          "room": 2,
-          "price": 1200,
-          "link": "https://www.quera.ir"
-        }]
+          neighbourhood: "اکباتان",
+          year: 2001,
+          area: 160,
+          room: 3,
+          price: 45000,
+          link: "https://codeforces.com"
+        },
+        {
+          neighbourhood: "انقلاب",
+          year: 2009,
+          area: 130,
+          room: 2,
+          price: 1200,
+          link: "https://www.quera.ir"
+        }
+      ]
     };
   },
   methods: {
