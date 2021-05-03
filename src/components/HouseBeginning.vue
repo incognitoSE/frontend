@@ -219,7 +219,7 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        fetch("", {
+        fetch("http://back:8000/HEstimator/House/?format=json", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
