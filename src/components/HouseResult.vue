@@ -30,7 +30,7 @@
                     >
                       {{ price }}
                     </h2>
-                    <p class="count-text ">{{ formhouseforali.area }}</p>
+                    <p class="count-text ">    {{ price }} {{ formhouseforali.area }}</p>
                   </div>
                 </v-list-item-title>
               </v-list-item-content>
@@ -82,14 +82,15 @@ export default {
   },
   data() {
     return {
-      price: ""
+      price: null
     };
   },
   created() {
     axios
-      .get("http://127.0.0.1:8000/HEstimator/api/")
+      .get("http://127.0.0.1:8000/HEstimator/House/")
       .then(response => {
-        this.price = response.data;
+        this.price = response.Message;
+        console.log("there was an error" + response.Message);
       })
       .catch(error => {
         console.log("there was an error" + error.response);

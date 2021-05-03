@@ -121,7 +121,7 @@ export default {
     }
   },
   mounted() {
-    fetch("http://localhost:3000/samples")
+    fetch("http://127.0.0.1:8000/HEstimator/House/")
       .then(res => res.json())
       .then(data => (this.samples = data))
       .catch(err => console.log(err.message));
