@@ -1,9 +1,11 @@
-FROM node:lts-alpine
-RUN npm install -g http-server
-# WORKDIR /app
+FROM node:latest as build-stage
+WORKDIR /app
 COPY package*.json ./
-RUN npm install --no-package-lock
-COPY . .
+RUN npm install
+COPY ./ .
 RUN npm run build
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+
+FROM nginx:latest as production-stage
+RUN mkdir /app
+COPY --from=build-stage /app/dist /app
+COPY nginx.conf /etc/nginx/nginx.conf
