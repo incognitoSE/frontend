@@ -195,7 +195,7 @@ export default {
         area: null,
         neighberhood: "",
         roomnumber: null,
-        year: null
+        year: ""
       },
       itemsm: ["سعادت آباد", "نواب", "جردن"],
       formhouseforali: {},
