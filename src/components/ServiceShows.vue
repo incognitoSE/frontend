@@ -115,6 +115,14 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
+    goTohousing() {
+      this.$router.push({ name: "servicehouse" });
+    }
   }
 };
 </script>

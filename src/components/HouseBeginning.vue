@@ -1,56 +1,58 @@
 <template>
   <div>
-    <div id="main_div">
-      <img
-        src="../assets/Hnet.com-image (17).jpg"
-        alt="house"
-        class="imgcls  hidden-md-and-down"
-      />
-      <img
-        src="../assets/Hnet.com-image (22).jpg"
-        alt="house"
-        class="imgcls  hidden-lg-and-up"
-      />
-      <v-row class="divform">
-        <v-form
-          class="houseform mx-7"
-          @submit="onsubmitinfohouse"
-          ref="formhouse"
-        >
-          <h1
-            class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
-            style="color:rgba(45, 59, 71, 1)"
+    <div v-if="showkole">
+      <div id="main_div">
+        <img
+          src="../assets/Hnet.com-image (17).jpg"
+          alt="house"
+          class="imgcls  hidden-md-and-down"
+        />
+        <img
+          src="../assets/Hnet.com-image (22).jpg"
+          alt="house"
+          class="imgcls  hidden-lg-and-up"
+        />
+        <v-row class="divform">
+          <v-form
+            class="houseform mx-7"
+            @submit="onsubmitinfohouse"
+            ref="formhouse"
           >
-            سرویس خانه
-          </h1>
+            <h1
+              class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
+              style="color:rgba(45, 59, 71, 1)"
+            >
+              سرویس خانه
+            </h1>
 
-          <v-row>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-md-and-down"></v-spacer>
-            <v-col cols="11" md="10" lg="11">
-              <v-text-field
-                placeholder="متراژ"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                min="50"
-                step="1"
-                shaped
-                v-model.number="formDatahouse.area"
-                :rules="metrazrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-          </v-row>
-          <v-row>
-            <v-spacer></v-spacer><v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-md-and-down"></v-spacer>
-            <!-- <v-col cols="11" md="10" lg="11">
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  placeholder="متراژ"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  min="50"
+                  step="1"
+                  shaped
+                  v-model.number="formDatahouse.area"
+                  :rules="metrazrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer
+              ><v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <!-- <v-col cols="11" md="10" lg="11">
               <v-combobox
                 :items="itemsm"
                 dense
@@ -66,31 +68,31 @@
               >
               </v-combobox>
             </v-col> -->
-               <v-col cols="11" md="10" lg="11">
-              <v-text-field
-                dense
-                placeholder="تعداد اتاق"
-                min="1"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.room"
-                :rules="tedadeotaghrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-          </v-row>
-          <v-row>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-md-and-down"></v-spacer>
-             <!-- <v-col cols="11" md="10" lg="11">
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  dense
+                  placeholder="تعداد اتاق"
+                  min="1"
+                  step="1"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="formDatahouse.room"
+                  :rules="tedadeotaghrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <!-- <v-col cols="11" md="10" lg="11">
               <v-text-field
                 dense
                 placeholder="تعداد اتاق"
@@ -105,33 +107,33 @@
                 :maxlength="12"
               ></v-text-field>
             </v-col> -->
-             <v-col cols="11" md="10" lg="11">
-              <v-text-field
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-          </v-row>
-          <v-row>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-md-and-down"></v-spacer>
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  dense
+                  placeholder="سال ساخت"
+                  min="1200"
+                  max="5000"
+                  step="1"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="formDatahouse.year"
+                  :rules="salesaketrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
 
-            <!-- <v-col cols="11" md="10" lg="11">
+              <!-- <v-col cols="11" md="10" lg="11">
               <v-text-field
                 dense
                 placeholder="سال ساخت"
@@ -147,28 +149,28 @@
                 :maxlength="12"
               ></v-text-field>
             </v-col> -->
-             <v-col cols="11" md="10" lg="11">
-              <v-combobox
-                :items="itemsm"
-                dense
-                type="text"
-                placeholder="منطقه"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                v-model="formDatahouse.location"
-                :rules="mataghrulse"
-                shaped
-                reverse
-                clearable
-                :maxlength="12"
-              >
-              </v-combobox>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-          </v-row>
-          <!-- <input
+              <v-col cols="11" md="10" lg="11">
+                <v-combobox
+                  :items="itemsm"
+                  dense
+                  type="text"
+                  placeholder="منطقه"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  v-model="formDatahouse.location"
+                  :rules="mataghrulse"
+                  shaped
+                  reverse
+                  clearable
+                  :maxlength="12"
+                >
+                </v-combobox>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <!-- <input
           type="text"
           placeholder="منطقه"
           class="mt-3 mb-3"
@@ -201,40 +203,303 @@
           oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
           oninput="this.setCustomValidity('')"
         />-->
-          <v-spacer class="hidden-md-and-up"></v-spacer>
+            <v-spacer class="hidden-md-and-up"></v-spacer>
+            <v-btn
+              type="submit"
+              color="rgba(45, 59, 71, 1)"
+              class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
+              large
+            >
+              <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
+            >
+            <v-spacer class="hidden-md-and-up"></v-spacer>
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+            <v-btn
+              type="submit"
+              color="rgba(45, 59, 71, 1)"
+              class="btnformhouse   hidden-lg-and-up"
+              small
+            >
+              <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
+            >
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+          </v-form>
+          <v-spacer></v-spacer>
+          <v-spacer></v-spacer>
+        </v-row>
+      </div>
+      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
+        <v-row align="center" justify="space-around">
           <v-btn
-            type="submit"
-            color="rgba(45, 59, 71, 1)"
-            class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
-            large
+            text
+            class="white--text my-12"
+            color="blue-grey"
+            :to="{ name: 'Home' }"
           >
-            <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
-          >
-          <v-spacer class="hidden-md-and-up"></v-spacer>
-          <v-spacer class="hidden-lg-and-up"></v-spacer>
-          <v-btn
-            type="submit"
-            color="rgba(45, 59, 71, 1)"
-            class="btnformhouse   hidden-lg-and-up"
-            small
-          >
-            <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
-          >
-          <v-spacer class="hidden-lg-and-up"></v-spacer>
-        </v-form>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-      </v-row>
+            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
+            <v-icon right color="rgba(255, 255, 255, 1)">
+              mdi-arrow-right-bold
+            </v-icon>
+          </v-btn>
+        </v-row>
+      </div>
     </div>
-    <HouseResult :formhouseforali="formhouseforali" />
+    <div v-else>
+      <div id="main_div">
+        <img
+          src="../assets/Hnet.com-image (17).jpg"
+          alt="house"
+          class="imgcls  hidden-md-and-down"
+        />
+        <img
+          src="../assets/Hnet.com-image (22).jpg"
+          alt="house"
+          class="imgcls  hidden-lg-and-up"
+        />
+        <v-row class="divform">
+          <v-form
+            class="houseform mx-7"
+            @submit="onsubmitinfohouse"
+            ref="formhouse"
+          >
+            <h1
+              class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
+              style="color:rgba(45, 59, 71, 1)"
+            >
+              سرویس خانه
+            </h1>
+
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  placeholder="متراژ"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  min="50"
+                  step="1"
+                  shaped
+                  v-model.number="formDatahouse.area"
+                  :rules="metrazrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer
+              ><v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <!-- <v-col cols="11" md="10" lg="11">
+              <v-combobox
+                :items="itemsm"
+                dense
+                type="text"
+                placeholder="منطقه"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                v-model="formDatahouse.neighberhood"
+                :rules="mataghrulse"
+                shaped
+                reverse
+                clearable
+                :maxlength="12"
+              >
+              </v-combobox>
+            </v-col> -->
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  dense
+                  placeholder="تعداد اتاق"
+                  min="1"
+                  step="1"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="formDatahouse.room"
+                  :rules="tedadeotaghrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <!-- <v-col cols="11" md="10" lg="11">
+              <v-text-field
+                dense
+                placeholder="تعداد اتاق"
+                min="1"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.roomnumber"
+                :rules="tedadeotaghrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  dense
+                  placeholder="سال ساخت"
+                  min="1200"
+                  max="5000"
+                  step="1"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="formDatahouse.year"
+                  :rules="salesaketrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+
+              <!-- <v-col cols="11" md="10" lg="11">
+              <v-text-field
+                dense
+                placeholder="سال ساخت"
+                min="1200"
+                max="5000"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.year"
+                :rules="salesaketrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
+              <v-col cols="11" md="10" lg="11">
+                <v-combobox
+                  :items="itemsm"
+                  dense
+                  type="text"
+                  placeholder="منطقه"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  v-model="formDatahouse.location"
+                  :rules="mataghrulse"
+                  shaped
+                  reverse
+                  clearable
+                  :maxlength="12"
+                >
+                </v-combobox>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <!-- <input
+          type="text"
+          placeholder="منطقه"
+          class="mt-3 mb-3"
+          required
+          v-model="formDatahouse.neighberhood"
+          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />
+        <input
+          type="number"
+          placeholder="تعداد اتاق"
+          min="1"
+          max="150"
+          step="1"
+          class="mt-3 mb-3"
+          v-model.number="formDatahouse.roomnumber"
+          required
+          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />
+        <input
+          type="number"
+          placeholder=" سال ساخت"
+          min="1200"
+          max="2356"
+          step="1"
+          class="mt-3 mb-3"
+          required
+          v-model.number="formDatahouse.year"
+          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />-->
+            <v-spacer class="hidden-md-and-up"></v-spacer>
+            <v-btn
+              type="submit"
+              color="rgba(45, 59, 71, 1)"
+              class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
+              large
+            >
+              <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
+            >
+            <v-spacer class="hidden-md-and-up"></v-spacer>
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+            <v-btn
+              type="submit"
+              color="rgba(45, 59, 71, 1)"
+              class="btnformhouse   hidden-lg-and-up"
+              small
+            >
+              <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
+            >
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+          </v-form>
+          <v-spacer></v-spacer>
+          <v-spacer></v-spacer>
+        </v-row>
+      </div>
+      <HouseResult :formhouseforali="formhouseforali" />
+      <houseservices />
+      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
+        <v-row align="center" justify="space-around">
+          <v-btn
+            text
+            class="white--text my-12"
+            color="blue-grey"
+            :to="{ name: 'Home' }"
+          >
+            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
+            <v-icon right color="rgba(255, 255, 255, 1)">
+              mdi-arrow-right-bold
+            </v-icon>
+          </v-btn>
+        </v-row>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import HouseResult from "@/components/HouseResult.vue";
+import houseservices from "@/components/houseservices.vue";
 export default {
   components: {
-    HouseResult
+    HouseResult,
+    houseservices
   },
   data() {
     return {
@@ -244,6 +509,7 @@ export default {
         room: null,
         year: null
       },
+      showkole: true,
       itemsm: ["سعادت آباد", "نواب", "جردن"],
       formhouseforali: {},
       metrazrules: [
@@ -283,6 +549,7 @@ export default {
           })
           .catch(error => console.log(error));
         this.$refs.formhouse.reset();
+        this.showkole = false;
       }
     }
   }
@@ -308,6 +575,10 @@ export default {
   align-items: center;
   overflow: hidden;
   position: relative;
+}
+.divlasti {
+  max-height: 162px;
+  height: 162px;
 }
 #main_div img {
   width: 100%;
@@ -372,7 +643,7 @@ input:hover {
   .divform {
     position: absolute;
     float: right;
-    right:25px;
+    right: 25px;
     top: 15px;
     width: 280px;
     height: 400px;
@@ -402,7 +673,7 @@ input:hover {
   .divform {
     position: absolute;
     float: right;
-    right:35px;
+    right: 35px;
     top: 80px;
     width: 340px;
     height: 490px;
@@ -440,7 +711,6 @@ input:hover {
   }
   .mytext {
     width: 205px;
-   
   }
   .h1class {
     font-size: 30px;
@@ -449,7 +719,7 @@ input:hover {
   .btnformhouse {
     margin-bottom: 2px;
     width: 190px;
-    
+
     margin-left: 17px;
   }
 }

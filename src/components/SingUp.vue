@@ -123,7 +123,7 @@ export default {
     onsubmitinfsingup(event) {
       event.preventDefault();
       if (this.$refs.formsingup.validate()) {
-        fetch("http://back:8000/User/profile/", {
+        fetch("http://127.0.0.1:8000/User/profile/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
