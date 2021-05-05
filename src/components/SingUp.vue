@@ -5,7 +5,7 @@
         >ثبت نام</v-btn
       >
     </template>
-    <v-form @submit="onsubmitinfsingup" ref="formsingup">
+    <v-form @submit="onsubmitinfsingup" ref="singupform" v-model="formvalidi">
       <v-container style="background-color:#C4c4c4">
         <v-card>
           <v-card-title>
@@ -61,10 +61,21 @@
               </v-row>
             </v-container>
           </v-card-text>
+           <div v-if="errors.length == 1">
+            <!--  <h3>{{ errors[0] }}</h3>-->
+            <v-alert dense outlined type="error">
+              کاربری با این ایمیل وجود دارد
+            </v-alert>
+          </div>
           <v-divider></v-divider>
+         
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn type="submit" color="rgba(45, 59, 71, 1)">
+            <v-btn
+              type="submit"
+              color="rgba(45, 59, 71, 1)"
+              :disabled="!formvalidi"
+            >
               <h3 style="color:#CFD8DC">ثبت نام</h3></v-btn
             >
             <v-btn color="rgba(45, 59, 71, 1)" @click="onclosesingup">
@@ -80,6 +91,7 @@
 export default {
   data() {
     return {
+      formvalidi: false,
       dialog: false,
       showpassword: false,
       paternpassword: "",
@@ -88,6 +100,7 @@ export default {
         email: "",
         password: ""
       },
+      errors: [],
       namerules: [
         value => !!value || "لطفا نام و نام خانوادگی خود را وارد کنید",
         value =>
@@ -122,7 +135,7 @@ export default {
   methods: {
     onsubmitinfsingup(event) {
       event.preventDefault();
-      if (this.$refs.formsingup.validate()) {
+      if (this.$refs.singupform.validate()) {
         fetch("http://127.0.0.1:8000/User/profile/", {
           method: "POST",
           headers: {
@@ -134,15 +147,23 @@ export default {
             return res.json();
           })
           .then(data => {
+            this.errors = data.email;
             console.log(data);
           })
           .catch(error => console.log(error));
-        this.$refs.formsingup.reset();
+        this.formDatasingup.name = "";
+        this.formDatasingup.email = "";
+        this.formDatasingup.password = "";
+        this.$refs.singupform.resetValidation();
       }
     },
     onclosesingup() {
       this.dialog = false;
-      this.$refs.formsingup.reset();
+      this.formDatasingup.name = "";
+      this.formDatasingup.email = "";
+      this.formDatasingup.password = "";
+      this.errors = [];
+      this.$refs.singupform.resetValidation();
     }
   }
 };

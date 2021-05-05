@@ -17,6 +17,7 @@
             class="houseform mx-7"
             @submit="onsubmitinfohouse"
             ref="formhouse"
+            v-model="formvaildehome"
           >
             <h1
               class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
@@ -209,6 +210,7 @@
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
               large
+              :disabled="!formvaildehome"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -219,6 +221,7 @@
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse   hidden-lg-and-up"
               small
+              :disabled="!formvaildehome"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -503,6 +506,7 @@ export default {
   },
   data() {
     return {
+      formvaildehome:false,
       formDatahouse: {
         area: null,
         location: "",
@@ -548,7 +552,11 @@ export default {
             console.log(this.formhouseforali);
           })
           .catch(error => console.log(error));
-        this.$refs.formhouse.reset();
+        this.formDatahouse.area=null;
+        this.formDatahouse.location="";
+        this.formDatahouse.year=null;
+        this.formDatahouse.room=null;
+        this.$refs.formhouse.resetValidation();
         this.showkole = false;
       }
     }
