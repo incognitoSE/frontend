@@ -66,7 +66,7 @@
               >
               </v-combobox>
             </v-col> -->
-               <v-col cols="11" md="10" lg="11">
+            <v-col cols="11" md="10" lg="11">
               <v-text-field
                 dense
                 placeholder="تعداد اتاق"
@@ -90,7 +90,7 @@
             <v-spacer></v-spacer>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
             <v-spacer class="hidden-md-and-down"></v-spacer>
-             <!-- <v-col cols="11" md="10" lg="11">
+            <!-- <v-col cols="11" md="10" lg="11">
               <v-text-field
                 dense
                 placeholder="تعداد اتاق"
@@ -105,7 +105,7 @@
                 :maxlength="12"
               ></v-text-field>
             </v-col> -->
-             <v-col cols="11" md="10" lg="11">
+            <v-col cols="11" md="10" lg="11">
               <v-text-field
                 dense
                 placeholder="سال ساخت"
@@ -130,24 +130,7 @@
             <v-spacer></v-spacer>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
             <v-spacer class="hidden-md-and-down"></v-spacer>
-
-            <!-- <v-col cols="11" md="10" lg="11">
-              <v-text-field
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
-             <v-col cols="11" md="10" lg="11">
+            <v-col cols="11" md="10" lg="11">
               <v-combobox
                 :items="itemsm"
                 dense
@@ -168,39 +151,6 @@
             <v-spacer class="hidden-lg-and-up"></v-spacer>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
           </v-row>
-          <!-- <input
-          type="text"
-          placeholder="منطقه"
-          class="mt-3 mb-3"
-          required
-          v-model="formDatahouse.neighberhood"
-          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder="تعداد اتاق"
-          min="1"
-          max="150"
-          step="1"
-          class="mt-3 mb-3"
-          v-model.number="formDatahouse.roomnumber"
-          required
-          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder=" سال ساخت"
-          min="1200"
-          max="2356"
-          step="1"
-          class="mt-3 mb-3"
-          required
-          v-model.number="formDatahouse.year"
-          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />-->
           <v-spacer class="hidden-md-and-up"></v-spacer>
           <v-btn
             type="submit"
@@ -372,7 +322,7 @@ input:hover {
   .divform {
     position: absolute;
     float: right;
-    right:25px;
+    right: 25px;
     top: 15px;
     width: 280px;
     height: 400px;
@@ -402,7 +352,7 @@ input:hover {
   .divform {
     position: absolute;
     float: right;
-    right:35px;
+    right: 35px;
     top: 80px;
     width: 340px;
     height: 490px;
@@ -440,7 +390,6 @@ input:hover {
   }
   .mytext {
     width: 205px;
-   
   }
   .h1class {
     font-size: 30px;
@@ -449,7 +398,7 @@ input:hover {
   .btnformhouse {
     margin-bottom: 2px;
     width: 190px;
-    
+
     margin-left: 17px;
   }
 }
