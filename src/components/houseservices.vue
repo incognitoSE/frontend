@@ -2,10 +2,9 @@
   <div>
     <br />
     <h1 style="text-align: center">خانه های مشابه</h1>
-
     <div v-if="samples">
       <v-carousel>
-        <v-carousel-item v-for="(sample, i) in samples" :key="i">
+        <v-carousel-item v-for="(sample, i) in samples[0].houses" :key="i">
           <v-sheet
             height="100%"
             color="white"
@@ -43,9 +42,7 @@
                     >
                   </div>
                   <div class="property">
-                    <span style="font-size : 20px">
-                      {{ sample.neighbourhood }}</span
-                    >
+                    <span style="font-size : 20px"> {{ sample.location }}</span>
                     <span style="font-size : 20px ;color : 	#888888"
                       >:منطقه</span
                     >
@@ -91,28 +88,25 @@ export default {
     return {
       samples: [
         {
-          neighbourhood: "اکباتان",
-          year: 2001,
-          area: 160,
-          room: 3,
-          price: 45000,
-          link: "https://codeforces.com"
-        },
-        {
-          neighbourhood: "اکباتان",
-          year: 2001,
-          area: 160,
-          room: 3,
-          price: 45000,
-          link: "https://codeforces.com"
-        },
-        {
-          neighbourhood: "انقلاب",
-          year: 2009,
-          area: 130,
-          room: 2,
-          price: 1200,
-          link: "https://www.quera.ir"
+          price: 2,
+          houses: [
+            {
+              location: "سعادت آباد",
+              year: 1934,
+              area: 140,
+              room: 4,
+              price: 300000,
+              link: "https://www.quera.ir"
+            },
+            {
+              location: "اکباتان",
+              year: 2001,
+              area: 160,
+              room: 3,
+              price: 45000,
+              link: "https://codeforces.com"
+            }
+          ]
         }
       ]
     };

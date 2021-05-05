@@ -1,4 +1,4 @@
-# vuetify-dashboard
+# Vuetify-dashboard
 
 ## Project setup
 ```
