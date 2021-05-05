@@ -28,9 +28,9 @@
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                      {{ price }}
+                     {{ formhouseforali.area }}
                     </h2>
-                    <p class="count-text ">{{ formhouseforali.area }}</p>
+                    <p class="count-text ">   </p>
                   </div>
                 </v-list-item-title>
               </v-list-item-content>
@@ -42,28 +42,28 @@
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white">
-                {{ formhouseforali.area }}متراژ: 140 متر مربع</v-list-item-title
+                {{ formhouseforali.area }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >{{ formhouseforali.area }}منطقه: جردن</v-list-item-title
+                >{{ formhouseforali.location }}منطقه: </v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >تعداد اتاق: 2</v-list-item-title
+                >تعداد اتاق: {{ formhouseforali.room }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >سال ساخت: 2009</v-list-item-title
+                >سال ساخت: {{ formhouseforali.location }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -82,14 +82,14 @@ export default {
   },
   data() {
     return {
-      price: ""
+      price: null
     };
   },
   created() {
     axios
-      .get("http://127.0.0.1:8000/HEstimator/api/")
+      .get("http://127.0.0.1:8000/HEstimator/House/")
       .then(response => {
-        this.price = response.data;
+      this.price=response.data;
       })
       .catch(error => {
         console.log("there was an error" + error.response);

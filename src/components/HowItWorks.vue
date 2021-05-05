@@ -45,7 +45,7 @@
             <v-spacer></v-spacer>
 
             <v-col>
-              <v-card-title style=" margin-left: 20px;">
+              <v-card-title style=" margin-left: 75px;">
                 <img
                   style="width:110px;height:110px;"
                   src="@/assets/services-removebg-preview.png"

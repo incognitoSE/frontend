@@ -6,7 +6,7 @@
           <v-spacer></v-spacer>
 
           <v-col
-            ><v-card-title style="margin-left:45px;">
+            ><v-card-title >
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title style="text-align: center;">
@@ -21,22 +21,20 @@
                         data-speed="1500"
                         style="text-align: center; "
                       >
-                        +570
+                        <v-card-title><h1>+570</h1></v-card-title>
+                        <v-card-text><p>تعداد کاربران سامانه</p></v-card-text>
                       </h1>
                     </div>
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item></v-card-title
-            ><v-card-title style="margin-left:45px;"
-              ><h1>+570</h1></v-card-title
-            >
-            <v-card-text><p>تعداد کاربران سامانه</p></v-card-text></v-col
+            ></v-col
           >
           <v-spacer></v-spacer> <v-divider class="mx-1" vertical> </v-divider>
           <v-spacer></v-spacer>
           <v-col
-            ><v-card-title style="margin-left: 20px;"
-              > <v-list-item>
+            ><v-card-title>
+              <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title style="text-align: center;">
                     <div class="counter">
@@ -50,14 +48,18 @@
                         data-speed="1500"
                         style="text-align: center; "
                       >
-                        +1300
+                        <v-card-title><h1>+1300</h1></v-card-title>
+                        <v-card-text
+                          ><p>تعداد استفاده از سامانه</p></v-card-text
+                        >
                       </h1>
                     </div>
                   </v-list-item-title>
                 </v-list-item-content>
-              </v-list-item></v-card-title>
+              </v-list-item></v-card-title
             >
-            <v-card-text><p>تعداد استفاده از سرویس</p></v-card-text>
+            >
+            <v-card-text></v-card-text>
           </v-col>
 
           <v-spacer></v-spacer>
