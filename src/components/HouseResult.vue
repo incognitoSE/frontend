@@ -28,7 +28,10 @@
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                     {{ formhouseforali.area }}
+                        {{ formhouseforali.price }}
+                        <br>
+                         تومان 
+                     
                     </h2>
                     <p class="count-text ">   </p>
                   </div>
@@ -42,28 +45,38 @@
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white">
-                {{ formhouseforali.area }}</v-list-item-title
+              
+        متراژ
+        :
+           {{ formhouseforali.currenthouse.area }} 
+           متر مربع</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >{{ formhouseforali.location }}منطقه: </v-list-item-title
+                >منطقه
+                :
+               {{ formhouseforali.currenthouse.location}} </v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >تعداد اتاق: {{ formhouseforali.room }}</v-list-item-title
+                >تعداد اتاق
+                :
+                 {{ formhouseforali.currenthouse.room }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >سال ساخت: {{ formhouseforali.location }}</v-list-item-title
+                >سال ساخت
+                :
+                 {{ formhouseforali.currenthouse.location }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
