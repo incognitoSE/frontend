@@ -123,7 +123,7 @@ export default {
     }
   },
   mounted() {
-    fetch("http://127.0.0.1:8000/HEstimator/House/")
+    fetch("http://127.0.0.1:8000/HEstimator/House/1/")
       .then(res => res.json())
       .then(data => (this.samples = data))
       .catch(err => console.log(err.message));

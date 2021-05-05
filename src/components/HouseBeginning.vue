@@ -50,7 +50,7 @@
           <v-row>
             <v-spacer></v-spacer><v-spacer class="hidden-lg-and-up"></v-spacer>
             <v-spacer class="hidden-md-and-down"></v-spacer>
-            <v-col cols="11" md="10" lg="11">
+            <!-- <v-col cols="11" md="10" lg="11">
               <v-combobox
                 :items="itemsm"
                 dense
@@ -65,17 +65,8 @@
                 :maxlength="12"
               >
               </v-combobox>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-          </v-row>
-          <v-row>
-            <v-spacer></v-spacer>
-            <v-spacer class="hidden-lg-and-up"></v-spacer>
-            <v-spacer class="hidden-md-and-down"></v-spacer>
-            <v-col cols="11" md="10" lg="11">
+            </v-col> -->
+               <v-col cols="11" md="10" lg="11">
               <v-text-field
                 dense
                 placeholder="تعداد اتاق"
@@ -83,7 +74,7 @@
                 step="1"
                 class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                 shaped
-                v-model.number="formDatahouse.roomnumber"
+                v-model.number="formDatahouse.room"
                 :rules="tedadeotaghrules"
                 reverse
                 clearable
@@ -99,8 +90,22 @@
             <v-spacer></v-spacer>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
             <v-spacer class="hidden-md-and-down"></v-spacer>
-
-            <v-col cols="11" md="10" lg="11">
+             <!-- <v-col cols="11" md="10" lg="11">
+              <v-text-field
+                dense
+                placeholder="تعداد اتاق"
+                min="1"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.roomnumber"
+                :rules="tedadeotaghrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
+             <v-col cols="11" md="10" lg="11">
               <v-text-field
                 dense
                 placeholder="سال ساخت"
@@ -115,6 +120,48 @@
                 clearable
                 :maxlength="12"
               ></v-text-field>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+          </v-row>
+          <v-row>
+            <v-spacer></v-spacer>
+            <v-spacer class="hidden-lg-and-up"></v-spacer>
+            <v-spacer class="hidden-md-and-down"></v-spacer>
+
+            <!-- <v-col cols="11" md="10" lg="11">
+              <v-text-field
+                dense
+                placeholder="سال ساخت"
+                min="1200"
+                max="5000"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.year"
+                :rules="salesaketrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
+             <v-col cols="11" md="10" lg="11">
+              <v-combobox
+                :items="itemsm"
+                dense
+                type="text"
+                placeholder="منطقه"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                v-model="formDatahouse.location"
+                :rules="mataghrulse"
+                shaped
+                reverse
+                clearable
+                :maxlength="12"
+              >
+              </v-combobox>
             </v-col>
             <v-spacer></v-spacer>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
@@ -193,8 +240,8 @@ export default {
     return {
       formDatahouse: {
         area: null,
-        neighberhood: "",
-        roomnumber: null,
+        location: "",
+        room: null,
         year: null
       },
       itemsm: ["سعادت آباد", "نواب", "جردن"],
@@ -219,7 +266,7 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        fetch("http://back:8000/HEstimator/House/", {
+        fetch("http://127.0.0.1:8000/HEstimator/House/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
