@@ -58,9 +58,9 @@
                 </v-row>
               </v-container>
             </v-card-text>
-            <div v-if="errors.length == 1">
+            <div v-if="errors.length != 0">
               <v-alert dense outlined type="error">
-                ایمیل/رمزعبور اشتباه است یا قبلا ثبت نام نکرده اید.</v-alert
+                .ایمیل/رمزعبور شما اشتباه است یا قبلا ثبت نام نکرده اید</v-alert
               >
             </div>
             <v-divider></v-divider>
@@ -96,7 +96,7 @@ export default {
       formvalidi: false,
       passfield: false,
       dialog: false,
-      errors: {},
+      errors: "",
       logininfo: {
         username: "",
         password: ""
@@ -141,12 +141,18 @@ export default {
             return res.json();
           })
           .then(data => {
-            this.errors = data;
+            console.log(typeof data.detail);
+
+            if (typeof data.detail != "undefined") {
+              this.errors = data.detail;
+              console.log(typeof this.errors);
+            }
             console.log(data);
           })
           .catch(error => console.log(error));
         this.logininfo.username = "";
         this.logininfo.password = "";
+        this.errors = "";
         this.$refs.userinfo.resetValidation();
       }
     },
@@ -154,7 +160,7 @@ export default {
       this.dialog = false;
       this.logininfo.username = "";
       this.logininfo.password = "";
-      this.errors = [];
+      this.errors = "";
       this.$refs.userinfo.resetValidation();
     }
   }
