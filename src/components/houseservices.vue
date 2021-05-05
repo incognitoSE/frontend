@@ -2,7 +2,7 @@
   <div>
     <br />
     <h1 style="text-align: center">خانه های مشابه</h1>
-    <div v-if="samples">
+    <div v-if="samples[0].houses.length != 0">
       <v-carousel>
         <v-carousel-item v-for="(sample, i) in samples[0].houses" :key="i">
           <v-sheet
@@ -77,7 +77,7 @@
       </v-carousel>
     </div>
     <div v-else>
-      <h2>در حال بارگذاری</h2>
+      <h2 style="text-align:center ; margin:70px">خانه ی مشابهی یافت نشد</h2>
     </div>
   </div>
 </template>
@@ -89,24 +89,7 @@ export default {
       samples: [
         {
           price: 2,
-          houses: [
-            {
-              location: "سعادت آباد",
-              year: 1934,
-              area: 140,
-              room: 4,
-              price: 300000,
-              link: "https://www.quera.ir"
-            },
-            {
-              location: "اکباتان",
-              year: 2001,
-              area: 160,
-              room: 3,
-              price: 45000,
-              link: "https://codeforces.com"
-            }
-          ]
+          houses: []
         }
       ]
     };
@@ -117,7 +100,7 @@ export default {
     }
   },
   mounted() {
-    fetch("http://back:8000/HEstimator/House/1/")
+    fetch("http://back:8000/HEstimator/House/")
       .then(res => res.json())
       .then(data => (this.samples = data))
       .catch(err => console.log(err.message));
