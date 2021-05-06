@@ -67,6 +67,9 @@
               کاربری با این ایمیل وجود دارد
             </v-alert>
           </div>
+            <div v-if="succ.length != 0">
+              <v-alert dense outlined type="success"> {{ succ }}</v-alert>
+            </div>
           <v-divider></v-divider>
 
           <v-card-actions>
@@ -101,6 +104,7 @@ export default {
         password: ""
       },
       errors: [],
+      succ: [],
       namerules: [
         value => !!value || "لطفا نام و نام خانوادگی خود را وارد کنید",
         value =>
@@ -148,8 +152,14 @@ export default {
             return res.json();
           })
           .then(data => {
+            console.log(data.length)
+            if(typeof data.id != "undefined")
+            {
+              this.succ = ".ثبت نام با موفقیت انجام شد"
+            }
             this.errors = data.email;
             console.log(data);
+           
           })
           .catch(error => console.log(error));
         this.formDatasingup.name = "";
@@ -164,6 +174,7 @@ export default {
       this.formDatasingup.email = "";
       this.formDatasingup.password = "";
       this.errors = [];
+      this.succ = [];
       this.$refs.singupform.resetValidation();
     }
   }
