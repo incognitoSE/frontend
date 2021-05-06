@@ -82,7 +82,9 @@
 
 <script>
 export default {
-  props: ["formhouseforali"],
+  props: {
+    formhouseforali: Object
+  },
   data() {
     return {
       price: null
@@ -90,4 +92,5 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped></style>
