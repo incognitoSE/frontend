@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   props: {
     formhouseforali: Object
@@ -89,6 +90,16 @@ export default {
     return {
       price: null
     };
+  },
+  created() {
+    axios
+      .get("http://127.0.0.1:8000/HEstimator/House/")
+      .then(response => {
+        this.price = response.data;
+      })
+      .catch(error => {
+        console.log("there was an error" + error.response);
+      });
   }
 };
 </script>
