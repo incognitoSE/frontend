@@ -13,7 +13,7 @@
           ورود
         </v-btn>
       </template>
-      <v-form @submit="submitinfo" ref="userinfo">
+      <v-form @submit="submitinfo" ref="userinfo" v-model="formvalidi">
         <v-container style="background-color:#c4c4c4">
           <v-card>
             <v-card-title class="justify-center">
@@ -28,9 +28,10 @@
                       style="padding:20px"
                       color="#2d3b47"
                       placeholder=" ایمیل"
+                      type="email"
                       reverse
                       prepend-inner-icon="mdi-email"
-                      :v-model="logininfo.email"
+                      v-model="logininfo.username"
                       :rules="emailRules"
                       required
                     >
@@ -47,7 +48,7 @@
                       prepend-inner-icon="mdi-lock"
                       :append-icon="passfield ? 'mdi-eye' : 'mdi-eye-off'"
                       :type="passfield ? 'text' : 'password'"
-                      :v-model="logininfo.password"
+                      v-model="logininfo.password"
                       :rules="passrules"
                       @click:append="passfield = !passfield"
                       required
@@ -57,6 +58,14 @@
                 </v-row>
               </v-container>
             </v-card-text>
+            <div v-if="errors.length != 0">
+              <v-alert dense outlined type="error">
+                .ایمیل/رمزعبور شما اشتباه است یا قبلا ثبت نام نکرده اید</v-alert
+              >
+            </div>
+            <div v-if="success.length != 0">
+              <v-alert dense outlined type="success"> {{ success }}</v-alert>
+            </div>
             <v-divider></v-divider>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -64,6 +73,7 @@
                 type="submit"
                 large
                 style="color: #ffffff ; background-color : #2d3b47"
+                :disabled="!formvalidi"
               >
                 ورود
               </v-btn>
@@ -86,14 +96,16 @@
 export default {
   data() {
     return {
+      formvalidi: false,
       passfield: false,
       dialog: false,
+      errors: "",
+      success: "",
       logininfo: {
-        email: null,
-        password: null
+        username: "",
+        password: ""
       },
       emailRules: [
-        v => !!v || "ایمیل خود را وارد کنید",
         value => !!value || "لطفا ایمیل خود را وارد کنید",
         value =>
           value.indexOf("@") !== 0 ||
@@ -122,7 +134,7 @@ export default {
     submitinfo(e) {
       e.preventDefault();
       if (this.$refs.userinfo.validate()) {
-        fetch("", {
+        fetch("http://127.0.0.1:8000/User/login/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -133,15 +145,29 @@ export default {
             return res.json();
           })
           .then(data => {
+            console.log(typeof data.detail);
+
+            if (typeof data.detail != "undefined") {
+              this.errors = data.detail;
+              console.log(typeof this.errors);
+            } else {
+              this.success = ".با موفقیت وارد شدید";
+            }
             console.log(data);
           })
           .catch(error => console.log(error));
-        this.$refs.userinfo.reset();
+        this.logininfo.username = "";
+        this.logininfo.password = "";
+        this.errors = "";
+        this.$refs.userinfo.resetValidation();
       }
     },
     closelogin() {
       this.dialog = false;
-      this.$refs.userinfo.reset();
+      this.logininfo.username = "";
+      this.logininfo.password = "";
+      this.errors = "";
+      this.$refs.userinfo.resetValidation();
     }
   }
 };

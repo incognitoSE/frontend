@@ -69,6 +69,7 @@
               >
               </v-combobox>
             </v-col> -->
+
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -94,6 +95,7 @@
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
               <v-text-field
                 dense
                 placeholder="تعداد اتاق"
@@ -108,6 +110,7 @@
                 :maxlength="12"
               ></v-text-field>
             </v-col> -->
+
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -135,6 +138,7 @@
               <v-spacer class="hidden-md-and-down"></v-spacer>
 
               <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
               <v-text-field
                 dense
                 placeholder="سال ساخت"
@@ -382,6 +386,7 @@
 
               <!-- <v-col cols="11" md="10" lg="11">
               <v-text-field
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
                 dense
                 placeholder="سال ساخت"
                 min="1200"
@@ -394,6 +399,7 @@
                 reverse
                 clearable
                 :maxlength="12"
+
               ></v-text-field>
             </v-col> -->
               <v-col cols="11" md="10" lg="11">
@@ -476,7 +482,7 @@
         </v-row>
       </div>
       <HouseResult :formhouseforali="formhouseforali" />
-      <houseservices />
+      <houseservices :dataforromina="dataforromina" />
       <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
         <v-row align="center" justify="space-around">
           <v-btn
@@ -506,7 +512,7 @@ export default {
   },
   data() {
     return {
-      formvaildehome:false,
+      formvaildehome: false,
       formDatahouse: {
         area: null,
         location: "",
@@ -516,6 +522,7 @@ export default {
       showkole: true,
       itemsm: ["سعادت آباد", "نواب", "جردن"],
       formhouseforali: {},
+      dataforromina: { currenthouse: {}, price: "", houses: [] },
       metrazrules: [
         value => !!value || "متراژ مورد نظر خود را وارد کنید",
         value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
@@ -549,13 +556,18 @@ export default {
           .then(data => {
             console.log(data);
             this.formhouseforali = data;
+            this.dataforromina = data;
+            console.log("housebeginning");
+            console.log(data.houses);
             console.log(this.formhouseforali);
+            console.log(this.dataforromina);
+            console.log(typeof this.dataforromina);
           })
           .catch(error => console.log(error));
-        this.formDatahouse.area=null;
-        this.formDatahouse.location="";
-        this.formDatahouse.year=null;
-        this.formDatahouse.room=null;
+        this.formDatahouse.area = null;
+        this.formDatahouse.location = "";
+        this.formDatahouse.year = null;
+        this.formDatahouse.room = null;
         this.$refs.formhouse.resetValidation();
         this.showkole = false;
       }

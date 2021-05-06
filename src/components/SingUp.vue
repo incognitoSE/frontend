@@ -61,14 +61,14 @@
               </v-row>
             </v-container>
           </v-card-text>
-           <div v-if="errors.length == 1">
+          <div v-if="errors.length == 1">
             <!--  <h3>{{ errors[0] }}</h3>-->
             <v-alert dense outlined type="error">
               کاربری با این ایمیل وجود دارد
             </v-alert>
           </div>
           <v-divider></v-divider>
-         
+
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
@@ -135,6 +135,7 @@ export default {
   methods: {
     onsubmitinfsingup(event) {
       event.preventDefault();
+
       if (this.$refs.singupform.validate()) {
         fetch("http://127.0.0.1:8000/User/profile/", {
           method: "POST",

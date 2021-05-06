@@ -84,9 +84,7 @@
 
 <script>
 export default {
-  props: {
-    formhouseforali: Object
-  },
+  props: ["formhouseforali"],
   data() {
     return {
       price: null,
@@ -100,8 +98,8 @@ export default {
         this.showme = true;
       }
     }
+
   }
 };
 </script>
-
 <style lang="scss" scoped></style>
