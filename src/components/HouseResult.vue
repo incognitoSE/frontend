@@ -28,12 +28,11 @@
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                        {{ formhouseforali.price }}
-                        <br>
-                         تومان 
-                     
+                      {{ formhouseforali.price }}
+                      <br />
+                      تومان
                     </h2>
-                    <p class="count-text ">   </p>
+                    <p class="count-text "></p>
                   </div>
                 </v-list-item-title>
               </v-list-item-content>
@@ -45,38 +44,32 @@
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white">
-              
-        متراژ
-        :
-           {{ formhouseforali.currenthouse.area }} 
-           متر مربع</v-list-item-title
+                متراژ :
+                {{ formhouseforali.currenthouse.area }}
+                متر مربع</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >منطقه
-                :
-               {{ formhouseforali.currenthouse.location}} </v-list-item-title
+                >منطقه : {{ formhouseforali.currenthouse.location }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title style="color: white"
+                >تعداد اتاق :
+                {{ formhouseforali.currenthouse.room }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >تعداد اتاق
-                :
-                 {{ formhouseforali.currenthouse.room }}</v-list-item-title
-              >
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title style="color: white"
-                >سال ساخت
-                :
-                 {{ formhouseforali.currenthouse.location }}</v-list-item-title
+                >سال ساخت :
+                {{ formhouseforali.currenthouse.year }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -90,9 +83,7 @@
 <script>
 import axios from "axios";
 export default {
-  props: {
-    formhouseforali: Object
-  },
+  props: ["formhouseforali"],
   data() {
     return {
       price: null
@@ -102,7 +93,7 @@ export default {
     axios
       .get("http://127.0.0.1:8000/HEstimator/House/")
       .then(response => {
-      this.price=response.data;
+        this.price = response.data;
       })
       .catch(error => {
         console.log("there was an error" + error.response);
@@ -110,5 +101,4 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped></style>

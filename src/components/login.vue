@@ -63,6 +63,9 @@
                 .ایمیل/رمزعبور شما اشتباه است یا قبلا ثبت نام نکرده اید</v-alert
               >
             </div>
+            <div v-if="success.length != 0">
+              <v-alert dense outlined type="success"> {{ success }}</v-alert>
+            </div>
             <v-divider></v-divider>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -97,6 +100,7 @@ export default {
       passfield: false,
       dialog: false,
       errors: "",
+      success: "",
       logininfo: {
         username: "",
         password: ""
@@ -146,6 +150,8 @@ export default {
             if (typeof data.detail != "undefined") {
               this.errors = data.detail;
               console.log(typeof this.errors);
+            } else {
+              this.success = ".با موفقیت وارد شدید";
             }
             console.log(data);
           })
