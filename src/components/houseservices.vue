@@ -2,9 +2,9 @@
   <div>
     <br />
     <h1 style="text-align: center">خانه های مشابه</h1>
-    <div v-if="samples[0].houses.length != 0">
+    <div v-if="dataforromina.houses.length != 0">
       <v-carousel>
-        <v-carousel-item v-for="(sample, i) in samples[0].houses" :key="i">
+        <v-carousel-item v-for="(sample, i) in dataforromina.houses" :key="i">
           <v-sheet
             height="100%"
             color="white"
@@ -22,7 +22,7 @@
                       :قیمت
                     </div>
                     <div style=" font-size : 20px ; text-align : center ">
-                      $ {{ sample.price }}
+                      {{ sample.price }}
                     </div>
                   </div>
                 </v-card-text>
@@ -84,26 +84,16 @@
 
 <script>
 export default {
+  props: ["dataforromina"],
   data() {
     return {
-      samples: [
-        {
-          price: 2,
-          houses: []
-        }
-      ]
+      samples: []
     };
   },
   methods: {
     samplepage: function(add) {
       window.location.href = add;
     }
-  },
-  mounted() {
-    fetch("http://127.0.0.1:8000/HEstimator/House/")
-      .then(res => res.json())
-      .then(data => (this.samples = data))
-      .catch(err => console.log(err.message));
   }
 };
 </script>

@@ -17,6 +17,7 @@
             class="houseform mx-7"
             @submit="onsubmitinfohouse"
             ref="formhouse"
+            v-model="formvaildehome"
           >
             <h1
               class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
@@ -68,6 +69,7 @@
               >
               </v-combobox>
             </v-col> -->
+
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -93,6 +95,7 @@
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
               <v-text-field
                 dense
                 placeholder="تعداد اتاق"
@@ -107,6 +110,7 @@
                 :maxlength="12"
               ></v-text-field>
             </v-col> -->
+
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -134,6 +138,7 @@
               <v-spacer class="hidden-md-and-down"></v-spacer>
 
               <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
               <v-text-field
                 dense
                 placeholder="سال ساخت"
@@ -209,6 +214,7 @@
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
               large
+              :disabled="!formvaildehome"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -219,6 +225,7 @@
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse   hidden-lg-and-up"
               small
+              :disabled="!formvaildehome"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -379,6 +386,7 @@
 
               <!-- <v-col cols="11" md="10" lg="11">
               <v-text-field
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
                 dense
                 placeholder="سال ساخت"
                 min="1200"
@@ -391,6 +399,7 @@
                 reverse
                 clearable
                 :maxlength="12"
+
               ></v-text-field>
             </v-col> -->
               <v-col cols="11" md="10" lg="11">
@@ -473,7 +482,7 @@
         </v-row>
       </div>
       <HouseResult :formhouseforali="formhouseforali" />
-      <houseservices />
+      <houseservices :dataforromina="dataforromina" />
       <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
         <v-row align="center" justify="space-around">
           <v-btn
@@ -503,6 +512,7 @@ export default {
   },
   data() {
     return {
+      formvaildehome: false,
       formDatahouse: {
         area: null,
         location: "",
@@ -510,8 +520,179 @@ export default {
         year: null
       },
       showkole: true,
-      itemsm: ["سعادت آباد", "نواب", "جردن"],
+      itemsm: [
+        "پارس",
+        "فرمانیه",
+        "بریانک ",
+        "زرگنده",
+        "ایوانک شهرک غرب",
+        "سیدخندان ",
+        "قصر ",
+        "هفت تیر",
+        "سردار جنگل پونک ",
+        "گیشا",
+        "شهران ",
+        "الهیه",
+        "تجریش ",
+        "بلوار فکوری پونک ",
+        "پونک ",
+        "جلفا سیدخندان ",
+        "جنت آباد مرکزی ",
+        "جی ",
+        "آذربایجان ",
+        "جمهوری ",
+        "شهران جنوبی شهران ",
+        "بلوار فرهنگ سعادت آباد ",
+        "کامرانیه ",
+        "فرجام ",
+        "محمودیه ",
+        "آیت الله کاشانی ",
+        "سعادت آباد",
+        "فردوس شرق بلوار فردوس ",
+        "دریاچه چیتگر ",
+        "جمالزده",
+        "سنگلج ",
+        "شاهین ",
+        "جیحون ",
+        "پلیس ",
+        "مجیدیه جنوبی ",
+        "زعفرانیه ",
+        "میرداماد ",
+        "سازمان برنامه جنوبی سازمان برنامه",
+        "بهار ",
+        "نارمک ",
+        "حکیمیه ",
+        "لواسانی فرمانیه ",
+        "خیابان امام خمینی سلسبیل جنوبی",
+        "اسکندری",
+        "مرزداران",
+        "پل مدیریت سعادت آباد ",
+        "امیریه",
+        "شمیران نو",
+        "دارآباد",
+        "اراج ازگل",
+        "سیمون بولیوار پونک",
+        "سلسبیل شمالی",
+        "وردآورد",
+        "قنات کوثر",
+        "بلوار فردوس",
+        "شهرک راه آهن (گلستان)",
+        "خانی آباد",
+        "قبا",
+        "چهارصد دستگاه پیروزی",
+        "ایرانشهر",
+        "اباذر آیت الله کاشانی",
+        "میرزا بابایی پونک",
+        "ظفر ",
+        "شهرک ژاندارمری مرزداران ",
+        "سوهانک",
+        "هاشمی",
+        "پرستار پیروزی",
+        "فرشته",
+        "شهرک غرب",
+        "ولنجک",
+        "سبلان",
+        "خانی آباد نو",
+        "لویزان",
+        "توحید",
+        "عباس آباد",
+        "بوکان نیاوران ",
+        "آرژانتین",
+        "بلوار عدل پونک",
+        "شمس آباد ",
+        "جماران نیاوران",
+        "پیروزی",
+        "نو",
+        "همیلا پونک",
+        "خاوران",
+        "سر",
+        "باغ فیض",
+        "مولوی",
+        "افسریه",
+        "خراسان",
+        "کوهسار",
+        "سلسبیل جنوبی",
+        "حسین آباد",
+        "مسعودیه",
+        "قلهک",
+        "شهرک شهید باقری",
+        "نیاوران",
+        "سازمان آب صادقیه",
+        "اوین درکه",
+        "دولت",
+        "بلوار شهرداری سعادت آباد",
+        "پل رومی",
+        "ازگل",
+        "گاندی",
+        "شهرک فردوس ",
+        "منیریه ",
+        "نواب",
+        "دهکده المپیک ",
+        "ونک",
+        "بلوار ارتش",
+        "کاشانک",
+        "بلوار کشاورز",
+        "فردوسی",
+        "چیتگر",
+        "نبرد شمالی",
+        "میدان حر",
+        "سازمان برنامه شمالی سازمان برنامه ",
+        "پرواز سعادت آباد ",
+        "سازمان برنامه",
+        "دستغیب ",
+        "شهر زیبا ",
+        "جردن ",
+        "رودکی جنوبی سلسبیل جنوبی ",
+        "هاشم آباد",
+        "زنجان ",
+        "صاحبقرانیه",
+        "هروی",
+        "شهران شمالی شهران",
+        "انقلاب",
+        "استاد معین",
+        "مینی سیتی",
+        "ضرابخانه پاسداران",
+        "پاسداران",
+        "دربند",
+        "چیذر ",
+        "کوهک",
+        "یاسر نیاوران ",
+        "خیابان آزادی",
+        "اندرزگو فرمانیه",
+        "جمشیدیه نیاوران",
+        "یوسف آباد",
+        "دروس",
+        "درب دوم",
+        "دیباجی شمالی",
+        "شهرک اکباتان ",
+        "ستارخان",
+        "شهرآرا",
+        "کرمان",
+        "دبستان",
+        "دولتخواه",
+        "توانیر",
+        "درختی شهرک غرب",
+        "فاطمی",
+        "پاستور کارگر جنوبی",
+        "قیطریه",
+        "صادقیه",
+        "اقدسیه",
+        "کوی فراز سعادت آباد",
+        "ساقدوش پاسداران",
+        "شهید عراقی پاسداران",
+        "دزاشیب",
+        "آجودانیه",
+        "باغ فردوس",
+        "امیرآباد",
+        "اختیاریه",
+        "جنت آباد شمالی",
+        "جنت آباد جنوبی",
+        "طرشت",
+        "مجیدیه شمالی",
+        "مخبری پونک"
+      ],
       formhouseforali: {},
+      dataforromina: { currenthouse: {}, price: "", houses: [] },
       metrazrules: [
         value => !!value || "متراژ مورد نظر خود را وارد کنید",
         value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
@@ -545,10 +726,19 @@ export default {
           .then(data => {
             console.log(data);
             this.formhouseforali = data;
+            this.dataforromina = data;
+            console.log("housebeginning");
+            console.log(data.houses);
             console.log(this.formhouseforali);
+            console.log(this.dataforromina);
+            console.log(typeof this.dataforromina);
           })
           .catch(error => console.log(error));
-        this.$refs.formhouse.reset();
+        this.formDatahouse.area = null;
+        this.formDatahouse.location = "";
+        this.formDatahouse.year = null;
+        this.formDatahouse.room = null;
+        this.$refs.formhouse.resetValidation();
         this.showkole = false;
       }
     }
