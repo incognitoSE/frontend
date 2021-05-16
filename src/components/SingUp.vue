@@ -64,7 +64,7 @@
           <div v-if="errors.length == 1">
             <!--  <h3>{{ errors[0] }}</h3>-->
             <v-alert dense outlined type="error">
-              کاربری با این ایمیل وجود دارد
+             کاربری با این ایمیل وجود دارد
             </v-alert>
           </div>
           <div v-if="succ.length != 0">
@@ -141,16 +141,13 @@ export default {
       event.preventDefault();
 
       if (this.$refs.singupform.validate()) {
-        fetch("http://127.0.0.1:8000/User/profile/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(this.formDatasingup)
-        })
-          .then(res => {
-            return res.json();
+        this.$store
+          .dispatch("register", {
+            name: this.formDatasingup.name,
+            email: this.formDatasingup.email,
+            password: this.formDatasingup.password
           })
+<<<<<<< HEAD
           .then(data => {
             console.log(data.length);
             if (typeof data.id != "undefined") {
@@ -158,11 +155,21 @@ export default {
             }
             this.errors = data.email;
             console.log(data);
+=======
+          .then(() => {
+            this.succ = ".ثبت نام با موفقیت انجام شد";
+>>>>>>> aa7154953424b8617029a0fa638825fc8fc1a86b
           })
-          .catch(error => console.log(error));
+          .catch(error => {
+            console.log(error.response);
+            console.log(error.response.data.email);
+            this.errors = error.response.data.email;
+          });
         this.formDatasingup.name = "";
         this.formDatasingup.email = "";
         this.formDatasingup.password = "";
+        this.errors = [];
+        this.succ = [];
         this.$refs.singupform.resetValidation();
       }
     },
