@@ -26,6 +26,7 @@
                 <div>
                   <v-card-actions>
                     <v-btn
+                    
                       class="white--text mt-8 mr-10"
                       block
                       large
@@ -73,6 +74,7 @@
                   large
                   outlined
                   elevation="17"
+                 :to="{ name: 'ServiceCar' }"
                 >
                   <h3>استفاده از سرویس</h3>
                 </v-btn>
@@ -96,6 +98,7 @@ export default {
           src: require("../assets/houseicon.png"),
           text:
             " سرویس تخمین قیمت خانه به این صورت است که ویژگی های مورد نظر کاربر را دریافت کرده وقیمت حدودی این خانه را به کاربر می گوید علاوه براین که قیمت خانه های مشابه هم نمایش میدهد."
+        
         },
         {
           id: 2,
@@ -122,6 +125,9 @@ export default {
     },
     goTohousing() {
       this.$router.push({ name: "servicehouse" });
+    },
+    goTocar() {
+      this.$router.push({ name: "ServiceCar" });
     }
   }
 };

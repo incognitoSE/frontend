@@ -38,6 +38,24 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/servicehouse.vue")
   },
   {
+    path: "/ServiceSim",
+    name: "ServiceSim",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ServiceSim.vue")
+  },
+  {
+    path: "/ServiceCar",
+    name: "ServiceCar",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ServiceCar.vue")
+  },
+  {
+    path: "/OurTeam",
+    name: "OurTeam",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/OurTeam.vue")
+  },
+  {
     path: "/services",
     component: Home
   },

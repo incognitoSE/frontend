@@ -160,6 +160,15 @@ export default {
 </script>
 
 <style scope>
+@font-face {
+  font-family: IRANSans;
+  src: url("../../public/fonts/BYekan.ttf");
+}
+* {
+  font-family: IRANSans;
+  color: #2d3b47;
+}
+
 div {
   font-family: IRANSans !important;
   text-align: right;
