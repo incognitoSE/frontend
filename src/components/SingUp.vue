@@ -67,9 +67,9 @@
               کاربری با این ایمیل وجود دارد
             </v-alert>
           </div>
-            <div v-if="succ.length != 0">
-              <v-alert dense outlined type="success"> {{ succ }}</v-alert>
-            </div>
+          <div v-if="succ.length != 0">
+            <v-alert dense outlined type="success"> {{ succ }}</v-alert>
+          </div>
           <v-divider></v-divider>
 
           <v-card-actions>
@@ -152,14 +152,12 @@ export default {
             return res.json();
           })
           .then(data => {
-            console.log(data.length)
-            if(typeof data.id != "undefined")
-            {
-              this.succ = ".ثبت نام با موفقیت انجام شد"
+            console.log(data.length);
+            if (typeof data.id != "undefined") {
+              this.succ = ".ثبت نام با موفقیت انجام شد";
             }
             this.errors = data.email;
             console.log(data);
-           
           })
           .catch(error => console.log(error));
         this.formDatasingup.name = "";
