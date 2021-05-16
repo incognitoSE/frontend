@@ -3,27 +3,27 @@
     <div v-if="showkole">
       <div id="main_div">
         <img
-          src="../assets/Hnet.com-image (17).jpg"
+          src="../assets/photo_2021-05-12_15-17-46.jpg"
           alt="house"
           class="imgcls  hidden-md-and-down"
         />
         <img
-          src="../assets/Hnet.com-image (22).jpg"
+          src="../assets/photo_2021-05-12_15-17-47.jpg"
           alt="house"
           class="imgcls  hidden-lg-and-up"
         />
         <v-row class="divform">
           <v-form
-            class="houseform mx-7"
+            class="houseform mx-8"
             @submit="onsubmitinfohouse"
             ref="formhouse"
             v-model="formvaildehome"
           >
             <h1
-              class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
+              class="ml-lg-12  ml-md-9 ml-sm-2 mt-2 h1class"
               style="color:rgba(45, 59, 71, 1)"
             >
-              سرویس خانه
+              سرویس ماشین
             </h1>
 
             <v-row>
@@ -32,13 +32,12 @@
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
-                  placeholder="متراژ"
+                  placeholder="برند"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  min="50"
                   step="1"
                   shaped
-                  v-model.number="formDatahouse.area"
                   :rules="metrazrules"
+                  v-model.number="FormDatacar.brand"
                   reverse
                   clearable
                   :maxlength="12"
@@ -73,13 +72,12 @@
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="تعداد اتاق"
-                  min="1"
+                  placeholder="مدل"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.room"
-                  :rules="tedadeotaghrules"
+                  :rules="modelrules"
+                  v-model.number="FormDatacar.model"
                   reverse
                   clearable
                   :maxlength="12"
@@ -114,13 +112,12 @@
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="سال ساخت"
-                  min="1200"
-                  max="5000"
+                  placeholder="(km)کارکرد "
+                  min="0"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.year"
+                  v-model.number="FormDatacar.mileage"
                   :rules="salesaketrules"
                   reverse
                   clearable
@@ -155,20 +152,61 @@
               ></v-text-field>
             </v-col> -->
               <v-col cols="11" md="10" lg="11">
-                <v-combobox
-                  :items="itemsm"
+                <v-text-field
                   dense
-                  type="text"
-                  placeholder="منطقه"
+                  placeholder="سال تولید"
+                  min="1200"
+                  max="5000"
+                  step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  v-model="formDatahouse.location"
-                  :rules="mataghrulse"
                   shaped
+                  v-model.number="FormDatacar.year"
+                  :rules="yearrules"
                   reverse
                   clearable
                   :maxlength="12"
-                >
-                </v-combobox>
+                ></v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+
+              <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
+              <v-text-field
+                dense
+                placeholder="سال ساخت"
+                min="1200"
+                max="5000"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.year"
+                :rules="salesaketrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  dense
+                  placeholder="وضعیت خودرو"
+                  step="1"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="FormDatacar.body_status"
+                  :rules="body_statusrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
               </v-col>
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
@@ -254,12 +292,12 @@
     <div v-else>
       <div id="main_div">
         <img
-          src="../assets/Hnet.com-image (17).jpg"
+          src="../assets/photo_2021-05-12_15-17-46.jpg"
           alt="house"
           class="imgcls  hidden-md-and-down"
         />
         <img
-          src="../assets/Hnet.com-image (22).jpg"
+          src="../assets/photo_2021-05-12_15-17-47.jpg"
           alt="house"
           class="imgcls  hidden-lg-and-up"
         />
@@ -270,10 +308,10 @@
             ref="formhouse"
           >
             <h1
-              class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
+              class="ml-lg-12  ml-md-9 ml-sm-2 mt-2 h1class"
               style="color:rgba(45, 59, 71, 1)"
             >
-              سرویس خانه
+              سرویس ماشین
             </h1>
 
             <v-row>
@@ -282,12 +320,12 @@
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
-                  placeholder="متراژ"
+                  placeholder="برند"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   min="50"
                   step="1"
                   shaped
-                  v-model.number="formDatahouse.area"
+                  v-model.number="FormDatacar.brand"
                   :rules="metrazrules"
                   reverse
                   clearable
@@ -322,13 +360,13 @@
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="تعداد اتاق"
+                  placeholder="مدل"
                   min="1"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.room"
-                  :rules="tedadeotaghrules"
+                  v-model.number="FormDatacar.model"
+                  :rules="modelrules"
                   reverse
                   clearable
                   :maxlength="12"
@@ -361,13 +399,13 @@
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="سال ساخت"
+                  placeholder="(km)کارکرد"
                   min="1200"
                   max="5000"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.year"
+                  v-model.number="FormDatacar.mileage"
                   :rules="salesaketrules"
                   reverse
                   clearable
@@ -403,20 +441,60 @@
               ></v-text-field>
             </v-col> -->
               <v-col cols="11" md="10" lg="11">
-                <v-combobox
-                  :items="itemsm"
+                <v-text-field
                   dense
                   type="text"
-                  placeholder="منطقه"
+                  placeholder="سال تولید"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  v-model="formDatahouse.location"
-                  :rules="mataghrulse"
+                  v-model.number="FormDatacar.year"
+                  :rules="yearrules"
                   shaped
                   reverse
                   clearable
                   :maxlength="12"
                 >
-                </v-combobox>
+                </v-text-field>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+
+              <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
+              <v-text-field
+                dense
+                placeholder="سال ساخت"
+                min="1200"
+                max="5000"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.year"
+                :rules="salesaketrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
+              <v-col cols="11" md="10" lg="11">
+                <v-text-field
+                  dense
+                  placeholder="وضعیت خودرو"
+                  type="text"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="FormDatacar.body_status"
+                  :rules="body_statusrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-text-field>
               </v-col>
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
@@ -481,8 +559,8 @@
           <v-spacer></v-spacer>
         </v-row>
       </div>
-      <HouseResult :formhouseforali="formhouseforali" />
-      <houseservices :dataforromina="dataforromina" />
+      <CarResult :formcarforali="formcarforali" />
+      <CarServices :dataforromina="dataforromina" />
       <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
         <v-row align="center" justify="space-around">
           <v-btn
@@ -503,209 +581,41 @@
 </template>
 
 <script>
-import HouseResult from "@/components/HouseResult.vue";
-import houseservices from "@/components/houseservices.vue";
+import CarResult from "@/components/CarResult.vue";
+import CarServices from "@/components/CarServices.vue";
 export default {
   components: {
-    HouseResult,
-    houseservices
+    CarResult,
+    CarServices
   },
   data() {
     return {
       formvaildehome: false,
-      formDatahouse: {
-        area: null,
-        location: "",
-        room: null,
-        year: null
+      FormDatacar: {
+        brand: null,
+        year: null,
+        model: null,
+        mileage: null,
+        body_status: null
       },
       showkole: true,
-      itemsm: [
-        "پارس",
-        "فرمانیه",
-        "بریانک ",
-        "زرگنده",
-        "ایوانک شهرک غرب",
-        "سیدخندان ",
-        "قصر ",
-        "هفت تیر",
-        "سردار جنگل پونک ",
-        "گیشا",
-        "شهران ",
-        "الهیه",
-        "تجریش ",
-        "بلوار فکوری پونک ",
-        "پونک ",
-        "جلفا سیدخندان ",
-        "جنت آباد مرکزی ",
-        "جی ",
-        "آذربایجان ",
-        "جمهوری ",
-        "شهران جنوبی شهران ",
-        "بلوار فرهنگ سعادت آباد ",
-        "کامرانیه ",
-        "فرجام ",
-        "محمودیه ",
-        "آیت الله کاشانی ",
-        "سعادت آباد",
-        "فردوس شرق بلوار فردوس ",
-        "دریاچه چیتگر ",
-        "جمالزده",
-        "سنگلج ",
-        "شاهین ",
-        "جیحون ",
-        "پلیس ",
-        "مجیدیه جنوبی ",
-        "زعفرانیه ",
-        "میرداماد ",
-        "سازمان برنامه جنوبی سازمان برنامه",
-        "بهار ",
-        "نارمک ",
-        "حکیمیه ",
-        "لواسانی فرمانیه ",
-        "خیابان امام خمینی سلسبیل جنوبی",
-        "اسکندری",
-        "مرزداران",
-        "پل مدیریت سعادت آباد ",
-        "امیریه",
-        "شمیران نو",
-        "دارآباد",
-        "اراج ازگل",
-        "سیمون بولیوار پونک",
-        "سلسبیل شمالی",
-        "وردآورد",
-        "قنات کوثر",
-        "بلوار فردوس",
-        "شهرک راه آهن (گلستان)",
-        "خانی آباد",
-        "قبا",
-        "چهارصد دستگاه پیروزی",
-        "ایرانشهر",
-        "اباذر آیت الله کاشانی",
-        "میرزا بابایی پونک",
-        "ظفر ",
-        "شهرک ژاندارمری مرزداران ",
-        "سوهانک",
-        "هاشمی",
-        "پرستار پیروزی",
-        "فرشته",
-        "شهرک غرب",
-        "ولنجک",
-        "سبلان",
-        "خانی آباد نو",
-        "لویزان",
-        "توحید",
-        "عباس آباد",
-        "بوکان نیاوران ",
-        "آرژانتین",
-        "بلوار عدل پونک",
-        "شمس آباد ",
-        "جماران نیاوران",
-        "پیروزی",
-        "نو",
-        "همیلا پونک",
-        "خاوران",
-        "سر",
-        "باغ فیض",
-        "مولوی",
-        "افسریه",
-        "خراسان",
-        "کوهسار",
-        "سلسبیل جنوبی",
-        "حسین آباد",
-        "مسعودیه",
-        "قلهک",
-        "شهرک شهید باقری",
-        "نیاوران",
-        "سازمان آب صادقیه",
-        "اوین درکه",
-        "دولت",
-        "بلوار شهرداری سعادت آباد",
-        "پل رومی",
-        "ازگل",
-        "گاندی",
-        "شهرک فردوس ",
-        "منیریه ",
-        "نواب",
-        "دهکده المپیک ",
-        "ونک",
-        "بلوار ارتش",
-        "کاشانک",
-        "بلوار کشاورز",
-        "فردوسی",
-        "چیتگر",
-        "نبرد شمالی",
-        "میدان حر",
-        "سازمان برنامه شمالی سازمان برنامه ",
-        "پرواز سعادت آباد ",
-        "سازمان برنامه",
-        "دستغیب ",
-        "شهر زیبا ",
-        "جردن ",
-        "رودکی جنوبی سلسبیل جنوبی ",
-        "هاشم آباد",
-        "زنجان ",
-        "صاحبقرانیه",
-        "هروی",
-        "شهران شمالی شهران",
-        "انقلاب",
-        "استاد معین",
-        "مینی سیتی",
-        "ضرابخانه پاسداران",
-        "پاسداران",
-        "دربند",
-        "چیذر ",
-        "کوهک",
-        "یاسر نیاوران ",
-        "خیابان آزادی",
-        "اندرزگو فرمانیه",
-        "جمشیدیه نیاوران",
-        "یوسف آباد",
-        "دروس",
-        "درب دوم",
-        "دیباجی شمالی",
-        "شهرک اکباتان ",
-        "ستارخان",
-        "شهرآرا",
-        "کرمان",
-        "دبستان",
-        "دولتخواه",
-        "توانیر",
-        "درختی شهرک غرب",
-        "فاطمی",
-        "پاستور کارگر جنوبی",
-        "قیطریه",
-        "صادقیه",
-        "اقدسیه",
-        "کوی فراز سعادت آباد",
-        "ساقدوش پاسداران",
-        "شهید عراقی پاسداران",
-        "دزاشیب",
-        "آجودانیه",
-        "باغ فردوس",
-        "امیرآباد",
-        "اختیاریه",
-        "جنت آباد شمالی",
-        "جنت آباد جنوبی",
-        "طرشت",
-        "مجیدیه شمالی",
-        "مخبری پونک"
-      ],
-      formhouseforali: {},
+
+      formcarforali: {},
       dataforromina: { currenthouse: {}, price: "", houses: [] },
-      metrazrules: [
-        value => !!value || "متراژ مورد نظر خود را وارد کنید",
-        value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
-      ],
+      metrazrules: [value => !!value || "برند خودرو موردنظر را وارد کنید"],
+      modelrules: [value => !!value || "مدل خودرو موردنظر را وارد کنید"],
       mataghrulse: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
-      tedadeotaghrules: [
-        value => !!value || "تعداد اتاق  مورد نظر خود را وارد کنید",
-        value => value >= 1 || "تعداد اتاق ها باید حداقل 1 باشد"
-      ],
+      tedadeotaghrules: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
       salesaketrules: [
-        value => !!value || "سال ساخت مورد نظر خود را وارد کنید",
-        value =>
-          value >= 1200 || "سال ساخت مورد نظر شما باید از سال 1200 به بعد باشد"
+        value => !!value || "میزان کارکرد خودرو را برحسب کیلومتر وارد کنید",
+        value => value >= 0
+      ],
+      body_statusrules: [
+        value => !!value || "وضعیت خودرو مورد نظر را وارد کنید"
+      ],
+      yearrules: [
+        value => !!value || "سال تولید خودرو را وارد کنید",
+        value => value >= 1200
       ]
     };
   },
@@ -718,26 +628,27 @@ export default {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(this.formDatahouse)
+          body: JSON.stringify(this.FormDatacar)
         })
           .then(res => {
             return res.json();
           })
           .then(data => {
             console.log(data);
-            this.formhouseforali = data;
+            this.formcarforali = data;
             this.dataforromina = data;
             console.log("housebeginning");
             console.log(data.houses);
-            console.log(this.formhouseforali);
+            console.log(this.formcarforali);
             console.log(this.dataforromina);
             console.log(typeof this.dataforromina);
           })
           .catch(error => console.log(error));
-        this.formDatahouse.area = null;
-        this.formDatahouse.location = "";
-        this.formDatahouse.year = null;
-        this.formDatahouse.room = null;
+        this.FormDatacar.brand = null;
+        this.FormDatacar.year = null;
+        this.FormDatacar.mileage = null;
+        this.FormDatacar.model = null;
+        this.FormDatacar.body_status = null;
         this.$refs.formhouse.resetValidation();
         this.showkole = false;
       }
@@ -767,8 +678,8 @@ export default {
   position: relative;
 }
 .divlasti {
-  max-height: 195px;
-  height: 195px;
+  max-height: 162px;
+  height: 162px;
 }
 #main_div img {
   width: 100%;
@@ -793,7 +704,7 @@ export default {
   width: 340px;
   height: 540px;
   max-width: 50%;
-  max-height: 87%;
+  max-height: 100%;
   z-index: 30;
   text-align: center;
   box-shadow: 12px 12px 2px 1px rgba(101, 101, 122, 0.2);
@@ -836,8 +747,8 @@ input:hover {
     right: 25px;
     top: 15px;
     width: 280px;
-    height: 400px;
-    max-height: 90%;
+    height: 460px;
+    max-height: 93%;
     max-width: 45%;
   }
   .mytext {
