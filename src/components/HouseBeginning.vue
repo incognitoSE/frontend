@@ -713,27 +713,12 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        fetch("http://127.0.0.1:8000/HEstimator/House/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(this.formDatahouse)
-        })
-          .then(res => {
-            return res.json();
-          })
-          .then(data => {
-            console.log(data);
-            this.formhouseforali = data;
-            this.dataforromina = data;
-            console.log("housebeginning");
-            console.log(data.houses);
-            console.log(this.formhouseforali);
-            console.log(this.dataforromina);
-            console.log(typeof this.dataforromina);
-          })
-          .catch(error => console.log(error));
+        this.$store.dispatch("senddatahouse", {
+          area: this.formDatahouse.area,
+          room: this.formDatahouse.room,
+          year: this.formDatahouse.year,
+          location: this.formDatahouse.location
+        });
         this.formDatahouse.area = null;
         this.formDatahouse.location = "";
         this.formDatahouse.year = null;

@@ -2,9 +2,16 @@
   <div>
     <v-card tile>
       <v-app-bar app color="#2D3B47" elevate-on-scroll>
-        <SingUp />
-
-        <login />
+        
+          <SingUp v-if="!loggedin" />
+          
+          <login v-if="!loggedin" />
+        
+        <div v-else>
+          <v-btn @click="logout" rounded small text style="color: #ffffff"
+            >خروج</v-btn
+          >
+        </div>
         <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
@@ -51,11 +58,13 @@
 <script>
 import SingUp from "@/components/SingUp.vue";
 import login from "@/components/login.vue";
+import { authcomputed } from "../store/helper.js";
 export default {
   components: {
     SingUp,
     login
   },
+  computed: { ...authcomputed },
   data() {
     return {
       icons: [
@@ -77,6 +86,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    }
   }
 };
 </script>
