@@ -134,31 +134,24 @@ export default {
     submitinfo(e) {
       e.preventDefault();
       if (this.$refs.userinfo.validate()) {
-        fetch("http://127.0.0.1:8000/User/login/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(this.logininfo)
-        })
-          .then(res => {
-            return res.json();
+        this.$store
+          .dispatch("login", {
+            username: this.logininfo.username,
+            password: this.logininfo.password
           })
-          .then(data => {
-            console.log(typeof data.detail);
-
-            if (typeof data.detail != "undefined") {
-              this.errors = data.detail;
-              console.log(typeof this.errors);
-            } else {
-              this.success = ".با موفقیت وارد شدید";
-            }
-            console.log(data);
+          .then(() => {
+            console.log("im in then");
+            this.success = ".با موفقیت وارد شدید";
           })
-          .catch(error => console.log(error));
+          .catch(error => {
+            console.log("im in err");
+            console.log(error.response);
+            this.errors = ".ایمیل/پسورداشتباه است یا قبلا ثبت نام نکرده اید";
+          });
         this.logininfo.username = "";
         this.logininfo.password = "";
         this.errors = "";
+        this.success = "";
         this.$refs.userinfo.resetValidation();
       }
     },
