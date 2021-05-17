@@ -505,11 +505,13 @@
 <script>
 import HouseResult from "@/components/HouseResult.vue";
 import houseservices from "@/components/houseservices.vue";
+import { authcomputed } from "../store/helper.js";
 export default {
   components: {
     HouseResult,
     houseservices
   },
+  computed: { ...authcomputed },
   data() {
     return {
       formvaildehome: false,
@@ -713,12 +715,20 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        this.$store.dispatch("senddatahouse", {
-          area: this.formDatahouse.area,
-          room: this.formDatahouse.room,
-          year: this.formDatahouse.year,
-          location: this.formDatahouse.location
-        });
+        this.$store
+          .dispatch("senddatahouse", {
+            area: this.formDatahouse.area,
+            room: this.formDatahouse.room,
+            year: this.formDatahouse.year,
+            location: this.formDatahouse.location
+          })
+          .then(() => {
+            console.log("yesssss");
+            this.formhouseforali = this.houseform;
+            console.log(this.formhouseforali);
+            this.dataforromina = this.houseform;
+          })
+          .catch(err => console.log(err.response));
         this.formDatahouse.area = null;
         this.formDatahouse.location = "";
         this.formDatahouse.year = null;
