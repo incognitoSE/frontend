@@ -139,7 +139,6 @@ export default {
   methods: {
     onsubmitinfsingup(event) {
       event.preventDefault();
-
       if (this.$refs.singupform.validate()) {
         this.$store
           .dispatch("register", {
@@ -147,18 +146,9 @@ export default {
             email: this.formDatasingup.email,
             password: this.formDatasingup.password
           })
-<<<<<<< HEAD
-          .then(data => {
-            console.log(data.length);
-            if (typeof data.id != "undefined") {
-              this.succ = ".ثبت نام با موفقیت انجام شد";
-            }
-            this.errors = data.email;
-            console.log(data);
-=======
           .then(() => {
+            console.log("im in then");
             this.succ = ".ثبت نام با موفقیت انجام شد";
->>>>>>> aa7154953424b8617029a0fa638825fc8fc1a86b
           })
           .catch(error => {
             console.log(error.response);

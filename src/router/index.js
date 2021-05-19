@@ -41,7 +41,6 @@ const routes = [
     path: "/services",
     component: Home
   },
-
   {
     path: "/questions",
     component: Home

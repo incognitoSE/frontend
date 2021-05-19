@@ -713,12 +713,23 @@ export default {
     onsubmitinfohouse(event) {
       event.preventDefault();
       if (this.$refs.formhouse.validate()) {
-        this.$store.dispatch("senddatahouse", {
-          area: this.formDatahouse.area,
-          room: this.formDatahouse.room,
-          year: this.formDatahouse.year,
-          location: this.formDatahouse.location
-        });
+        this.$store
+          .dispatch("senddatahouse", {
+            area: this.formDatahouse.area,
+            room: this.formDatahouse.room,
+            year: this.formDatahouse.year,
+            location: this.formDatahouse.location
+          })
+          .then(data => {
+            console.log(data);
+            this.formhouseforali = data;
+            this.dataforromina = data;
+            console.log("housebeginning");
+            console.log(data.houses);
+            console.log(this.formhouseforali);
+            console.log(this.dataforromina);
+          })
+          .catch(error => console.log(error));
         this.formDatahouse.area = null;
         this.formDatahouse.location = "";
         this.formDatahouse.year = null;
