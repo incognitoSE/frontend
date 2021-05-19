@@ -12,18 +12,24 @@ export default new Vuex.Store({
     SET_DATA_USER(state, userdata) {
       state.user = userdata;
       localStorage.setItem("user", JSON.stringify(userdata));
-      localStorage.setItem("token", JSON.stringify(userdata.access));
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${userdata.access}`;
     },
     DEL_DATA_USER() {
       localStorage.removeItem("user");
-      localStorage.removeItem("token");
       location.reload();
     },
     SET_HOUSE_DATA(state, datahouse) {
       state.house = datahouse;
+    },
+    SET_NEW_TOKENS(state, newuserdata) {
+      localStorage.removeItem("user");
+      state.user = newuserdata;
+      localStorage.setItem("user", JSON.stringify(newuserdata));
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${newuserdata.access}`;
     }
   },
   actions: {
@@ -47,7 +53,7 @@ export default new Vuex.Store({
       commit("DEL_DATA_USER");
     },
     senddatahouse({ commit }, housedata) {
-      const mytoken = JSON.parse(localStorage.getItem("token"));
+      const mytoken = JSON.parse(localStorage.getItem("user")).access;
       return axios
         .post("http://127.0.0.1:8000/HEstimator/House/", housedata, {
           headers: {
@@ -58,6 +64,18 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           commit("SET_HOUSE_DATA", data);
+          console.log(data);
+        });
+    },
+    refreshtoken({ commit }) {
+      const myrefreshtoken = JSON.parse(localStorage.getItem("user")).refresh;
+      return axios
+        .post("http://127.0.0.1:8000/User/refresh/", {
+          refresh: myrefreshtoken
+        })
+        .then(({ data }) => {
+          commit("SET_NEW_TOKENS", data);
+          
           console.log(data);
         });
     }
