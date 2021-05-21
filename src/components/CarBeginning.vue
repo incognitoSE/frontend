@@ -704,7 +704,7 @@ export default {
   width: 340px;
   height: 540px;
   max-width: 50%;
-  max-height: 95%;
+  max-height: 100%;
   z-index: 30;
   text-align: center;
   box-shadow: 12px 12px 2px 1px rgba(101, 101, 122, 0.2);
