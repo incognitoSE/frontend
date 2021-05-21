@@ -521,6 +521,7 @@ export default {
         room: null,
         year: null
       },
+      formhosestore: {},
       showkole: true,
       itemsm: [
         "پارس",
@@ -714,6 +715,7 @@ export default {
   methods: {
     onsubmitinfohouse(event) {
       event.preventDefault();
+      this.formhosestore = this.formDatahouse;
       if (this.$refs.formhouse.validate()) {
         this.$store
           .dispatch("senddatahouse", {
@@ -728,7 +730,35 @@ export default {
             console.log(this.formhouseforali);
             this.dataforromina = this.houseform;
           })
-          .catch(err => console.log(err.response));
+          .catch(err => {
+            console.log(err.response);
+            if (err.response.status === 401 && this.loggedin) {
+              this.$store
+                .dispatch("refreshtoken")
+                .then(() => {
+                  console.log("yes it ok");
+                  console.log(this.formhosestore);
+                  this.$store
+                    .dispatch("senddatahouse", {
+                      area: this.formhosestore.area,
+                      room: this.formhosestore.room,
+                      year: this.formhosestore.year,
+                      location: this.formhosestore.location
+                    })
+                    .then(() => {
+                      console.log("yes im done");
+                      this.formhouseforali = this.houseform;
+                      this.dataforromina = this.houseform;
+                    })
+                    .catch(errrr => console.log(errrr.response));
+                })
+                .catch(er => {
+                  console.log(er);
+                  this.$store.dispatch("logout");
+                  this.$router.push({ name: "Home" });
+                });
+            }
+          });
         this.formDatahouse.area = null;
         this.formDatahouse.location = "";
         this.formDatahouse.year = null;

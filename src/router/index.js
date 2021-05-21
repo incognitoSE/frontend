@@ -1,3 +1,4 @@
+
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
@@ -29,7 +30,8 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
+      import(/* webpackChunkName: "about" */ "../views/dashboard.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/dashboard",
@@ -41,19 +43,22 @@ const routes = [
     path: "/servicehouse",
     name: "servicehouse",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/servicehouse.vue")
+      import(/* webpackChunkName: "about" */ "../views/servicehouse.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/ServiceSim",
     name: "ServiceSim",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ServiceSim.vue")
+      import(/* webpackChunkName: "about" */ "../views/ServiceSim.vue"),
+      meta: { requiresAuth: true }
   },
   {
     path: "/ServiceCar",
     name: "ServiceCar",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ServiceCar.vue")
+      import(/* webpackChunkName: "about" */ "../views/ServiceCar.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/OurTeam",
@@ -75,5 +80,11 @@ const routes = [
 const router = new VueRouter({
   routes
 });
-
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem("user");
+  if (!loggedIn && to.matched.some(record => record.meta.requiresAuth)) {
+    next("/");
+  }
+  next();
+});
 export default router;

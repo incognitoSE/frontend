@@ -26,12 +26,51 @@
                 <div>
                   <v-card-actions>
                     <v-btn
+                      v-if="!loggedin"
                       class=" mt-8 mr-10"
-                      block
                       style="color: rgba(255, 255, 255, 1)"
+                      block
                       large
-                      elevation="17"
                       outlined
+                      elevation="17"
+                      @click="SnackbarShow('warning')"
+                    >
+                      <h3 style="color: rgba(255, 255, 255, 1)">
+                        استفاده از سرویس
+                      </h3>
+                    </v-btn>
+                    <v-snackbar
+                      v-if="!loggedin"
+                      v-model="snackbar1.visible"
+                      auto-height
+                      :color="snackbar1.color"
+                      :multi-line="snackbar1.mode === 'multi-line'"
+                      :timeout="snackbar1.timeout"
+                    >
+                      <v-layout align-center pr-4>
+                        <v-icon
+                          class="pl-3"
+                          large
+                          dark
+                          color="rgba(45, 59, 71, 1)"
+                          >{{ snackbar1.icon }}</v-icon
+                        >
+                        <v-layout column>
+                          <div>
+                            <strong>{{ snackbar1.title }}</strong>
+                          </div>
+                          <div>{{ snackbar1.text }}</div>
+                        </v-layout>
+                      </v-layout>
+                    </v-snackbar>
+                    <v-btn
+                      v-else
+                      class=" mt-8 mr-10"
+                      style="color: rgba(255, 255, 255, 1)"
+                      block
+                      large
+                      outlined
+                      elevation="17"
                       :to="{ name: 'servicehouse' }"
                     >
                       <h3 style="color: rgba(255, 255, 255, 1)">
@@ -71,6 +110,45 @@
                 <div>
                   <v-card-actions>
                     <v-btn
+                      v-if="!loggedin"
+                      class=" mt-8 mr-10"
+                      style="color: rgba(255, 255, 255, 1)"
+                      block
+                      large
+                      outlined
+                      elevation="17"
+                      @click="SnackbarShow('warning')"
+                    >
+                      <h3 style="color: rgba(255, 255, 255, 1)">
+                        استفاده از سرویس
+                      </h3>
+                    </v-btn>
+                    <v-snackbar
+                      v-if="!loggedin"
+                      v-model="snackbar1.visible"
+                      auto-height
+                      :color="snackbar1.color"
+                      :multi-line="snackbar1.mode === 'multi-line'"
+                      :timeout="snackbar1.timeout"
+                    >
+                      <v-layout align-center pr-4>
+                        <v-icon
+                          class="pl-3"
+                          dark
+                          large
+                          color="rgba(45, 59, 71, 1)"
+                          >{{ snackbar1.icon }}</v-icon
+                        >
+                        <v-layout column>
+                          <div>
+                            <strong>{{ snackbar1.title }}</strong>
+                          </div>
+                          <div>{{ snackbar1.text }}</div>
+                        </v-layout>
+                      </v-layout>
+                    </v-snackbar>
+                    <v-btn
+                      v-else
                       class=" mt-8 mr-10"
                       style="color: rgba(255, 255, 255, 1)"
                       block
@@ -115,15 +193,56 @@
               </div>
               <v-card-actions>
                 <v-btn
-                  class="mt-8  ml-6"
-                  style="color: rgba(45, 59, 71, 1)"
+                  v-if="!loggedin"
+                  class=" mt-8 mr-10"
+                  style="color:  rgba(45, 59, 71, 1)"
+                  block
+                  large
+                  outlined
+                  elevation="17"
+                  @click="SnackbarShow('warning')"
+                >
+                  <h3 style="color:  rgba(45, 59, 71, 1)">
+                    استفاده از سرویس
+                  </h3>
+                </v-btn>
+                <v-snackbar
+                  v-if="!loggedin"
+                  v-model="snackbar1.visible"
+                  auto-height
+                  :color="snackbar1.color"
+                  :multi-line="snackbar1.mode === 'multi-line'"
+                  :timeout="snackbar1.timeout"
+                >
+                  <v-layout align-center pr-4>
+                    <v-icon
+                      class="pl-3"
+                      dark
+                      large
+                      color="rgba(45, 59, 71, 1)"
+                      >{{ snackbar1.icon }}</v-icon
+                    >
+                    <v-layout column>
+                      <div>
+                        <strong>{{ snackbar1.title }}</strong>
+                      </div>
+                      <div>{{ snackbar1.text }}</div>
+                    </v-layout>
+                  </v-layout>
+                </v-snackbar>
+                <v-btn
+                  v-else
+                  class=" mt-8 mr-10"
+                  style="color:  rgba(45, 59, 71, 1)"
                   block
                   large
                   outlined
                   elevation="17"
                   :to="{ name: 'ServiceCar' }"
                 >
-                  <h3>استفاده از سرویس</h3>
+                  <h3 style="color:  rgba(45, 59, 71, 1)">
+                    استفاده از سرویس
+                  </h3>
                 </v-btn>
               </v-card-actions>
             </v-col>
@@ -134,9 +253,23 @@
   </div>
 </template>
 <script>
+import { authcomputed } from "../store/helper.js";
 export default {
+  computed: { ...authcomputed },
   data() {
     return {
+      snackbar1: {
+        color: null,
+        icon: null,
+        mode: null,
+        text: null,
+        timeout: 3000,
+        title: null,
+        visible: false
+      },
+
+      timeout: 3000,
+      text: `.شما اول  باید ثبت نام/ورود کنید`,
       items: [
         {
           id: 1,
@@ -174,6 +307,18 @@ export default {
     },
     goTocar() {
       this.$router.push({ name: "ServiceCar" });
+    },
+    SnackbarShow(type) {
+      if (!type) return;
+      this.snackbar1 = {
+        color: "warning",
+        icon: "mdi-alert",
+        mode: "multi-line",
+        timeout: 3000,
+        title: "توجه",
+        text: "شما باید اول ثبت نام /ورود کنید",
+        visible: true
+      };
     }
   }
 };
@@ -191,7 +336,7 @@ div {
   font-family: IRANSans !important;
   text-align: right;
 }
-h3{
+h3 {
   text-align: right;
   font-family: IRANSans !important;
 }
