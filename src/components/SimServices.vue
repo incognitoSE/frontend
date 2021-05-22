@@ -3,7 +3,7 @@
     <br />
     <h1 style="text-align: center">سیم کارت های مشابه</h1>
     <div v-if="dataforrominaSIM.houses.length != 0">
-      <v-carousel>
+      <v-carousel hide-delimiters>
         <v-carousel-item
           v-for="(sample, i) in dataforrominaSIM.houses"
           :key="i"
@@ -26,6 +26,16 @@
                     </div>
                     <div style=" font-size : 20px ; text-align : center ">
                       {{ sample.price }}
+                    </div>
+                    <div style=" margin:40px ; text-align: center ">
+                      <v-btn
+                        style="background-color:#2d3b47"
+                        link
+                        :href="sample.link"
+                        target="_blank"
+                      >
+                        مشاهده
+                      </v-btn>
                     </div>
                   </div>
                 </v-card-text>

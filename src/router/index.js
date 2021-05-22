@@ -1,4 +1,3 @@
-
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
@@ -51,7 +50,7 @@ const routes = [
     name: "ServiceSim",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ServiceSim.vue"),
-      meta: { requiresAuth: true }
+    meta: { requiresAuth: true }
   },
   {
     path: "/ServiceCar",
@@ -65,6 +64,12 @@ const routes = [
     name: "OurTeam",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/OurTeam.vue")
+  },
+  {
+    path: "/dashborad",
+    name: "dashboard",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
   },
   {
     path: "/services",
