@@ -15,13 +15,21 @@
         <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
-        <v-btn link href="#services" rounded small text style="color:#ffffff"
-          >سرویس ها</v-btn
+
+        <v-btn
+          small
+          text
+          rounded
+          style="color: #ffffff"
+          :to="{ name: 'OurTeam' }"
+          >درباره تیم ما</v-btn
         >
         <v-btn link href="#questions" rounded small text style="color:#ffffff"
           >سوالات متداول</v-btn
         >
-        <v-btn small text rounded style="color: #ffffff">درباره ما</v-btn>
+        <v-btn link href="#services" rounded small text style="color:#ffffff"
+          >سرویس ها</v-btn
+        >
         <v-avatar tile size="90px" style="border=0">
           <v-img contain src="@/assets/logo.jpg" />
         </v-avatar>
@@ -32,7 +40,6 @@
     </v-row>
     <v-row dense no-gutters>
       <v-col cols="12">
-        <!-- <v-container> -->
         <v-carousel
           cycle
           class="myslideshow"

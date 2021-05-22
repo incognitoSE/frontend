@@ -61,10 +61,10 @@
               </v-row>
             </v-container>
           </v-card-text>
-          <div v-if="errors.length == 1">
+          <div v-if="errors.length != 0">
             <!--  <h3>{{ errors[0] }}</h3>-->
             <v-alert dense outlined type="error">
-             کاربری با این ایمیل وجود دارد
+             {{ errors }}
             </v-alert>
           </div>
           <div v-if="succ.length != 0">
@@ -103,8 +103,8 @@ export default {
         email: "",
         password: ""
       },
-      errors: [],
-      succ: [],
+      errors: "",
+      succ: "",
       namerules: [
         value => !!value || "لطفا نام و نام خانوادگی خود را وارد کنید",
         value =>
@@ -152,14 +152,14 @@ export default {
           })
           .catch(error => {
             console.log(error.response);
-            console.log(error.response.data.email);
-            this.errors = error.response.data.email;
+             console.log("im in err");
+            this.errors = "  کاربری با این ایمیل وجود دارد";
           });
         this.formDatasingup.name = "";
         this.formDatasingup.email = "";
         this.formDatasingup.password = "";
-        this.errors = [];
-        this.succ = [];
+        this.errors = "";
+        this.succ = "";
         this.$refs.singupform.resetValidation();
       }
     },
@@ -168,8 +168,8 @@ export default {
       this.formDatasingup.name = "";
       this.formDatasingup.email = "";
       this.formDatasingup.password = "";
-      this.errors = [];
-      this.succ = [];
+      this.errors = "";
+      this.succ = "";
       this.$refs.singupform.resetValidation();
     }
   }

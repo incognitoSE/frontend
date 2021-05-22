@@ -31,7 +31,7 @@
                       type="email"
                       reverse
                       prepend-inner-icon="mdi-email"
-                      v-model="logininfo.username"
+                      v-model="logininfo.email"
                       :rules="emailRules"
                       required
                     >
@@ -102,7 +102,7 @@ export default {
       errors: "",
       success: "",
       logininfo: {
-        username: "",
+        email: "",
         password: ""
       },
       emailRules: [
@@ -136,7 +136,8 @@ export default {
       if (this.$refs.userinfo.validate()) {
         this.$store
           .dispatch("login", {
-            username: this.logininfo.username,
+
+            email: this.logininfo.email,
             password: this.logininfo.password
           })
           .then(() => {
@@ -148,7 +149,8 @@ export default {
             console.log(error.response);
             this.errors = ".ایمیل/پسورداشتباه است یا قبلا ثبت نام نکرده اید";
           });
-        this.logininfo.username = "";
+
+        this.logininfo.email = "";
         this.logininfo.password = "";
         this.errors = "";
         this.success = "";
@@ -157,7 +159,7 @@ export default {
     },
     closelogin() {
       this.dialog = false;
-      this.logininfo.username = "";
+      this.logininfo.email = "";
       this.logininfo.password = "";
       this.errors = "";
       this.success = "";

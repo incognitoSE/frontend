@@ -14,7 +14,7 @@ export default new Vuex.Store({
       localStorage.setItem("user", JSON.stringify(userdata));
       axios.defaults.headers.common[
         "Authorization"
-      ] = `bearer ${userdata.access}`;
+      ] = `Bearer ${userdata.access}`;
     },
     DEL_DATA_USER() {
       localStorage.removeItem("user");
@@ -22,6 +22,14 @@ export default new Vuex.Store({
     },
     SET_HOUSE_DATA(state, datahouse) {
       state.house = datahouse;
+    },
+    SET_NEW_TOKENS(state, newuserdata) {
+      localStorage.removeItem("user");
+      state.user = newuserdata;
+      localStorage.setItem("user", JSON.stringify(newuserdata));
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${newuserdata.access}`;
     }
   },
 
@@ -40,22 +48,46 @@ export default new Vuex.Store({
         .then(({ data }) => {
           console.log(data);
           commit("SET_DATA_USER", data);
+          console.log(data);
         });
     },
     logout({ commit }) {
       commit("DEL_DATA_USER");
     },
     senddatahouse({ commit }, housedata) {
+      const mytoken = JSON.parse(localStorage.getItem("user")).access;
       return axios
-        .post("http://127.0.0.1:8000/HEstimator/House/", housedata)
+        .post("http://127.0.0.1:8000/HEstimator/House/", housedata, {
+          headers: {
+            Authorization: `Bearer ${mytoken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        })
         .then(({ data }) => {
           commit("SET_HOUSE_DATA", data);
+          console.log(data);
+        });
+    },
+    refreshtoken({ commit }) {
+      const myrefreshtoken = JSON.parse(localStorage.getItem("user")).refresh;
+      return axios
+        .post("http://127.0.0.1:8000/User/refresh/", {
+          refresh: myrefreshtoken
+        })
+        .then(({ data }) => {
+          commit("SET_NEW_TOKENS", data);
+
+          console.log(data);
         });
     }
   },
   getters: {
     loggedin(state) {
       return !!state.user;
+    },
+    houseform(state) {
+      return state.house;
     }
   },
   modules: {}

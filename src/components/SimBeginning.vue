@@ -3,12 +3,12 @@
     <div v-if="showkole">
       <div id="main_div">
         <img
-          src="../assets/Hnet.com-image (17).jpg"
+          src="../assets/photo_2021-05-15_05-29-46.png"
           alt="house"
           class="imgcls  hidden-md-and-down"
         />
         <img
-          src="../assets/Hnet.com-image (22).jpg"
+          src="../assets/photo_2021-05-15_05-29-48.png"
           alt="house"
           class="imgcls  hidden-lg-and-up"
         />
@@ -20,10 +20,10 @@
             v-model="formvaildehome"
           >
             <h1
-              class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
+              class="ml-lg-6  ml-md-9 ml-sm-2 mt-2 h1class"
               style="color:rgba(45, 59, 71, 1)"
             >
-              سرویس خانه
+              سرویس سیم کارت
             </h1>
 
             <v-row>
@@ -32,12 +32,12 @@
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
-                  placeholder="متراژ"
+                  placeholder="شماره همراه"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  min="50"
+                  min="500000"
                   step="1"
                   shaped
-                  v-model.number="formDatahouse.area"
+                  v-model.number="formDataSim.number"
                   :rules="metrazrules"
                   reverse
                   clearable
@@ -73,16 +73,16 @@
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="تعداد اتاق"
-                  min="1"
+                  placeholder="نوع رند"
+                  min="10000000000"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.room"
+                  v-model.number="formDataSim.rond"
                   :rules="tedadeotaghrules"
                   reverse
                   clearable
-                  :maxlength="12"
+                  :maxlength="11"
                 ></v-text-field>
               </v-col>
               <v-spacer></v-spacer>
@@ -94,17 +94,33 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
+              <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
+              <v-text-field
+                dense
+                placeholder="تعداد اتاق"
+                min="1"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.roomnumber"
+                :rules="tedadeotaghrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
 
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="سال ساخت"
+                  placeholder="موجودی"
                   min="1200"
                   max="5000"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.year"
+                  v-model.number="formDataSim.stock"
                   :rules="salesaketrules"
                   reverse
                   clearable
@@ -120,14 +136,32 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
+
+              <!-- <v-col cols="11" md="10" lg="11">
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
+              <v-text-field
+                dense
+                placeholder="سال ساخت"
+                min="1200"
+                max="5000"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.year"
+                :rules="salesaketrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-combobox
                   :items="itemsm"
                   dense
                   type="text"
-                  placeholder="منطقه"
+                  placeholder="نوع"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  v-model="formDatahouse.location"
+                  v-model="formDataSim.daemi"
                   :rules="mataghrulse"
                   shaped
                   reverse
@@ -141,6 +175,39 @@
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
             </v-row>
+            <!-- <input
+          type="text"
+          placeholder="منطقه"
+          class="mt-3 mb-3"
+          required
+          v-model="formDatahouse.neighberhood"
+          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />
+        <input
+          type="number"
+          placeholder="تعداد اتاق"
+          min="1"
+          max="150"
+          step="1"
+          class="mt-3 mb-3"
+          v-model.number="formDatahouse.roomnumber"
+          required
+          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />
+        <input
+          type="number"
+          placeholder=" سال ساخت"
+          min="1200"
+          max="2356"
+          step="1"
+          class="mt-3 mb-3"
+          required
+          v-model.number="formDatahouse.year"
+          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />-->
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-btn
               type="submit"
@@ -187,12 +254,12 @@
     <div v-else>
       <div id="main_div">
         <img
-          src="../assets/Hnet.com-image (17).jpg"
+          src="../assets/photo_2021-05-15_05-29-46.png"
           alt="house"
           class="imgcls  hidden-md-and-down"
         />
         <img
-          src="../assets/Hnet.com-image (22).jpg"
+          src="../assets/photo_2021-05-15_05-29-48.png"
           alt="house"
           class="imgcls  hidden-lg-and-up"
         />
@@ -203,10 +270,10 @@
             ref="formhouse"
           >
             <h1
-              class="ml-lg-16  ml-md-9 ml-sm-2 mt-2 h1class"
+              class="ml-lg-6  ml-md-9 ml-sm-2 mt-2 h1class"
               style="color:rgba(45, 59, 71, 1)"
             >
-              سرویس خانه
+              سرویس سیمکارت
             </h1>
 
             <v-row>
@@ -215,12 +282,12 @@
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
-                  placeholder="متراژ"
+                  placeholder="شماره همراه"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   min="50"
                   step="1"
                   shaped
-                  v-model.number="formDatahouse.area"
+                  v-model.number="formDataSim.number"
                   :rules="metrazrules"
                   reverse
                   clearable
@@ -236,15 +303,31 @@
               <v-spacer></v-spacer
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
+              <!-- <v-col cols="11" md="10" lg="11">
+              <v-combobox
+                :items="itemsm"
+                dense
+                type="text"
+                placeholder="منطقه"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                v-model="formDatahouse.neighberhood"
+                :rules="mataghrulse"
+                shaped
+                reverse
+                clearable
+                :maxlength="12"
+              >
+              </v-combobox>
+            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="تعداد اتاق"
+                  placeholder="نوع روند"
                   min="1"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.room"
+                  v-model.number="formDataSim.rond"
                   :rules="tedadeotaghrules"
                   reverse
                   clearable
@@ -260,16 +343,31 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
+              <!-- <v-col cols="11" md="10" lg="11">
+              <v-text-field
+                dense
+                placeholder="تعداد اتاق"
+                min="1"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.roomnumber"
+                :rules="tedadeotaghrules"
+                reverse
+                clearable
+                :maxlength="12"
+              ></v-text-field>
+            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
-                  placeholder="سال ساخت"
+                  placeholder="موجودی"
                   min="1200"
                   max="5000"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   shaped
-                  v-model.number="formDatahouse.year"
+                  v-model.number="formDataSim.stock"
                   :rules="salesaketrules"
                   reverse
                   clearable
@@ -285,14 +383,33 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
+
+              <!-- <v-col cols="11" md="10" lg="11">
+              <v-text-field
+>>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
+                dense
+                placeholder="سال ساخت"
+                min="1200"
+                max="5000"
+                step="1"
+                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                shaped
+                v-model.number="formDatahouse.year"
+                :rules="salesaketrules"
+                reverse
+                clearable
+                :maxlength="12"
+
+              ></v-text-field>
+            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-combobox
                   :items="itemsm"
                   dense
                   type="text"
-                  placeholder="منطقه"
+                  placeholder="نوع"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  v-model="formDatahouse.location"
+                  v-model="formDataSim.location"
                   :rules="mataghrulse"
                   shaped
                   reverse
@@ -306,6 +423,39 @@
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
             </v-row>
+            <!-- <input
+          type="text"
+          placeholder="منطقه"
+          class="mt-3 mb-3"
+          required
+          v-model="formDatahouse.neighberhood"
+          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />
+        <input
+          type="number"
+          placeholder="تعداد اتاق"
+          min="1"
+          max="150"
+          step="1"
+          class="mt-3 mb-3"
+          v-model.number="formDatahouse.roomnumber"
+          required
+          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />
+        <input
+          type="number"
+          placeholder=" سال ساخت"
+          min="1200"
+          max="2356"
+          step="1"
+          class="mt-3 mb-3"
+          required
+          v-model.number="formDatahouse.year"
+          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
+          oninput="this.setCustomValidity('')"
+        />-->
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-btn
               type="submit"
@@ -331,8 +481,8 @@
           <v-spacer></v-spacer>
         </v-row>
       </div>
-      <HouseResult :formhouseforali="formhouseforali" />
-      <houseservices :dataforromina="dataforromina" />
+      <SimResult :formhouseforali="formhouseforali" />
+      <SimServices :dataforrominaSIM="dataforrominaSIM" />
       <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
         <v-row align="center" justify="space-around">
           <v-btn
@@ -353,272 +503,68 @@
 </template>
 
 <script>
-import HouseResult from "@/components/HouseResult.vue";
-import houseservices from "@/components/houseservices.vue";
-import { authcomputed } from "../store/helper.js";
+import SimResult from "@/components/SimResult.vue";
+import SimServices from "@/components/SimServices.vue";
 export default {
   components: {
-    HouseResult,
-    houseservices
+    SimResult,
+    SimServices
   },
-  computed: { ...authcomputed },
   data() {
     return {
       formvaildehome: false,
-      formDatahouse: {
-        area: null,
-        location: "",
-        room: null,
-        year: null
+      formDataSim: {
+        number: null,
+        daemi: "",
+        rond: null,
+        stock: null
       },
-      formhosestore: {},
       showkole: true,
-      itemsm: [
-        "پارس",
-        "فرمانیه",
-        "بریانک ",
-        "زرگنده",
-        "ایوانک شهرک غرب",
-        "سیدخندان ",
-        "قصر ",
-        "هفت تیر",
-        "سردار جنگل پونک ",
-        "گیشا",
-        "شهران ",
-        "الهیه",
-        "تجریش ",
-        "بلوار فکوری پونک ",
-        "پونک ",
-        "جلفا سیدخندان ",
-        "جنت آباد مرکزی ",
-        "جی ",
-        "آذربایجان ",
-        "جمهوری ",
-        "شهران جنوبی شهران ",
-        "بلوار فرهنگ سعادت آباد ",
-        "کامرانیه ",
-        "فرجام ",
-        "محمودیه ",
-        "آیت الله کاشانی ",
-        "سعادت آباد",
-        "فردوس شرق بلوار فردوس ",
-        "دریاچه چیتگر ",
-        "جمالزده",
-        "سنگلج ",
-        "شاهین ",
-        "جیحون ",
-        "پلیس ",
-        "مجیدیه جنوبی ",
-        "زعفرانیه ",
-        "میرداماد ",
-        "سازمان برنامه جنوبی سازمان برنامه",
-        "بهار ",
-        "نارمک ",
-        "حکیمیه ",
-        "لواسانی فرمانیه ",
-        "خیابان امام خمینی سلسبیل جنوبی",
-        "اسکندری",
-        "مرزداران",
-        "پل مدیریت سعادت آباد ",
-        "امیریه",
-        "شمیران نو",
-        "دارآباد",
-        "اراج ازگل",
-        "سیمون بولیوار پونک",
-        "سلسبیل شمالی",
-        "وردآورد",
-        "قنات کوثر",
-        "بلوار فردوس",
-        "شهرک راه آهن (گلستان)",
-        "خانی آباد",
-        "قبا",
-        "چهارصد دستگاه پیروزی",
-        "ایرانشهر",
-        "اباذر آیت الله کاشانی",
-        "میرزا بابایی پونک",
-        "ظفر ",
-        "شهرک ژاندارمری مرزداران ",
-        "سوهانک",
-        "هاشمی",
-        "پرستار پیروزی",
-        "فرشته",
-        "شهرک غرب",
-        "ولنجک",
-        "سبلان",
-        "خانی آباد نو",
-        "لویزان",
-        "توحید",
-        "عباس آباد",
-        "بوکان نیاوران ",
-        "آرژانتین",
-        "بلوار عدل پونک",
-        "شمس آباد ",
-        "جماران نیاوران",
-        "پیروزی",
-        "نو",
-        "همیلا پونک",
-        "خاوران",
-        "سر",
-        "باغ فیض",
-        "مولوی",
-        "افسریه",
-        "خراسان",
-        "کوهسار",
-        "سلسبیل جنوبی",
-        "حسین آباد",
-        "مسعودیه",
-        "قلهک",
-        "شهرک شهید باقری",
-        "نیاوران",
-        "سازمان آب صادقیه",
-        "اوین درکه",
-        "دولت",
-        "بلوار شهرداری سعادت آباد",
-        "پل رومی",
-        "ازگل",
-        "گاندی",
-        "شهرک فردوس ",
-        "منیریه ",
-        "نواب",
-        "دهکده المپیک ",
-        "ونک",
-        "بلوار ارتش",
-        "کاشانک",
-        "بلوار کشاورز",
-        "فردوسی",
-        "چیتگر",
-        "نبرد شمالی",
-        "میدان حر",
-        "سازمان برنامه شمالی سازمان برنامه ",
-        "پرواز سعادت آباد ",
-        "سازمان برنامه",
-        "دستغیب ",
-        "شهر زیبا ",
-        "جردن ",
-        "رودکی جنوبی سلسبیل جنوبی ",
-        "هاشم آباد",
-        "زنجان ",
-        "صاحبقرانیه",
-        "هروی",
-        "شهران شمالی شهران",
-        "انقلاب",
-        "استاد معین",
-        "مینی سیتی",
-        "ضرابخانه پاسداران",
-        "پاسداران",
-        "دربند",
-        "چیذر ",
-        "کوهک",
-        "یاسر نیاوران ",
-        "خیابان آزادی",
-        "اندرزگو فرمانیه",
-        "جمشیدیه نیاوران",
-        "یوسف آباد",
-        "دروس",
-        "درب دوم",
-        "دیباجی شمالی",
-        "شهرک اکباتان ",
-        "ستارخان",
-        "شهرآرا",
-        "کرمان",
-        "دبستان",
-        "دولتخواه",
-        "توانیر",
-        "درختی شهرک غرب",
-        "فاطمی",
-        "پاستور کارگر جنوبی",
-        "قیطریه",
-        "صادقیه",
-        "اقدسیه",
-        "کوی فراز سعادت آباد",
-        "ساقدوش پاسداران",
-        "شهید عراقی پاسداران",
-        "دزاشیب",
-        "آجودانیه",
-        "باغ فردوس",
-        "امیرآباد",
-        "اختیاریه",
-        "جنت آباد شمالی",
-        "جنت آباد جنوبی",
-        "طرشت",
-        "مجیدیه شمالی",
-        "مخبری پونک"
-      ],
+      itemsm: ["دائمی", "اعتباری"],
       formhouseforali: {},
-      dataforromina: { currenthouse: {}, price: "", houses: [] },
+      dataforrominaSIM: { currenthouse: {}, price: "", houses: [] },
       metrazrules: [
-        value => !!value || "متراژ مورد نظر خود را وارد کنید",
-        value => value >= 50 || "متراژ شما باید بزرگتر یا مساوی 50 متر باشد"
+        value => !!value || "شماره مورد نظر را وارد کنید",
+        value => value >= 1000000000 || "تعداد ارقام شماره تلفن صحیح نمیباشد"
       ],
-      mataghrulse: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
-      tedadeotaghrules: [
-        value => !!value || "تعداد اتاق  مورد نظر خود را وارد کنید",
-        value => value >= 1 || "تعداد اتاق ها باید حداقل 1 باشد"
+      mataghrulse: [
+        value => !!value || "نوع سیمکارت مورد نظر خود را مشخص کنید"
       ],
+      tedadeotaghrules: [value => !!value || "نوع روند مورد نظر را مشخص کنید"],
       salesaketrules: [
-        value => !!value || "سال ساخت مورد نظر خود را وارد کنید",
-        value =>
-          value >= 1200 || "سال ساخت مورد نظر شما باید از سال 1200 به بعد باشد"
+        value => !!value || "وضعیت شماره مورد نظر خود را مشخص کنید"
       ]
     };
   },
   methods: {
     onsubmitinfohouse(event) {
       event.preventDefault();
-      this.formhosestore = {
-        area: this.formDatahouse.area,
-        room: this.formDatahouse.room,
-        year: this.formDatahouse.year,
-        location: this.formDatahouse.location
-      };
       if (this.$refs.formhouse.validate()) {
-        this.$store
-          .dispatch("senddatahouse", {
-            area: this.formDatahouse.area,
-            room: this.formDatahouse.room,
-            year: this.formDatahouse.year,
-            location: this.formDatahouse.location
+        fetch("http://127.0.0.1:8000/HEstimator/House/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(this.formDataSim)
+        })
+          .then(res => {
+            return res.json();
           })
-
-          .then(() => {
-            console.log("yesssss");
-            this.formhouseforali = this.houseform;
+          .then(data => {
+            console.log(data);
+            this.formhouseforali = data;
+            this.dataforrominaSIM = data;
+            console.log("Simbeginning");
+            console.log(data.houses);
             console.log(this.formhouseforali);
-            this.dataforromina = this.houseform;
+            console.log(this.dataforrominaSIM);
+            console.log(typeof this.dataforrominaSIM);
           })
-          .catch(err => {
-            console.log(err.response);
-            if (err.response.status === 401 && this.loggedin) {
-              this.$store
-                .dispatch("refreshtoken")
-                .then(() => {
-                  console.log("yes it ok");
-                  console.log(this.formhosestore);
-                  this.$store
-                    .dispatch("senddatahouse", {
-                      area: this.formhosestore.area,
-                      room: this.formhosestore.room,
-                      year: this.formhosestore.year,
-                      location: this.formhosestore.location
-                    })
-                    .then(() => {
-                      console.log("yes im done");
-                      this.formhouseforali = this.houseform;
-                      this.dataforromina = this.houseform;
-                    })
-                    .catch(errrr => console.log(errrr.response));
-                })
-                .catch(er => {
-                  console.log(er);
-                  this.$store.dispatch("logout");
-                  this.$router.push({ name: "Home" });
-                });
-            }
-          });
-        this.formDatahouse.area = null;
-        this.formDatahouse.location = "";
-        this.formDatahouse.year = null;
-        this.formDatahouse.room = null;
+          .catch(error => console.log(error));
+        this.formDataSim.number = null;
+        this.formDataSim.daemi = "";
+        this.formDataSim.rond = null;
+        this.formDataSim.stock = null;
         this.$refs.formhouse.resetValidation();
         this.showkole = false;
       }
@@ -648,8 +594,8 @@ export default {
   position: relative;
 }
 .divlasti {
-  max-height: 195px;
-  height: 195px;
+  max-height: 162px;
+  height: 162px;
 }
 #main_div img {
   width: 100%;
@@ -672,7 +618,7 @@ export default {
   background-color: #cfd8dc;
   padding: 5px;
   width: 340px;
-  height: 540px;
+  height: 480px;
   max-width: 50%;
   max-height: 87%;
   z-index: 30;
