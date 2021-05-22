@@ -715,7 +715,12 @@ export default {
   methods: {
     onsubmitinfohouse(event) {
       event.preventDefault();
-      this.formhosestore = this.formDatahouse;
+      this.formhosestore = {
+        area: this.formDatahouse.area,
+        room: this.formDatahouse.room,
+        year: this.formDatahouse.year,
+        location: this.formDatahouse.location
+      };
       if (this.$refs.formhouse.validate()) {
         this.$store
           .dispatch("senddatahouse", {
