@@ -136,6 +136,7 @@ export default {
       if (this.$refs.userinfo.validate()) {
         this.$store
           .dispatch("login", {
+
             email: this.logininfo.email,
             password: this.logininfo.password
           })
@@ -148,6 +149,7 @@ export default {
             console.log(error.response);
             this.errors = ".ایمیل/پسورداشتباه است یا قبلا ثبت نام نکرده اید";
           });
+
         this.logininfo.email = "";
         this.logininfo.password = "";
         this.errors = "";
@@ -160,6 +162,7 @@ export default {
       this.logininfo.email = "";
       this.logininfo.password = "";
       this.errors = "";
+      this.success = "";
       this.$refs.userinfo.resetValidation();
     }
   }

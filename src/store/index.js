@@ -32,21 +32,23 @@ export default new Vuex.Store({
       ] = `Bearer ${newuserdata.access}`;
     }
   },
+
   actions: {
-    register({ commit }, credentials) {
-      return axios
-        .post("http://127.0.0.1:8000/User/profile/", credentials)
-        .then(({ data }) => {
-          commit("SET_DATA_USER", data);
-          console.log(data);
-        });
-    },
     login({ commit }, credentials) {
       return axios
         .post("http://127.0.0.1:8000/User/login/", credentials)
         .then(({ data }) => {
           console.log(data);
           commit("SET_DATA_USER", data);
+        });
+    },
+    register({ commit }, credentials) {
+      return axios
+        .post("http://127.0.0.1:8000/User/profile/", credentials)
+        .then(({ data }) => {
+          console.log(data);
+          commit("SET_DATA_USER", data);
+          console.log(data);
         });
     },
     logout({ commit }) {

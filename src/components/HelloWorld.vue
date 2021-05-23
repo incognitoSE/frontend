@@ -3,16 +3,27 @@
     <v-card tile>
       <v-app-bar app color="#2D3B47" elevate-on-scroll>
         <SingUp v-if="!loggedin" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> d9102c2802e0e2d919488e8a5085b89a77407eb6
         <login v-if="!loggedin" />
 
         <div v-else>
           <v-btn @click="logout" rounded small text style="color: #ffffff"
             >خروج</v-btn
           >
+          <v-btn rounded small text style="color: #ffffff" to=/dashborad>داشبورد</v-btn>
+          <router-view></router-view>
         </div>
+
         <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
+<<<<<<< HEAD
+=======
+
+>>>>>>> d9102c2802e0e2d919488e8a5085b89a77407eb6
         <v-btn
           small
           text
@@ -37,7 +48,6 @@
     </v-row>
     <v-row dense no-gutters>
       <v-col cols="12">
-        <!-- <v-container> -->
         <v-carousel
           cycle
           class="myslideshow"

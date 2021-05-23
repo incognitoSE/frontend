@@ -82,10 +82,15 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/OurTeam.vue")
   },
   {
+    path: "/dashborad",
+    name: "dashboard",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
+  },
+  {
     path: "/services",
     component: Home
   },
-
   {
     path: "/questions",
     component: Home

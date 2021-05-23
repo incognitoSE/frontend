@@ -3,13 +3,12 @@
     <br />
     <h1 style="text-align: center">خانه های مشابه</h1>
     <div v-if="dataforromina.houses.length != 0">
-      <v-carousel>
+      <v-carousel hide-delimiters>
         <v-carousel-item v-for="(sample, i) in dataforromina.houses" :key="i">
           <v-sheet
             height="100%"
             color="white"
             style="display: flex ; justify-contetn : space-between"
-            @click="samplepage(sample.link)"
           >
             <v-row class="fill-height" align="center" justify="center">
               <v-col md="4" sm="4" xs="3">
@@ -23,6 +22,16 @@
                     </div>
                     <div style=" font-size : 20px ; text-align : center ">
                       {{ sample.price }}
+                    </div>
+                    <div style=" margin:40px ; text-align: center ">
+                      <v-btn
+                        style="background-color:#2d3b47"
+                        link
+                        :href="sample.link"
+                        target="_blank"
+                      >
+                        مشاهده
+                      </v-btn>
                     </div>
                   </div>
                 </v-card-text>
