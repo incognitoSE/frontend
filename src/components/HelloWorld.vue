@@ -2,11 +2,9 @@
   <div>
     <v-card tile>
       <v-app-bar app color="#2D3B47" elevate-on-scroll>
-        
-          <SingUp v-if="!loggedin" />
-          
-          <login v-if="!loggedin" />
-        
+        <SingUp v-if="!loggedin" />
+        <login v-if="!loggedin" />
+
         <div v-else>
           <v-btn @click="logout" rounded small text style="color: #ffffff"
             >خروج</v-btn
@@ -15,13 +13,18 @@
         <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
-       
-        
-        <v-btn small text rounded style="color: #ffffff"   :to="{ name: 'OurTeam' }">درباره تیم ما</v-btn>
+        <v-btn
+          small
+          text
+          rounded
+          style="color: #ffffff"
+          :to="{ name: 'OurTeam' }"
+          >درباره تیم ما</v-btn
+        >
         <v-btn link href="#questions" rounded small text style="color:#ffffff"
           >سوالات متداول</v-btn
         >
-         <v-btn link href="#services" rounded small text style="color:#ffffff"
+        <v-btn link href="#services" rounded small text style="color:#ffffff"
           >سرویس ها</v-btn
         >
         <v-avatar tile size="90px" style="border=0">

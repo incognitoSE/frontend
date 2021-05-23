@@ -1,5 +1,5 @@
 import { mapGetters } from "vuex";
 
 export const authcomputed = {
-  ...mapGetters(["loggedin", "houseform"])
+  ...mapGetters(["loggedin", "houseform", "userform"])
 };
