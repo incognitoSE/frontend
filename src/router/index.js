@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import dashboard from "../views/dashboard.vue";
 
 Vue.use(VueRouter);
 
@@ -27,16 +28,31 @@ const routes = [
   },
   {
     path: "/dashboard",
-    name: "dashboard",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard.vue"),
+    component: dashboard,
+    children: [
+      {
+        path: "/dashboardIncreaseCredit",
+        component: () =>
+          import(
+            /* webpackChunkName: "IncreaseCredit" */ "../views/IncreaseCredit.vue"
+          )
+      },
+      {
+        path: "/dashboard",
+        component: () =>
+          import(
+            /* webpackChunkName: "HistoryOfServices" */ "../views/HistoryOfServices.vue"
+          )
+      },
+      {
+        path: "/dashboardHistoryOfPayment",
+        component: () =>
+          import(
+            /* webpackChunkName: "HistoryOfPayment" */ "../views/HistoryOfPayment.vue"
+          )
+      }
+    ],
     meta: { requiresAuth: true }
-  },
-  {
-    path: "/dashboard",
-    name: "dashboard",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
   },
   {
     path: "/servicehouse",

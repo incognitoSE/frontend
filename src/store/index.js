@@ -77,7 +77,6 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           commit("SET_NEW_TOKENS", data);
-
           console.log(data);
         });
     }
@@ -88,6 +87,9 @@ export default new Vuex.Store({
     },
     houseform(state) {
       return state.house;
+    },
+    userform(state) {
+      return state.user;
     }
   },
   modules: {}

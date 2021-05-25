@@ -73,7 +73,24 @@
       </template>
     </v-navigation-drawer>
 
-
+    <v-main>
+      <v-container class="px-6 p7-6" style="width:80%; float:left;">
+        <v-card-title>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="desserts"
+          :search="search"
+        ></v-data-table>
+      </v-container>
+    </v-main>
   </v-card>
 </template>
 <script>

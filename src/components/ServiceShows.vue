@@ -39,6 +39,7 @@
                         استفاده از سرویس
                       </h3>
                     </v-btn>
+
                     <v-snackbar
                       v-if="!loggedin"
                       v-model="snackbar1.visible"
@@ -60,11 +61,11 @@
                             <strong>{{ snackbar1.title }}</strong>
                           </div>
                           <div>{{ snackbar1.text }}</div>
-                        </v-layout>
-                      </v-layout>
+                        </v-layout></v-layout
+                      >
                     </v-snackbar>
                     <v-btn
-                      v-else
+                      v-if="loggedin"
                       class=" mt-8 mr-10"
                       style="color: rgba(255, 255, 255, 1)"
                       block
@@ -359,5 +360,17 @@ h3 {
   width: 800px;
   height: 400px;
   max-width: 100%;
+}
+.fadedrop-enter-from {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+.fadedrop-enter-active,
+.fadedrop-leave-active {
+  transition: all 0.3s ease;
+}
+.fadedrop-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
 }
 </style>
