@@ -72,6 +72,20 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
   },
   {
+    path: "/dashboradTable",
+    name: "dashboradTable",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/dashboard_table.vue")
+  },
+
+  {
+    path: "/dashboradPay",
+    name: "dashboradPay",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/dashboard_pay.vue")
+  },
+  
+  {
     path: "/services",
     component: Home
   },
