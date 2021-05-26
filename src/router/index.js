@@ -38,7 +38,7 @@ const routes = [
           )
       },
       {
-        path: "/dashboard",
+        path: "/dashboarService",
         component: () =>
           import(
             /* webpackChunkName: "HistoryOfServices" */ "../views/HistoryOfServices.vue"
@@ -51,8 +51,8 @@ const routes = [
             /* webpackChunkName: "HistoryOfPayment" */ "../views/HistoryOfPayment.vue"
           )
       }
-    ],
-    meta: { requiresAuth: true }
+    ]
+    // meta: { requiresAuth: true }
   },
   {
     path: "/servicehouse",
@@ -93,6 +93,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/dashboard_table.vue")
   },
+  {
+    path: "/dashboradTable2",
+    name: "dashboradTable2",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/dashboard_table2.vue")
+  },
+
 
   {
     path: "/dashboradPay",
