@@ -31,14 +31,21 @@
             :to="item.path"
             active-class="active"
             tag="button"
+            exact
             class="side-btn"
           >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <div class="link-container">
+              <v-list-item-title>
+                {{ item.title }}
+                <v-icon color="rgba(255, 255, 255, 1)">{{ item.icon }}</v-icon>
+              </v-list-item-title>
+            </div>
+            <!--<list-item-title>{{ item.title }}</v-list-item-title>-->
           </router-link>
         </v-list-item-content>
-        <v-list-item-icon>
+        <!-- <v-list-item-icon>
           <v-icon color="rgba(255, 255, 255, 1)">{{ item.icon }}</v-icon>
-        </v-list-item-icon>
+        </v-list-item-icon>-->
       </v-list-item>
     </v-list>
     <template v-slot:append>
@@ -74,17 +81,17 @@ export default {
         {
           title: "افزایش اعتبار",
           icon: "mdi-cash-plus",
-          path: "/dashboardIncreaseCredit"
+          path: "/IncreaseCredit"
         },
         {
           title: "تاریخچه سرویس ها",
           icon: "mdi-history",
-          path: "/dashboard"
+          path: "/HistoryOfservice"
         },
         {
           title: "تاریخچه پرداخت",
           icon: "mdi-credit-card-clock-outline",
-          path: "/dashboardHistoryOfPayment"
+          path: "/HistoryOfPayment"
         }
       ]
     };
@@ -109,9 +116,9 @@ export default {
 .menu-items {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 .menu-items > * {
-  margin-top: 60px;
+  margin-top: 20px;
 }
 </style>

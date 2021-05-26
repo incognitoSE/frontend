@@ -31,21 +31,24 @@ const routes = [
     component: dashboard,
     children: [
       {
-        path: "/dashboardIncreaseCredit",
+        path: "/IncreaseCredit",
+        name: "IncreaseCredit",
         component: () =>
           import(
             /* webpackChunkName: "IncreaseCredit" */ "../views/IncreaseCredit.vue"
           )
       },
       {
-        path: "/dashboard",
+        path: "/HistoryOfservice",
+        name: "HistoryOfServices",
         component: () =>
           import(
             /* webpackChunkName: "HistoryOfServices" */ "../views/HistoryOfServices.vue"
           )
       },
       {
-        path: "/dashboardHistoryOfPayment",
+        path: "/HistoryOfPayment",
+        name: "HistoryOfPayment",
         component: () =>
           import(
             /* webpackChunkName: "HistoryOfPayment" */ "../views/HistoryOfPayment.vue"
