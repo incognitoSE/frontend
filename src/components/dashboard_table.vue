@@ -31,14 +31,14 @@
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
                       <v-text-field
-                        v-model="editedItem.service"
-                        label="service"
+                        v-model="editedItem.price"
+                        label="price"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
                       <v-text-field
-                        v-model="editedItem.type"
-                        label="type"
+                        v-model="editedItem.model"
+                        label="model"
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -65,45 +65,41 @@ export default {
     dialogDelete: false,
     headers: [
       {
+        text: "مشاهده اطلاعات ورودی",
+        value: "actions",
+        align: "center",
+        sortable: false
+      },
+      {
         text: "تاریخ",
         align: "center",
         sortable: false,
         value: "date"
       },
       {
-        text: "هزینه",
-        value: "amount",
+        text: "قیمت تخمین زده",
+        value: "price",
         align: "center",
         sortable: false
       },
-
-      {
-        text: "نام سرویس",
-        value: "service",
-        align: "center",
-        sortable: false
-      },
-      { text: "نوع پرداخت", value: "type", align: "center", sortable: false }
+      { text: "نام سرویس", value: "model", align: "center", sortable: false }
     ],
     desserts: [],
     editedIndex: -1,
     editedItem: {
       date: "",
-      service: "",
-      type: "",
-      amount: ""
+      price: "",
+      model: ""
     },
     dataItem: {
       date: "",
-      service: "",
-      type: "",
-      amount: ""
+      price: "",
+      model: ""
     },
     defaultItem: {
       date: "",
-      service: "",
-      type: "",
-      amount: ""
+      price: "",
+      model: ""
     }
   }),
 
@@ -134,58 +130,54 @@ export default {
     initialize() {
       this.desserts = [
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         },
         {
-          date: "1379/2/13",
-          service: "-",
-          type: "افزایش اعتبار ",
-          amount: "1500T "
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
+        },
+        {
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین"
         }
       ];
     },
