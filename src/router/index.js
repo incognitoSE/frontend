@@ -27,7 +27,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/login.vue")
   },
   {
-    path: "/dashboard",
+    path: "/dashboard/HistoryOfServices",
     component: dashboard,
     children: [
       {
@@ -39,7 +39,7 @@ const routes = [
           )
       },
       {
-        path: "/HistoryOfservice",
+        path: "",
         name: "HistoryOfServices",
         component: () =>
           import(
@@ -84,12 +84,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/OurTeam.vue")
   },
-  {
-    path: "/dashborad",
-    name: "dashboard",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
-  },
+
   {
     path: "/dashboradTable",
     name: "dashboradTable",

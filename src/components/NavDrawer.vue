@@ -74,8 +74,8 @@ export default {
   },
   data() {
     return {
-      name: "nilou",
-      email: "niloufar@g.com",
+      name: "Ali",
+      email: "AliMahvashm@yahoo.ca",
       drawer: true,
       ItemNavDrawer: [
         {
@@ -86,7 +86,7 @@ export default {
         {
           title: "تاریخچه سرویس ها",
           icon: "mdi-history",
-          path: "/HistoryOfservice"
+          path: "/dashboard/HistoryOfServices"
         },
         {
           title: "تاریخچه پرداخت",
