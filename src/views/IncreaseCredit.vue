@@ -137,19 +137,9 @@
 </template>
 
 <script>
-import axios from "axios";
+import { authcomputed } from "../store/helper.js";
 export default {
-  created() {
-    axios
-      .get("http://127.0.0.1:8000/User/userwallet/")
-      .then(response => {
-        this.money = response.data.current_amount;
-        console.log(response.data.current_amount);
-      })
-      .catch(error => {
-        console.log("there was an error" + error.response);
-      });
-  },
+  computed: { ...authcomputed },
   data() {
     return {
       notifications: [
@@ -167,7 +157,16 @@ export default {
       }
     };
   },
-  components: {},
+  created() {
+    this.$store
+      .dispatch("increasecredit")
+      .then(() => {
+        this.money = this.increasecreditform.current_amount;
+      })
+      .catch(error => {
+        console.log("there was an error" + error.response);
+      });
+  },
   methods: {
     increment() {
       this.value = 5000;
@@ -181,11 +180,9 @@ export default {
     increment4() {
       this.money = parseInt(this.money) + parseInt(this.value);
       this.amount = parseInt(this.value);
-      axios
-        .post("http://127.0.0.1:8000/User/userwallet/", { amount: this.amount })
-        .then(response => {
-          console.log(response.data);
-        });
+      this.$store
+        .dispatch("usercredit", { amount: this.amount })
+        .then(() => console.log("yess money"));
     }
   }
 };

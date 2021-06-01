@@ -8,7 +8,10 @@ export default new Vuex.Store({
     user: null,
     house: null,
     simcard: null,
-    car: null
+    car: null,
+    historyofservices: null,
+    historyofpayment: null,
+    increaseofcredit: null
   },
   mutations: {
     SET_DATA_USER(state, userdata) {
@@ -38,6 +41,15 @@ export default new Vuex.Store({
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${newuserdata.access}`;
+    },
+    SET_HISTORY_SERVICE(state, historyservice) {
+      state.historyofservices = historyservice;
+    },
+    SET_HISTORY_PAYMENT(state, historypayment) {
+      state.historyofpayment = historypayment;
+    },
+    SET_INCREASE_CREDIT(state, creditdata) {
+      state.increaseofcredit = creditdata;
     }
   },
 
@@ -122,6 +134,65 @@ export default new Vuex.Store({
           commit("SET_NEW_TOKENS", data);
           console.log(data);
         });
+    },
+    historyofservices({ commit }) {
+      const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .get("http://127.0.0.1:8000/User/userhistory/", {
+          headers: {
+            Authorization: `Bearer ${myaccesstoken}`,
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        })
+        .then(({ data }) => {
+          console.log(data);
+          commit("SET_HISTORY_SERVICE", data);
+        });
+    },
+    historyofpayment({ commit }) {
+      const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .get("http://127.0.0.1:8000/User/usertransactions/", {
+          headers: {
+            Authorization: `Bearer ${myaccesstoken}`,
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        })
+        .then(({ data }) => {
+          console.log(data);
+          commit("SET_HISTORY_PAYMENT", data);
+        });
+    },
+    increasecredit({ commit }) {
+      const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .get("http://127.0.0.1:8000/User/userwallet/", {
+          headers: {
+            Authorization: `Bearer ${myaccesstoken}`,
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        })
+        .then(({ data }) => {
+          console.log(data);
+          commit("SET_INCREASE_CREDIT", data);
+        });
+    },
+    usercredit(useramount) {
+      const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .post("http://127.0.0.1:8000/User/userwallet/", useramount, {
+          headers: {
+            Authorization: `Bearer ${myaccesstoken}`,
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        })
+        .then(data => {
+          console.log(data);
+        });
     }
   },
   getters: {
@@ -141,6 +212,15 @@ export default new Vuex.Store({
 
     userform(state) {
       return state.user;
+    },
+    historyserviceform(state) {
+      return state.historyofservices;
+    },
+    historypaymentform(state) {
+      return state.historyofpayment;
+    },
+    increasecreditform(state) {
+      return state.increaseofcredit;
     }
   },
   modules: {}
