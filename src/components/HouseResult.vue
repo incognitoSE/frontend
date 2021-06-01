@@ -93,7 +93,7 @@ export default {
   },
   created() {
     axios
-      .get("http://127.0.0.1:8000/HEstimator/House/")
+      .get("http://127.0.0.1:8000/")
       .then(response => {
         this.price = response.data;
       })

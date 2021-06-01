@@ -3,21 +3,18 @@
     <v-card tile>
       <v-app-bar app color="#2D3B47" elevate-on-scroll>
         <SingUp v-if="!loggedin" />
-
         <login v-if="!loggedin" />
-
         <div v-else>
           <v-btn @click="logout" rounded small text style="color: #ffffff"
             >خروج</v-btn
           >
-          <v-btn rounded small text style="color: #ffffff" to=/dashborad>داشبورد</v-btn>
+          <v-btn rounded small text style="color: #ffffff" to=/dashboard/HistoryOfServices>داشبورد</v-btn>
           <router-view></router-view>
         </div>
 
         <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
-
         <v-btn
           small
           text

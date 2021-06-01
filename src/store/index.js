@@ -120,7 +120,6 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           commit("SET_NEW_TOKENS", data);
-
           console.log(data);
         });
     }
@@ -132,11 +131,16 @@ export default new Vuex.Store({
     houseform(state) {
       return state.house;
     },
+
     carform(state) {
       return state.car;
     },
     simcardform(state) {
       return state.simcard;
+    },
+
+    userform(state) {
+      return state.user;
     }
   },
   modules: {}

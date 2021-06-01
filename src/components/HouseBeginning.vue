@@ -308,6 +308,27 @@
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
+            <v-snackbar
+              v-if="nomony"
+              :timeout="snackbar.timeout"
+              :multi-line="snackbar.mode === 'multi-line'"
+              :color="snackbar.color"
+              v-model="snackbar.visible"
+              auto-height
+            >
+              <v-layout align-center>
+                <v-icon large dark pl-4 color="rgba(45, 59, 71, 1)">{{
+                  snackbar.icon
+                }}</v-icon>
+                <v-layout column>
+                  <div class="mx-auto">
+                    <strong>{{ snackbar.title }} </strong>
+                  </div>
+                  <div class="mx-auto">{{ snackbar.text }}</div>
+                  <div class="mx-auto">{{ snackbar.text2 }}</div>
+                </v-layout>
+              </v-layout>
+            </v-snackbar>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
           </v-form>
           <v-spacer></v-spacer>
@@ -348,6 +369,17 @@ export default {
   data() {
     return {
       formvaildehome: false,
+      snackbar: {
+        color: null,
+        icon: null,
+        text: null,
+        mode: null,
+        title: null,
+        visibale: false,
+        text2: null,
+        timeout: 5000
+      },
+      nomony: false,
       formDatahouse: {
         area: null,
         location: "",
@@ -548,6 +580,7 @@ export default {
   methods: {
     onsubmitinfohouse(event) {
       event.preventDefault();
+      //var cleartime;
       this.formhosestore = {
         area: this.formDatahouse.area,
         room: this.formDatahouse.room,
@@ -596,6 +629,24 @@ export default {
                   this.$store.dispatch("logout");
                   this.$router.push({ name: "Home" });
                 });
+            }
+            if (err.response.status === 402 && this.loggedin) {
+              this.nomony = true;
+              this.snackbar = {
+                color: "warning",
+                icon: "mdi-alert",
+                mode: "multi-line",
+                timeout: 5000,
+                title: "توجه",
+                text: "شما اعتبار کافی برای استفاده از سرویس ندارید",
+                text2: "شما را به صفحه افزایش اعتبار هدایت می کنیم",
+                visible: true
+              };
+              setTimeout(() => {
+                this.$router.push({ name: "IncreaseCredit" });
+              }, 5000);
+
+              //clearTimeout(cleartime);
             }
           });
         this.formDatahouse.area = null;

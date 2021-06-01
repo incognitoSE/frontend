@@ -74,7 +74,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <v-container class="px-6 p7-6" style="width:80%; float:left;" >
+      <v-container class="px-6 p7-6" style="width:80%; float:left;">
         <v-card-title>
           <v-text-field
             v-model="search"

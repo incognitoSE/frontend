@@ -14,14 +14,14 @@
                       <i
                         class="fa fa-coffee fa-2x"
                         style="text-align: center;"
-                      ></i>
+                      ><h1>+570</h1></i>
                       <h1
                         class="timer count-title count-number"
                         data-to="1700"
                         data-speed="1500"
                         style="text-align: center; "
                       >
-                        <v-card-title><h1>+570</h1></v-card-title>
+                       
                         <v-card-text><p>تعداد کاربران سامانه</p></v-card-text>
                       </h1>
                     </div>
@@ -41,14 +41,14 @@
                       <i
                         class="fa fa-coffee fa-2x"
                         style="text-align: center;"
-                      ></i>
+                      ><h1>+1300</h1></i>
                       <h1
                         class="timer count-title count-number"
                         data-to="1700"
                         data-speed="1500"
                         style="text-align: center; "
                       >
-                        <v-card-title><h1>+1300</h1></v-card-title>
+                       
                         <v-card-text
                           ><p>تعداد استفاده از سامانه</p></v-card-text
                         >
@@ -82,7 +82,6 @@ export default {};
   font-family: IRANSans;
   color: #2d3b47;
 }
-
 div {
   font-family: IRANSans !important;
 }

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import dashboard from "../views/dashboard.vue";
 
 Vue.use(VueRouter);
 
@@ -26,17 +27,35 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/login.vue")
   },
   {
-    path: "/dashboard",
-    name: "dashboard",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard.vue"),
-    meta: { requiresAuth: true }
-  },
-  {
-    path: "/dashboard",
-    name: "dashboard",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard.vue")
+    path: "/dashboard/HistoryOfServices",
+    component: dashboard,
+    children: [
+      {
+        path: "/IncreaseCredit",
+        name: "IncreaseCredit",
+        component: () =>
+          import(
+            /* webpackChunkName: "IncreaseCredit" */ "../views/IncreaseCredit.vue"
+          )
+      },
+      {
+        path: "",
+        name: "HistoryOfServices",
+        component: () =>
+          import(
+            /* webpackChunkName: "HistoryOfServices" */ "../views/HistoryOfServices.vue"
+          )
+      },
+      {
+        path: "/HistoryOfPayment",
+        name: "HistoryOfPayment",
+        component: () =>
+          import(
+            /* webpackChunkName: "HistoryOfPayment" */ "../views/HistoryOfPayment.vue"
+          )
+      }
+    ]
+    // meta: { requiresAuth: true }
   },
   {
     path: "/servicehouse",
@@ -65,9 +84,22 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/OurTeam.vue")
   },
+
   {
-    path: "/dashborad",
-    name: "dashboard",
+    path: "/dashboradTable",
+    name: "dashboradTable",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/dashboard_table.vue")
+  },
+  {
+    path: "/dashboradTable2",
+    name: "dashboradTable2",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/dashboard_table2.vue")
+  },
+  {
+    path: "/dashboradPay",
+    name: "dashboradPay",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/dashboard.vue"),
     meta: { requiresAuth: true }
