@@ -15,9 +15,9 @@
         <v-row class="divform">
           <v-form
             class="houseform mx-7"
-            @submit="onsubmitinfohouse"
-            ref="formhouse"
-            v-model="formvaildehome"
+            @submit="onsubmitinsimcard"
+            ref="formsimcard"
+            v-model="formvaildesim"
           >
             <h1
               class="ml-lg-6  ml-md-9 ml-sm-2 mt-2 h1class"
@@ -53,23 +53,6 @@
               <v-spacer></v-spacer
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-combobox
-                :items="itemsm"
-                dense
-                type="text"
-                placeholder="منطقه"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                v-model="formDatahouse.neighberhood"
-                :rules="mataghrulse"
-                shaped
-                reverse
-                clearable
-                :maxlength="12"
-              >
-              </v-combobox>
-            </v-col> -->
-
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -94,23 +77,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-              <v-text-field
-                dense
-                placeholder="تعداد اتاق"
-                min="1"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.roomnumber"
-                :rules="tedadeotaghrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
-
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -136,24 +102,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-
-              <!-- <v-col cols="11" md="10" lg="11">
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-              <v-text-field
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-combobox
                   :items="itemsm"
@@ -175,46 +123,13 @@
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
             </v-row>
-            <!-- <input
-          type="text"
-          placeholder="منطقه"
-          class="mt-3 mb-3"
-          required
-          v-model="formDatahouse.neighberhood"
-          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder="تعداد اتاق"
-          min="1"
-          max="150"
-          step="1"
-          class="mt-3 mb-3"
-          v-model.number="formDatahouse.roomnumber"
-          required
-          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder=" سال ساخت"
-          min="1200"
-          max="2356"
-          step="1"
-          class="mt-3 mb-3"
-          required
-          v-model.number="formDatahouse.year"
-          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />-->
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-btn
               type="submit"
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
               large
-              :disabled="!formvaildehome"
+              :disabled="!formvaildesim"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -225,7 +140,7 @@
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse   hidden-lg-and-up"
               small
-              :disabled="!formvaildehome"
+              :disabled="!formvaildesim"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -266,8 +181,8 @@
         <v-row class="divform">
           <v-form
             class="houseform mx-7"
-            @submit="onsubmitinfohouse"
-            ref="formhouse"
+            @submit="onsubmitinsimcard"
+            ref="formsimcard"
           >
             <h1
               class="ml-lg-6  ml-md-9 ml-sm-2 mt-2 h1class"
@@ -303,22 +218,6 @@
               <v-spacer></v-spacer
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-combobox
-                :items="itemsm"
-                dense
-                type="text"
-                placeholder="منطقه"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                v-model="formDatahouse.neighberhood"
-                :rules="mataghrulse"
-                shaped
-                reverse
-                clearable
-                :maxlength="12"
-              >
-              </v-combobox>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -343,21 +242,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-text-field
-                dense
-                placeholder="تعداد اتاق"
-                min="1"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.roomnumber"
-                :rules="tedadeotaghrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -383,25 +267,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-text-field
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-combobox
                   :items="itemsm"
@@ -423,39 +288,6 @@
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
             </v-row>
-            <!-- <input
-          type="text"
-          placeholder="منطقه"
-          class="mt-3 mb-3"
-          required
-          v-model="formDatahouse.neighberhood"
-          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder="تعداد اتاق"
-          min="1"
-          max="150"
-          step="1"
-          class="mt-3 mb-3"
-          v-model.number="formDatahouse.roomnumber"
-          required
-          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder=" سال ساخت"
-          min="1200"
-          max="2356"
-          step="1"
-          class="mt-3 mb-3"
-          required
-          v-model.number="formDatahouse.year"
-          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />-->
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-btn
               type="submit"
@@ -512,17 +344,18 @@ export default {
   },
   data() {
     return {
-      formvaildehome: false,
+      formvaildesim: false,
       formDataSim: {
         number: null,
         daemi: "",
         rond: null,
         stock: null
       },
+      formsimcardstore: {},
       showkole: true,
       itemsm: ["دائمی", "اعتباری"],
-      formhouseforali: {},
-      dataforrominaSIM: { currenthouse: {}, price: "", houses: [] },
+      formsimcardforali: {},
+      dataforrominaSIM: { currenthouse: {}, price: "", houses: [] }, //should change based on json file
       metrazrules: [
         value => !!value || "شماره مورد نظر را وارد کنید",
         value => value >= 1000000000 || "تعداد ارقام شماره تلفن صحیح نمیباشد"
@@ -537,35 +370,57 @@ export default {
     };
   },
   methods: {
-    onsubmitinfohouse(event) {
+    onsubmitinsimcard(event) {
       event.preventDefault();
-      if (this.$refs.formhouse.validate()) {
-        fetch("http://127.0.0.1:8000/HEstimator/House/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(this.formDataSim)
-        })
-          .then(res => {
-            return res.json();
+      this.formsimcardstore = {
+        number: this.formDataSim.number,
+        daemi: this.formDataSim.daemi,
+        rond: this.formDataSim.rond,
+        stock: this.formDataSim.stock
+      };
+      if (this.$refs.formsimcard.validate()) {
+        this.$store
+          .dispatch("senddatasimcard", {
+            number: this.formDataSim.number,
+            daemi: this.formDataSim.daemi,
+            rond: this.formDataSim.rond,
+            stock: this.formDataSim.stock
           })
-          .then(data => {
-            console.log(data);
-            this.formhouseforali = data;
-            this.dataforrominaSIM = data;
-            console.log("Simbeginning");
-            console.log(data.houses);
-            console.log(this.formhouseforali);
-            console.log(this.dataforrominaSIM);
-            console.log(typeof this.dataforrominaSIM);
+          .then(() => {
+            this.dataforrominaSIM = this.$store.getters.simcardform;
+            this.formsimcardforali = this.$store.getters.simcardform;
           })
-          .catch(error => console.log(error));
+          .catch(err => {
+            console.log(err.response);
+            if (err.response.status === 401 && this.loggedin) {
+              this.$store
+                .dispatch("refreshtoken")
+                .then(() => {
+                  this.$store
+                    .dispatch("senddatasimcard", {
+                      number: this.formDataSim.number,
+                      daemi: this.formDataSim.daemi,
+                      rond: this.formDataSim.rond,
+                      stock: this.formDataSim.stock
+                    })
+                    .then(() => {
+                      this.dataforrominaSIM = this.simcardform;
+                      this.formsimcardforali = this.simcardform;
+                    })
+                    .catch(errrr => console.log(errrr.response));
+                })
+                .catch(er => {
+                  console.log(er);
+                  this.$store.dispatch("logout");
+                  this.$router.push({ name: "Home" });
+                });
+            }
+          });
         this.formDataSim.number = null;
         this.formDataSim.daemi = "";
         this.formDataSim.rond = null;
         this.formDataSim.stock = null;
-        this.$refs.formhouse.resetValidation();
+        this.$refs.formsimcard.resetValidation();
         this.showkole = false;
       }
     }

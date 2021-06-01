@@ -15,9 +15,9 @@
         <v-row class="divform">
           <v-form
             class="houseform mx-8"
-            @submit="onsubmitinfohouse"
-            ref="formhouse"
-            v-model="formvaildehome"
+            @submit="onsubmitincar"
+            ref="formcar"
+            v-model="formvaildecar"
           >
             <h1
               class="ml-lg-12  ml-md-9 ml-sm-2 mt-2 h1class"
@@ -52,23 +52,6 @@
               <v-spacer></v-spacer
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-combobox
-                :items="itemsm"
-                dense
-                type="text"
-                placeholder="منطقه"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                v-model="formDatahouse.neighberhood"
-                :rules="mataghrulse"
-                shaped
-                reverse
-                clearable
-                :maxlength="12"
-              >
-              </v-combobox>
-            </v-col> -->
-
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -92,23 +75,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-              <v-text-field
-                dense
-                placeholder="تعداد اتاق"
-                min="1"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.roomnumber"
-                :rules="tedadeotaghrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
-
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -133,24 +99,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-
-              <!-- <v-col cols="11" md="10" lg="11">
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-              <v-text-field
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -176,26 +124,9 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-
-              <!-- <v-col cols="11" md="10" lg="11">
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-              <v-text-field
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
-                <v-text-field
+                <v-combobox
+                  :items="itemsm"
                   dense
                   placeholder="وضعیت خودرو"
                   step="1"
@@ -206,53 +137,20 @@
                   reverse
                   clearable
                   :maxlength="12"
-                ></v-text-field>
+                ></v-combobox>
               </v-col>
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
             </v-row>
-            <!-- <input
-          type="text"
-          placeholder="منطقه"
-          class="mt-3 mb-3"
-          required
-          v-model="formDatahouse.neighberhood"
-          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder="تعداد اتاق"
-          min="1"
-          max="150"
-          step="1"
-          class="mt-3 mb-3"
-          v-model.number="formDatahouse.roomnumber"
-          required
-          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder=" سال ساخت"
-          min="1200"
-          max="2356"
-          step="1"
-          class="mt-3 mb-3"
-          required
-          v-model.number="formDatahouse.year"
-          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />-->
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-btn
               type="submit"
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse mt-5  mb-2 ml-12 hidden-md-and-down"
               large
-              :disabled="!formvaildehome"
+              :disabled="!formvaildecar"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -263,7 +161,7 @@
               color="rgba(45, 59, 71, 1)"
               class="btnformhouse   hidden-lg-and-up"
               small
-              :disabled="!formvaildehome"
+              :disabled="!formvaildecar"
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
@@ -302,11 +200,7 @@
           class="imgcls  hidden-lg-and-up"
         />
         <v-row class="divform">
-          <v-form
-            class="houseform mx-7"
-            @submit="onsubmitinfohouse"
-            ref="formhouse"
-          >
+          <v-form class="houseform mx-7" @submit="onsubmitincar" ref="formcar">
             <h1
               class="ml-lg-12  ml-md-9 ml-sm-2 mt-2 h1class"
               style="color:rgba(45, 59, 71, 1)"
@@ -341,22 +235,6 @@
               <v-spacer></v-spacer
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-combobox
-                :items="itemsm"
-                dense
-                type="text"
-                placeholder="منطقه"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                v-model="formDatahouse.neighberhood"
-                :rules="mataghrulse"
-                shaped
-                reverse
-                clearable
-                :maxlength="12"
-              >
-              </v-combobox>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -381,21 +259,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-text-field
-                dense
-                placeholder="تعداد اتاق"
-                min="1"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.roomnumber"
-                :rules="tedadeotaghrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -421,25 +284,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-text-field
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -464,24 +308,6 @@
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-
-              <!-- <v-col cols="11" md="10" lg="11">
->>>>>>> 0a5bc4c2b9f300ec7018ee8db0deb7f00935496f
-              <v-text-field
-                dense
-                placeholder="سال ساخت"
-                min="1200"
-                max="5000"
-                step="1"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                shaped
-                v-model.number="formDatahouse.year"
-                :rules="salesaketrules"
-                reverse
-                clearable
-                :maxlength="12"
-              ></v-text-field>
-            </v-col> -->
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -501,39 +327,6 @@
               <v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
             </v-row>
-            <!-- <input
-          type="text"
-          placeholder="منطقه"
-          class="mt-3 mb-3"
-          required
-          v-model="formDatahouse.neighberhood"
-          oninvalid="this.setCustomValidity('منطقه مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder="تعداد اتاق"
-          min="1"
-          max="150"
-          step="1"
-          class="mt-3 mb-3"
-          v-model.number="formDatahouse.roomnumber"
-          required
-          oninvalid="this.setCustomValidity('تعداد اتاق  مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />
-        <input
-          type="number"
-          placeholder=" سال ساخت"
-          min="1200"
-          max="2356"
-          step="1"
-          class="mt-3 mb-3"
-          required
-          v-model.number="formDatahouse.year"
-          oninvalid="this.setCustomValidity('سال ساخت مورد نظر خود را وارد کنید')"
-          oninput="this.setCustomValidity('')"
-        />-->
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-btn
               type="submit"
@@ -560,7 +353,7 @@
         </v-row>
       </div>
       <CarResult :formcarforali="formcarforali" />
-      <CarServices :dataforromina="dataforromina" />
+      <CarServices :dataforrominaCar="dataforrominaCar" />
       <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
         <v-row align="center" justify="space-around">
           <v-btn
@@ -590,7 +383,7 @@ export default {
   },
   data() {
     return {
-      formvaildehome: false,
+      formvaildecar: false,
       FormDatacar: {
         brand: null,
         year: null,
@@ -598,10 +391,30 @@ export default {
         mileage: null,
         body_status: null
       },
+      itemsm: [
+        "بدون رنگ",
+        "صافکاری بدون رنگ",
+        "یک لکه رنگ",
+        "دو لکه رنگ",
+        "چند لکه رنگ",
+        "گلگیر رنگ",
+        "گلگیر تعویض",
+        "یک درب رنگ",
+        "دو درب رنگ",
+        "درب تعویض",
+        "کاپوت رنگ",
+        "کاپوت تعویض",
+        "دور رنگ",
+        "کامل رنگ",
+        "تصادفی",
+        "اتاق تعویض",
+        "سوخته",
+        "اوراقی"
+      ],
       showkole: true,
-
+      formcarstore: {},
       formcarforali: {},
-      dataforromina: { currenthouse: {}, price: "", houses: [] },
+      dataforrominaCar: { currentcar: {}, price: "", cars: [] },
       metrazrules: [value => !!value || "برند خودرو موردنظر را وارد کنید"],
       modelrules: [value => !!value || "مدل خودرو موردنظر را وارد کنید"],
       mataghrulse: [value => !!value || "منطقه مورد نظر خود را وارد کنید"],
@@ -620,36 +433,70 @@ export default {
     };
   },
   methods: {
-    onsubmitinfohouse(event) {
+    onsubmitincar(event) {
       event.preventDefault();
-      if (this.$refs.formhouse.validate()) {
-        fetch("http://127.0.0.1:8000/HEstimator/House/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(this.FormDatacar)
-        })
-          .then(res => {
-            return res.json();
+      console.log("im in store data car");
+      console.log(this.FormDatacar.brand);
+      this.formcarstore = {
+        brand: this.FormDatacar.brand,
+        year: this.FormDatacar.year,
+        model: this.FormDatacar.model,
+        mileage: this.FormDatacar.mileage,
+        body_status: this.FormDatacar.body_status
+      };
+      console.log("im out of store data car");
+      console.log(this.formcarstore.brand);
+      if (this.$refs.formcar.validate()) {
+        console.log("im in if");
+        this.$store
+          .dispatch("senddatacar", {
+            brand: this.FormDatacar.brand,
+            year: this.FormDatacar.year,
+            model: this.FormDatacar.model,
+            mileage: this.FormDatacar.mileage,
+            body_status: this.FormDatacar.body_status
           })
-          .then(data => {
-            console.log(data);
-            this.formcarforali = data;
-            this.dataforromina = data;
-            console.log("housebeginning");
-            console.log(data.houses);
-            console.log(this.formcarforali);
-            console.log(this.dataforromina);
-            console.log(typeof this.dataforromina);
+          .then(() => {
+            console.log("im hereeee");
+            this.dataforrominaCar = this.$store.getters.carform;
+            this.formcarforali = this.$store.getters.carform;
           })
-          .catch(error => console.log(error));
+          .catch(err => {
+            console.log(err.response);
+            console.log(err.response.status);
+            if (err.response.status === 401 && this.$store.getters.loggedin) {
+              console.log("im in err 1");
+              this.$store
+                .dispatch("refreshtoken")
+                .then(() => {
+                  console.log("im in refresh");
+                  this.$store
+                    .dispatch("senddatacar", {
+                      brand: this.FormDatacar.brand,
+                      year: this.FormDatacar.year,
+                      model: this.FormDatacar.model,
+                      mileage: this.FormDatacar.mileage,
+                      body_status: this.FormDatacar.body_status
+                    })
+                    .then(() => {
+                      this.dataforrominaCar = this.$store.getters.carform;
+                      this.formcarforali = this.$store.getters.carform;
+                    })
+                    .catch(errrr => console.log(errrr.response));
+                })
+                .catch(er => {
+                  console.log(er.response);
+                  this.$store.dispatch("logout");
+                  this.$router.push({ name: "Home" });
+                });
+            }
+          });
         this.FormDatacar.brand = null;
         this.FormDatacar.year = null;
         this.FormDatacar.mileage = null;
         this.FormDatacar.model = null;
         this.FormDatacar.body_status = null;
-        this.$refs.formhouse.resetValidation();
+        this.$refs.formcar.resetValidation();
         this.showkole = false;
       }
     }

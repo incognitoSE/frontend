@@ -53,23 +53,6 @@
               <v-spacer></v-spacer
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-combobox
-                :items="itemsm"
-                dense
-                type="text"
-                placeholder="منطقه"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                v-model="formDatahouse.neighberhood"
-                :rules="mataghrulse"
-                shaped
-                reverse
-                clearable
-                :maxlength="12"
-              >
-              </v-combobox>
-            </v-col> -->
-
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
