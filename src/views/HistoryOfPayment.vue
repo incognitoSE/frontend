@@ -12,7 +12,7 @@
           <v-btn class="ml-2" min-width="0" text v-bind="attrs" v-on="on">
             <v-badge color="red" overlap bordered>
               <template v-slot:badge>
-                <span>5</span>
+                <span>{{ notifications.length }}</span>
               </template>
 
               <v-icon>mdi-bell</v-icon>
