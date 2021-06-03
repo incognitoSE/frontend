@@ -76,7 +76,6 @@ export default {
   },
   data() {
     return {
-
       name: "",
       email: "",
       money: null,

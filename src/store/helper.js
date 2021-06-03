@@ -9,6 +9,9 @@ export const authcomputed = {
     "historypaymentform",
     "increasecreditform",
     "username",
-    "useremail"
+    "useremail",
+    "carresourcegetter",
+    "houseresourcegetter",
+    "simresourcegetter"
   ])
 };

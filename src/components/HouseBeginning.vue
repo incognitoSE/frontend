@@ -352,27 +352,19 @@
             class="myslideshow"
             show-arrows-on-hover
             hide-delimiter-background
+            height="auto"
           >
             <v-carousel-item
               v-for="(pic, i) in slideshowpictahlel"
               :key="i"
               :src="pic.src"
               contain
-              width="100%"
               elevation="24"
               class="sildeshowimg"
               style="boxshadow: 5px #2d3b47 ; border: groove"
             >
             </v-carousel-item>
           </v-carousel>
-          <!-- <v-card>
-            <v-img
-              :src="houseresourceimage"
-              class="white--text align-end"
-              sizes="cover"
-            ></v-img>
-            <v-card-title>عکس تحلیل</v-card-title>
-          </v-card>-->
         </v-col>
       </v-row>
     </div>
@@ -627,12 +619,35 @@ export default {
     this.$store
       .dispatch("gethouseresource")
       .then(() => {
-        this.houseresource = this.$store.getters.houseresourcegetter.images;
+        this.houseresource = this.houseresourcegetter.images;
         console.log("im here");
         console.log(this.houseresource);
         this.onimageinslideshow();
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        if (err.response.status === 401 && this.loggedin) {
+          this.$store
+            .dispatch("refreshtoken")
+            .then(() => {
+              console.log("yes it ok");
+              this.$store
+                .dispatch("gethouseresource")
+                .then(() => {
+                  this.houseresource = this.houseresourcegetter.images;
+                  console.log("im here");
+                  console.log(this.houseresource);
+                  this.onimageinslideshow();
+                })
+                .catch(errrr => console.log(errrr.response));
+            })
+            .catch(er => {
+              console.log(er);
+              this.$store.dispatch("logout");
+              this.$router.push({ name: "Home" });
+            });
+        }
+      });
   },
   methods: {
     onsubmitinfohouse(event) {

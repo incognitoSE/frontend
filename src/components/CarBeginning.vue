@@ -192,21 +192,6 @@
           <v-spacer></v-spacer>
         </v-row>
       </div>
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
-          >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
-        </v-row>
-      </div>
     </div>
     <div v-else>
       <div id="main_div">
@@ -397,21 +382,45 @@
       </div>
       <CarResult :formcarforali="formcarforali" />
       <CarServices :dataforrominaCar="dataforrominaCar" />
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
+    </div>
+    <div>
+      <v-row no-gutters>
+        <v-col cols="12">
+          <v-carousel
+            cycle
+            class="myslideshow"
+            show-arrows-on-hover
+            hide-delimiter-background
+            height="auto"
           >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
-        </v-row>
-      </div>
+            <v-carousel-item
+              v-for="(pic, i) in slideshowpictahlel"
+              :key="i"
+              :src="pic.src"
+              contain
+              elevation="24"
+              class="sildeshowimg"
+              style="boxshadow: 5px #2d3b47 ; border: groove"
+            >
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
+      </v-row>
+    </div>
+    <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
+      <v-row align="center" justify="space-around">
+        <v-btn
+          text
+          class="white--text my-12"
+          color="blue-grey"
+          :to="{ name: 'Home' }"
+        >
+          <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
+          <v-icon right color="rgba(255, 255, 255, 1)">
+            mdi-arrow-right-bold
+          </v-icon>
+        </v-btn>
+      </v-row>
     </div>
   </div>
 </template>
@@ -428,6 +437,8 @@ export default {
   },
   data() {
     return {
+      carresource: [],
+      slideshowpictahlel: [],
       formvaildecar: false,
       snackbar: {
         color: null,
@@ -487,6 +498,40 @@ export default {
         value => value >= 1200
       ]
     };
+  },
+  created() {
+    this.$store
+      .dispatch("getcarresource")
+      .then(() => {
+        this.carresource = this.carresourcegetter.images;
+        console.log("im here");
+        console.log(this.carresource);
+        this.onimageinslideshow();
+      })
+      .catch(err => {
+        console.log(err);
+        if (err.response.status === 401 && this.loggedin) {
+          this.$store
+            .dispatch("refreshtoken")
+            .then(() => {
+              console.log("yes it ok");
+              this.$store
+                .dispatch("getcarresource")
+                .then(() => {
+                  this.carresource = this.carresourcegetter.images;
+                  console.log("im here");
+                  console.log(this.carresource);
+                  this.onimageinslideshow();
+                })
+                .catch(errrr => console.log(errrr.response));
+            })
+            .catch(er => {
+              console.log(er);
+              this.$store.dispatch("logout");
+              this.$router.push({ name: "Home" });
+            });
+        }
+      });
   },
   methods: {
     onsubmitincar(event) {
@@ -572,6 +617,24 @@ export default {
         this.FormDatacar.body_status = null;
         this.$refs.formcar.resetValidation();
         this.showkole = false;
+      }
+    },
+    carresourceimage(mysrc) {
+      return `data:image/png;base64, ${mysrc}`;
+    },
+    onimageinslideshow() {
+      var mysrces;
+      var myobject;
+      console.log("im in func");
+      for (let i = 0; i < this.carresource.length; i++) {
+        mysrces = this.carresourceimage(this.carresource[i]);
+        console.log(mysrces);
+        console.log(i);
+        myobject = {
+          src: mysrces
+        };
+        this.slideshowpictahlel.push(myobject);
+        console.log(this.slideshowpictahlel);
       }
     }
   }
