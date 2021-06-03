@@ -353,6 +353,10 @@
         </v-row>
       </div>
     </div>
+    <div style="background-color: gray ; text-align: center">
+      im here
+      <img :src="houseresourceimage" />
+    </div>
   </div>
 </template>
 
@@ -365,9 +369,16 @@ export default {
     HouseResult,
     houseservices
   },
-  computed: { ...authcomputed },
+  computed: {
+    ...authcomputed,
+    houseresourceimage() {
+      return `data:image/png;base64, ${this.houseresource}`;
+    }
+  },
   data() {
     return {
+      houseimage: null,
+      houseresource: null,
       formvaildehome: false,
       snackbar: {
         color: null,
@@ -576,6 +587,17 @@ export default {
           value >= 1200 || "سال ساخت مورد نظر شما باید از سال 1200 به بعد باشد"
       ]
     };
+  },
+  created() {
+    this.$store
+      .dispatch("gethouseresource")
+      .then(() => {
+        this.houseresource = this.$store.getters.houseresourcegetter.images[0];
+        console.log("im here");
+        console.log(this.houseresource);
+      })
+      .catch(err => console.log(err));
+    this.loadhouseimage();
   },
   methods: {
     onsubmitinfohouse(event) {
