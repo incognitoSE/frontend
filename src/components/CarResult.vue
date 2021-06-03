@@ -28,7 +28,7 @@
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                      {{ formcarforali.price }}
+                      {{ formcarforali.price[0] }}
                       <br />
                       تومان
                     </h2>
@@ -45,14 +45,14 @@
             <v-list-item-content>
               <v-list-item-title style="color: white">
                 برند :
-                {{ formcarforali.CAR.brand }}
+                {{ formcarforali.currentcar.brand }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >مدل : {{ formcarforali.CAR.model }}
+                >مدل : {{ formcarforali.currentcar.model }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -60,7 +60,7 @@
             <v-list-item-content>
               <v-list-item-title style="color: white"
                 >کارکرد :
-                {{ formcarforali.CAR.mileage }}
+                {{ formcarforali.currentcar.mileage }}
                 km</v-list-item-title
               >
             </v-list-item-content>
@@ -68,7 +68,8 @@
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >سال تولید : {{ formcarforali.CAR.year }}</v-list-item-title
+                >سال تولید :
+                {{ formcarforali.currentcar.year }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -76,7 +77,7 @@
             <v-list-item-content>
               <v-list-item-title style="color: white"
                 >وضعیت خودرو :
-                {{ formcarforali.CAR.body_status }}</v-list-item-title
+                {{ formcarforali.currentcar.body_status }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -88,7 +89,7 @@
 </template>
 
 <script>
-import axios from "axios";
+//import axios from "axios";
 export default {
   props: {
     formcarforali: Object
@@ -97,17 +98,17 @@ export default {
     return {
       price: null
     };
-  },
-  created() {
+  }
+  /* created() {
     axios
-      .get("http://127.0.0.1:8000/HEstimator/House/")
+      .get("http://127.0.0.1:8000/CEstimator/Car/")
       .then(response => {
         this.price = response.data;
       })
       .catch(error => {
         console.log("there was an error" + error.response);
       });
-  }
+  }*/
 };
 </script>
 

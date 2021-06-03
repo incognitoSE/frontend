@@ -27,7 +27,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/login.vue")
   },
   {
-    path: "/dashboard/HistoryOfServices",
+    path: "/dashboard/profile",
     component: dashboard,
     children: [
       {
@@ -40,10 +40,10 @@ const routes = [
       },
       {
         path: "",
-        name: "HistoryOfServices",
+        name: "profile",
         component: () =>
           import(
-            /* webpackChunkName: "HistoryOfServices" */ "../views/HistoryOfServices.vue"
+            /* webpackChunkName: "HistoryOfServices" */ "../views/profile.vue"
           )
       },
       {
@@ -52,6 +52,14 @@ const routes = [
         component: () =>
           import(
             /* webpackChunkName: "HistoryOfPayment" */ "../views/HistoryOfPayment.vue"
+          )
+      },
+      {
+        path: "/HistoryOfServices",
+        name: "HistoryOfServices",
+        component: () =>
+          import(
+            /* webpackChunkName: "HistoryOfServices" */ "../views/HistoryOfServices.vue"
           )
       }
     ]
@@ -101,7 +109,8 @@ const routes = [
     path: "/dashboradPay",
     name: "dashboradPay",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard_pay.vue")
+      import(/* webpackChunkName: "about" */ "../views/dashboard.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/services",

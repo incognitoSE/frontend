@@ -12,7 +12,7 @@
             height="100%"
             color="white"
             style="display: flex ; justify-contetn : space-between"
-            @click="samplepage(sample.link)"
+            
           >
             <v-row class="fill-height" align="center" justify="center">
               <v-col md="4" sm="4" xs="3">

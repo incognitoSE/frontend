@@ -84,7 +84,7 @@
 import axios from "axios";
 export default {
   props: {
-    formhouseforali: Object
+    formsimcardforali: Object
   },
   data() {
     return {

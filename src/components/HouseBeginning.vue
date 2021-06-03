@@ -53,23 +53,6 @@
               <v-spacer></v-spacer
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
-              <!-- <v-col cols="11" md="10" lg="11">
-              <v-combobox
-                :items="itemsm"
-                dense
-                type="text"
-                placeholder="منطقه"
-                class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                v-model="formDatahouse.neighberhood"
-                :rules="mataghrulse"
-                shaped
-                reverse
-                clearable
-                :maxlength="12"
-              >
-              </v-combobox>
-            </v-col> -->
-
               <v-col cols="11" md="10" lg="11">
                 <v-text-field
                   dense
@@ -162,6 +145,27 @@
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
+            <v-snackbar
+              v-if="nomony"
+              :timeout="snackbar.timeout"
+              :multi-line="snackbar.mode === 'multi-line'"
+              :color="snackbar.color"
+              v-model="snackbar.visible"
+              auto-height
+            >
+              <v-layout align-center>
+                <v-icon large dark pl-4 color="rgba(45, 59, 71, 1)">{{
+                  snackbar.icon
+                }}</v-icon>
+                <v-layout column>
+                  <div class="mx-auto">
+                    <strong>{{ snackbar.title }} </strong>
+                  </div>
+                  <div class="mx-auto">{{ snackbar.text }}</div>
+                  <div class="mx-auto">{{ snackbar.text2 }}</div>
+                </v-layout>
+              </v-layout>
+            </v-snackbar>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
           </v-form>
           <v-spacer></v-spacer>

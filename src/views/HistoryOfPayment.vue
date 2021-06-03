@@ -23,7 +23,18 @@
         <v-list :tile="false" nav>
           <div>
             <app-bar-item v-for="(n, i) in notifications" :key="`item-${i}`">
-              <v-list-item-title v-text="n" />
+              <v-list-item-title
+                v-text="
+                  n.text +
+                    '   ' +
+                    '   ' +
+                    '   ' +
+                    '   ' +
+                    '   ' +
+                    '   ' +
+                    n.date
+                "
+              />
             </app-bar-item>
           </div>
         </v-list>
@@ -110,15 +121,16 @@
 </template>
 
 <script>
+import { authcomputed } from "../store/helper.js";
 import axios from "axios";
-
 export default {
+  computed: { ...authcomputed },
   data: () => ({
     notifications: [
-      "Mike John Responded to your email",
-      "You have 5 new tasks",
-      "You're now friends with Andrew",
-      "Another Notification"
+      // "Mike John Responded to your email",
+      // "You have 5 new tasks",
+      // "You're now friends with Andrew",
+      // "Another Notification"
     ],
 
     dialog: false,
@@ -173,8 +185,6 @@ export default {
     }
   }),
 
-  computed: {},
-
   watch: {
     dialog(val) {
       val || this.close();
@@ -185,15 +195,36 @@ export default {
   },
 
   created() {
+    axios.get("http://127.0.0.1:8000/User/notifications/").then(response => {
+      this.notifications = response.data;
+    });
     this.initialize();
-    axios
-      .get("http://127.0.0.1:8000/User/usertransactions/")
-      .then(response => {
-        this.desserts = response.data;
-        console.log(response.data);
+    this.$store
+      .dispatch("historyofpayment")
+      .then(() => {
+        this.desserts = this.historypaymentform;
       })
       .catch(error => {
         console.log("there was an error" + error.response);
+        if (error.response.status === 401 && this.loggedin) {
+          console.log("im in err 1");
+          this.$store
+            .dispatch("refreshtoken")
+            .then(() => {
+              console.log("im in refresh");
+              this.$store
+                .dispatch("historyofpayment")
+                .then(() => {
+                  this.desserts = this.historypaymentform;
+                })
+                .catch(errrr => console.log(errrr.response));
+            })
+            .catch(er => {
+              console.log(er.response);
+              this.$store.dispatch("logout");
+              this.$router.push({ name: "Home" });
+            });
+        }
       });
   },
 

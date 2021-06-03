@@ -2,14 +2,13 @@
   <div>
     <br />
     <h1 style="text-align: center">ماشین های مشابه</h1>
-    <div v-if="dataforromina.houses.length != 0">
+    <div v-if="dataforrominaCar.cars.length != 0">
       <v-carousel hide-delimiters>
-        <v-carousel-item v-for="(sample, i) in dataforromina.houses" :key="i">
+        <v-carousel-item v-for="(sample, i) in dataforrominaCar.cars" :key="i">
           <v-sheet
             height="100%"
             color="white"
             style="display: flex ; justify-contetn : space-between"
-            @click="samplepage(sample.link)"
           >
             <v-row class="fill-height" align="center" justify="center">
               <v-col md="4" sm="4" xs="3">
@@ -100,7 +99,7 @@
 
 <script>
 export default {
-  props: ["dataforromina"],
+  props: ["dataforrominaCar"],
   data() {
     return {
       samples: []

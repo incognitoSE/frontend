@@ -258,7 +258,7 @@
 
             <v-card-subtitle class="justify-center">
               <h4 style="color:white" class="text-center">
-                توسعه دهنده بک اند
+                تحلیلگر داده
               </h4>
             </v-card-subtitle>
 
