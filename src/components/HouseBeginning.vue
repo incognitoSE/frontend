@@ -145,6 +145,27 @@
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
+            <v-snackbar
+              v-if="nomony"
+              :timeout="snackbar.timeout"
+              :multi-line="snackbar.mode === 'multi-line'"
+              :color="snackbar.color"
+              v-model="snackbar.visible"
+              auto-height
+            >
+              <v-layout align-center>
+                <v-icon large dark pl-4 color="rgba(45, 59, 71, 1)">{{
+                  snackbar.icon
+                }}</v-icon>
+                <v-layout column>
+                  <div class="mx-auto">
+                    <strong>{{ snackbar.title }} </strong>
+                  </div>
+                  <div class="mx-auto">{{ snackbar.text }}</div>
+                  <div class="mx-auto">{{ snackbar.text2 }}</div>
+                </v-layout>
+              </v-layout>
+            </v-snackbar>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
           </v-form>
           <v-spacer></v-spacer>
