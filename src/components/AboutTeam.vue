@@ -11,7 +11,8 @@
       <br />
       <v-row>
         <v-col
-          ><v-card
+          >
+          <v-card
             elevation="20"
             shaped
             class="mx-auto"
@@ -28,11 +29,11 @@
   "
                 size="200"
               >
-                <img src="../assets/photo_2021-05-16_17-55-19.jpg" alt="John" />
+                <img src="../assets/photo_2021-06-02_21-18-01.jpg" alt="ehsan" />
               </v-avatar>
             </div>
             <v-card-title class="justify-center">
-              <h3 style="color:white">به آفرین امام</h3>
+              <h3 style="color:white">احسان جلالی</h3>
             </v-card-title>
 
             <v-card-subtitle class="justify-center">
@@ -43,7 +44,7 @@
 
             <v-card-text>
               <p style="color:white">
-                دانشجوی مهندسی نرم افزار دانشگاه اصفهان متخصص در دیتا ساینس
+                دانشجوی مهندسی نرم افزار دانشگاه اصفهان متخصص در بک اند
               </p>
               <div class="flex-center" style="background-color:#2D3B47">
                 <a class="fa fa-twitter fa-4x icon-3d"></a>
@@ -52,7 +53,8 @@
                 <a class="fa fa-whatsapp fa-4x icon-3d"></a>
               </div>
             </v-card-text> </v-card
-        ></v-col>
+        >
+        </v-col>
         <v-col
           ><v-card
             shaped
@@ -71,22 +73,22 @@
   "
                 size="200"
               >
-                <img src="../assets/photo_2021-05-16_17-55-19.jpg" alt="John" />
+                <img src="../assets/photo_2021-06-02_16-04-04.jpg" alt="John" />
               </v-avatar>
             </div>
             <v-card-title class="justify-center">
-              <h3 style="color:white">به آفرین امام</h3>
+              <h3 style="color:white">علی ماهوش محمدی</h3>
             </v-card-title>
 
             <v-card-subtitle class="justify-center">
               <h4 style="color:white" class="text-center">
-                توسعه دهنده بک اند
+                فول استک دولوپر , دیتا ساینس کار و مدیر پروژه
               </h4>
             </v-card-subtitle>
 
             <v-card-text>
               <p style="color:white">
-                دانشجوی مهندسی نرم افزار دانشگاه اصفهان متخصص در دیتا ساینس
+                دانشجوی مهندسی نرم افزار دانشگاه اصفهان متخصص در همه حوزه ها
               </p>
               <div class="flex-center" style="background-color:#2D3B47">
                 <a class="fa fa-twitter fa-4x icon-3d"></a>
@@ -97,10 +99,10 @@
             </v-card-text> </v-card
         ></v-col>
         <v-col
-          ><v-card
-           shaped
+          >
+          <v-card
+            shaped
             elevation="20"
-
             class="mx-auto"
             style="background-color:#2D3B47"
             max-width="344"
@@ -124,7 +126,7 @@
 
             <v-card-subtitle class="justify-center">
               <h4 style="color:white" class="text-center">
-                توسعه دهنده بک اند
+                دیتا ساینس کار
               </h4>
             </v-card-subtitle>
 
@@ -139,58 +141,14 @@
                 <a class="fa fa-whatsapp fa-4x icon-3d"></a>
               </div>
             </v-card-text> </v-card
-        ></v-col>
+        >
+        </v-col>
       </v-row>
       <v-row>
         <v-col
           ><v-card
             shaped
             elevation="20"
-
-            class="mx-auto"
-            style="background-color:#2D3B47"
-            max-width="344"
-          >
-            <div>
-              <br />
-              <v-avatar
-                class="center"
-                style="  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  "
-                size="200"
-              >
-                <img src="../assets/photo_2021-05-16_17-55-19.jpg" alt="John" />
-              </v-avatar>
-            </div>
-            <v-card-title class="justify-center">
-              <h3 style="color:white">به آفرین امام</h3>
-            </v-card-title>
-
-            <v-card-subtitle class="justify-center">
-              <h4 style="color:white" class="text-center">
-                توسعه دهنده بک اند
-              </h4>
-            </v-card-subtitle>
-
-            <v-card-text>
-              <p style="color:white">
-                دانشجوی مهندسی نرم افزار دانشگاه اصفهان متخصص در دیتا ساینس
-              </p>
-              <div class="flex-center" style="background-color:#2D3B47">
-                <a class="fa fa-twitter fa-4x icon-3d"></a>
-                <a class="fa fa-facebook fa-4x icon-3d"></a>
-                <a class="fa fa-instagram fa-4x icon-3d"></a>
-                <a class="fa fa-whatsapp fa-4x icon-3d"></a>
-              </div>
-            </v-card-text> </v-card
-        ></v-col>
-        <v-col
-          ><v-card
-            shaped
-            elevation="20"
-
             class="mx-auto"
             style="background-color:#2D3B47"
             max-width="344"
@@ -248,6 +206,49 @@
   "
                 size="200"
               >
+                <img src="../assets/photo_2021-06-02_21-17-33.jpg" alt="John" />
+              </v-avatar>
+            </div>
+            <v-card-title class="justify-center">
+              <h3 style="color:white">امیرحسین صفدریان</h3>
+            </v-card-title>
+
+            <v-card-subtitle class="justify-center">
+              <h4 style="color:white" class="text-center">
+                مدیر پروژه
+              </h4>
+            </v-card-subtitle>
+
+            <v-card-text>
+              <p style="color:white">
+                دانشجوی مهندسی نرم افزار دانشگاه اصفهان
+              </p>
+              <div class="flex-center" style="background-color:#2D3B47">
+                <a class="fa fa-twitter fa-4x icon-3d"></a>
+                <a class="fa fa-facebook fa-4x icon-3d"></a>
+                <a class="fa fa-instagram fa-4x icon-3d"></a>
+                <a class="fa fa-whatsapp fa-4x icon-3d"></a>
+              </div>
+            </v-card-text> </v-card
+        ></v-col>
+        <v-col
+          ><v-card
+            shaped
+            elevation="20"
+            class="mx-auto"
+            style="background-color:#2D3B47"
+            max-width="344"
+          >
+            <div>
+              <br />
+              <v-avatar
+                class="center"
+                style="  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  "
+                size="200"
+              >
                 <img src="../assets/photo_2021-05-16_17-55-19.jpg" alt="John" />
               </v-avatar>
             </div>
@@ -257,7 +258,7 @@
 
             <v-card-subtitle class="justify-center">
               <h4 style="color:white" class="text-center">
-                توسعه دهنده بک اند
+                تحلیلگر داده
               </h4>
             </v-card-subtitle>
 

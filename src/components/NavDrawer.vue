@@ -12,9 +12,10 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>{{ username }}</v-list-item-title>
-          <v-list-item-subtitle style="color: rgba(255, 255, 255, 1)">{{
-            useremail
-          }}</v-list-item-subtitle>
+          <v-list-item-subtitle style="color: rgba(255, 255, 255, 1)">
+            :اعتبار باقی مانده
+            {{ money }}</v-list-item-subtitle
+          >
         </v-list-item-content>
         <v-list-item-icon
           ><v-icon color="rgba(255, 255, 255, 1)"
@@ -68,16 +69,25 @@
 </template>
 <script>
 import { authcomputed } from "../store/helper.js";
+
 export default {
   computed: {
     ...authcomputed
   },
   data() {
     return {
-      name: "ni",
-      email: "ni@g.com",
+
+      name: "",
+      email: "",
+      money: null,
       drawer: true,
+
       ItemNavDrawer: [
+        {
+          title: "اطلاعات کاربری",
+          icon: "mdi-information-outline",
+          path: "/dashboard/profile"
+        },
         {
           title: "افزایش اعتبار",
           icon: "mdi-cash-plus",
@@ -86,7 +96,7 @@ export default {
         {
           title: "تاریخچه سرویس ها",
           icon: "mdi-history",
-          path: "/dashboard/HistoryOfServices"
+          path: "/HistoryOfServices"
         },
         {
           title: "تاریخچه پرداخت",
