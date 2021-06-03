@@ -16,7 +16,7 @@
               <v-btn class="ml-2" min-width="0" text v-bind="attrs" v-on="on">
                 <v-badge color="red" overlap bordered>
                   <template v-slot:badge>
-                    <span>5</span>
+                    <span>{{ notifications.length }}</span>
                   </template>
 
                   <v-icon>mdi-bell</v-icon>
@@ -30,7 +30,18 @@
                   v-for="(n, i) in notifications"
                   :key="`item-${i}`"
                 >
-                  <v-list-item-title v-text="n" />
+                  <v-list-item-title
+                    v-text="
+                      n.text +
+                        '   ' +
+                        '   ' +
+                        '   ' +
+                        '   ' +
+                        '   ' +
+                        '   ' +
+                        n.date
+                    "
+                  />
                 </app-bar-item>
               </div>
             </v-list>
@@ -138,19 +149,21 @@
 
 <script>
 import { authcomputed } from "../store/helper.js";
+import axios from "axios";
 export default {
   computed: { ...authcomputed },
   data() {
     return {
       notifications: [
-        "Mike John Responded to your email",
-        "You have 5 new tasks",
-        "You're now friends with Andrew",
-        "Another Notification"
+        // "Mike John Responded to your email",
+        // "You have 5 new tasks",
+        // "You're now friends with Andrew",
+        // "Another Notification"
       ],
       value: 1000,
       money: 0,
       amount: 0,
+
       numberRule: val => {
         if (val < 0) return "عدد مثبت وارد کنید";
         return true;
@@ -158,6 +171,9 @@ export default {
     };
   },
   created() {
+    axios.get("http://127.0.0.1:8000/User/notifications/").then(response => {
+      this.notifications = response.data;
+    });
     this.$store
       .dispatch("increasecredit")
       .then(() => {
