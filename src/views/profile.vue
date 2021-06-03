@@ -113,7 +113,7 @@
                 <v-col cols="12" sm="6">
                   <v-text-field
                     v-model="password"
-                    label="رمز عبور"
+                    label=" رمز عبور جدید"
                     filled
                     shaped
                     class="centered-input"
@@ -183,7 +183,7 @@ export default {
       ],
       username: "alimahvash",
       email: "alimahvashm@yahoo.ca",
-      password: "iran2014"
+      password: ""
     };
   },
   created() {
