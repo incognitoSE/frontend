@@ -11,7 +11,7 @@
                   <h2 style="color: white">
                     : قیمت تخمین زده ماشین
                   </h2></v-list-item-title
-                > 
+                >
               </v-list-item-content>
             </v-list-item>
             <v-list-item>

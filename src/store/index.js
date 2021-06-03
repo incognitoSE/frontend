@@ -9,11 +9,15 @@ export default new Vuex.Store({
     house: null,
     simcard: null,
     car: null,
+    houseresource: null,
     historyofservices: null,
     historyofpayment: null,
     increaseofcredit: null
   },
   mutations: {
+    SET_HOUSE_RESOURCES(state, houseresourcedata) {
+      state.houseresource = houseresourcedata;
+    },
     SET_DATA_USER(state, userdata) {
       state.user = userdata;
       localStorage.setItem("user", JSON.stringify(userdata));
@@ -54,6 +58,20 @@ export default new Vuex.Store({
   },
 
   actions: {
+    gethouseresource({ commit }) {
+      const mytoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .get("http://127.0.0.1:8000/HEstimator/House/", {
+          headers: {
+            Authorization: `Bearer ${mytoken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        })
+        .then(({ data }) => {
+          commit("SET_HOUSE_RESOURCES", data);
+        });
+    },
     login({ commit }, credentials) {
       return axios
         .post("http://127.0.0.1:8000/User/login/", credentials)
@@ -196,6 +214,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    houseresourcegetter(state) {
+      return state.houseresource;
+    },
     loggedin(state) {
       return !!state.user;
     },
