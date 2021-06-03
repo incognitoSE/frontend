@@ -172,21 +172,6 @@
           <v-spacer></v-spacer>
         </v-row>
       </div>
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
-          >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
-        </v-row>
-      </div>
     </div>
     <div v-else>
       <div id="main_div">
@@ -358,25 +343,53 @@
       </div>
       <HouseResult :formhouseforali="formhouseforali" />
       <houseservices :dataforromina="dataforromina" />
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
-          >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
-        </v-row>
-      </div>
     </div>
-    <div style="background-color: gray ; text-align: center">
-      im here
-      <img :src="houseresourceimage" />
+    <div>
+      <v-row no-gutters>
+        <v-col cols="12">
+          <v-carousel
+            cycle
+            class="myslideshow"
+            show-arrows-on-hover
+            hide-delimiter-background
+          >
+            <v-carousel-item
+              v-for="(pic, i) in slideshowpictahlel"
+              :key="i"
+              :src="pic.src"
+              contain
+              width="100%"
+              elevation="24"
+              class="sildeshowimg"
+              style="boxshadow: 5px #2d3b47 ; border: groove"
+            >
+            </v-carousel-item>
+          </v-carousel>
+          <!-- <v-card>
+            <v-img
+              :src="houseresourceimage"
+              class="white--text align-end"
+              sizes="cover"
+            ></v-img>
+            <v-card-title>عکس تحلیل</v-card-title>
+          </v-card>-->
+        </v-col>
+      </v-row>
+    </div>
+    <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
+      <v-row align="center" justify="space-around">
+        <v-btn
+          text
+          class="white--text my-12"
+          color="blue-grey"
+          :to="{ name: 'Home' }"
+        >
+          <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
+          <v-icon right color="rgba(255, 255, 255, 1)">
+            mdi-arrow-right-bold
+          </v-icon>
+        </v-btn>
+      </v-row>
     </div>
   </div>
 </template>
@@ -391,16 +404,17 @@ export default {
     houseservices
   },
   computed: {
-    ...authcomputed,
-    houseresourceimage() {
-      return `data:image/png;base64, ${this.houseresource}`;
-    }
+    ...authcomputed
+    /*  houseresourceimage(mysrc) {
+      return `data:image/png;base64, ${mysrc}`;
+    }*/
   },
   data() {
     return {
       houseimage: null,
-      houseresource: null,
+      houseresource: [],
       formvaildehome: false,
+      slideshowpictahlel: [],
       snackbar: {
         color: null,
         icon: null,
@@ -613,12 +627,12 @@ export default {
     this.$store
       .dispatch("gethouseresource")
       .then(() => {
-        this.houseresource = this.$store.getters.houseresourcegetter.images[0];
+        this.houseresource = this.$store.getters.houseresourcegetter.images;
         console.log("im here");
         console.log(this.houseresource);
+        this.onimageinslideshow();
       })
       .catch(err => console.log(err));
-    this.loadhouseimage();
   },
   methods: {
     onsubmitinfohouse(event) {
@@ -699,6 +713,24 @@ export default {
         this.$refs.formhouse.resetValidation();
         this.showkole = false;
       }
+    },
+    houseresourceimage(mysrc) {
+      return `data:image/png;base64, ${mysrc}`;
+    },
+    onimageinslideshow() {
+      var mysrces;
+      var myobject;
+      console.log("im in func");
+      for (let i = 0; i < this.houseresource.length; i++) {
+        mysrces = this.houseresourceimage(this.houseresource[i]);
+        console.log(mysrces);
+        console.log(i);
+        myobject = {
+          src: mysrces
+        };
+        this.slideshowpictahlel.push(myobject);
+        console.log(this.slideshowpictahlel);
+      }
     }
   }
 };
@@ -724,6 +756,12 @@ export default {
   overflow: hidden;
   position: relative;
 }
+/*.sildeshowimg {
+  height: 100vh;
+}
+.v-carousel-item img {
+  height: 100vh !important ;
+}*/
 .divlasti {
   max-height: 195px;
   height: 195px;
@@ -779,6 +817,11 @@ input {
 }
 input[type="number"] {
   width: 80%;
+}
+.myslideshow {
+  border: 5px solid rgba(45, 59, 71, 1);
+  box-shadow: 5px 5px 4px #aaaaaa;
+  padding: 3px;
 }
 *:focus {
   outline: none;

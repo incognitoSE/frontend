@@ -12,7 +12,9 @@ export default new Vuex.Store({
     houseresource: null,
     historyofservices: null,
     historyofpayment: null,
-    increaseofcredit: null
+    increaseofcredit: null,
+    username: null,
+    useremail: null
   },
   mutations: {
     SET_HOUSE_RESOURCES(state, houseresourcedata) {
@@ -20,6 +22,8 @@ export default new Vuex.Store({
     },
     SET_DATA_USER(state, userdata) {
       state.user = userdata;
+      state.username = userdata.name;
+      state.useremail = userdata.email;
       localStorage.setItem("user", JSON.stringify(userdata));
       axios.defaults.headers.common[
         "Authorization"
@@ -230,7 +234,12 @@ export default new Vuex.Store({
     simcardform(state) {
       return state.simcard;
     },
-
+    username(state) {
+      return state.username;
+    },
+    useremail(state) {
+      return state.useremail;
+    },
     userform(state) {
       return state.user;
     },

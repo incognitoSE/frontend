@@ -11,9 +11,9 @@
     <template v-slot:prepend>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>{{ name }}</v-list-item-title>
+          <v-list-item-title>{{ username }}</v-list-item-title>
           <v-list-item-subtitle style="color: rgba(255, 255, 255, 1)">{{
-            email
+            useremail
           }}</v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-icon
@@ -74,8 +74,8 @@ export default {
   },
   data() {
     return {
-      name: "Ali",
-      email: "AliMahvashm@yahoo.ca",
+      name: "ni",
+      email: "ni@g.com",
       drawer: true,
       ItemNavDrawer: [
         {
@@ -96,11 +96,13 @@ export default {
       ]
     };
   },
-  methods: {
-    myuser() {
+  created: {
+   /* myuser() {
       this.name = this.userform.name;
       this.email = this.userform.email;
-    }
+      console.log(this.name);
+      console.log(this.email);
+    }*/
   }
 };
 </script>
