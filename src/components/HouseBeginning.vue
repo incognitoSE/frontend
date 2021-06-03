@@ -393,6 +393,7 @@ export default {
   computed: {
     ...authcomputed,
     houseresourceimage() {
+      console.log(typeof `data:image/png;base64, ${this.houseresource}`);
       return `data:image/png;base64, ${this.houseresource}`;
     }
   },
@@ -615,11 +616,33 @@ export default {
       .then(() => {
         this.houseresource = this.$store.getters.houseresourcegetter.images[0];
         console.log("im here");
-        console.log(this.houseresource);
+        //  console.log(this.houseresource);
       })
-      .catch(err => console.log(err));
-    this.loadhouseimage();
+      .catch(err => {
+        console.log(err);
+        if (err.response.status === 401 && this.loggedin) {
+          console.log("im handle token with refresh");
+          this.$store
+            .dispatch("refreshtoken")
+            .then(() => {
+              console.log("yes it ok");
+              this.$store
+                .dispatch("gethouseresource")
+                .then(() => {
+                  this.houseresource = this.$store.getters.houseresourcegetter.images[0];
+                  //console.log(this.houseresource);
+                })
+                .catch(errrr => console.log(errrr.response));
+            })
+            .catch(er => {
+              console.log(er);
+              this.$store.dispatch("logout");
+              this.$router.push({ name: "Home" });
+            });
+        }
+      });
   },
+
   methods: {
     onsubmitinfohouse(event) {
       event.preventDefault();

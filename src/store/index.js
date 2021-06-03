@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: null,
+    email: null,
     house: null,
     simcard: null,
     car: null,
@@ -19,6 +20,7 @@ export default new Vuex.Store({
       state.houseresource = houseresourcedata;
     },
     SET_DATA_USER(state, userdata) {
+      console.log(userdata);
       state.user = userdata;
       localStorage.setItem("user", JSON.stringify(userdata));
       axios.defaults.headers.common[
@@ -54,6 +56,11 @@ export default new Vuex.Store({
     },
     SET_INCREASE_CREDIT(state, creditdata) {
       state.increaseofcredit = creditdata;
+    },
+    SAVE_EMAIL(state, credentioal) {
+      state.email = credentioal;
+      console.log("im in saveemail");
+      console.log(state.email);
     }
   },
 
@@ -73,6 +80,7 @@ export default new Vuex.Store({
         });
     },
     login({ commit }, credentials) {
+      console.log(credentials);
       return axios
         .post("http://127.0.0.1:8000/User/login/", credentials)
         .then(({ data }) => {
@@ -242,6 +250,9 @@ export default new Vuex.Store({
     },
     increasecreditform(state) {
       return state.increaseofcredit;
+    },
+    getemail(state) {
+      return state.email;
     }
   },
   modules: {}

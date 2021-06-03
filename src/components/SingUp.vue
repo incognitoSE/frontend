@@ -64,7 +64,7 @@
           <div v-if="errors.length != 0">
             <!--  <h3>{{ errors[0] }}</h3>-->
             <v-alert dense outlined type="error">
-             {{ errors }}
+              {{ errors }}
             </v-alert>
           </div>
           <div v-if="succ.length != 0">
@@ -152,9 +152,10 @@ export default {
           })
           .catch(error => {
             console.log(error.response);
-             console.log("im in err");
+            console.log("im in err");
             this.errors = "  کاربری با این ایمیل وجود دارد";
           });
+        this.$store.commit("SAVE_EMAIL", this.formDatasingup.email);
         this.formDatasingup.name = "";
         this.formDatasingup.email = "";
         this.formDatasingup.password = "";
