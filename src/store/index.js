@@ -98,6 +98,8 @@ export default new Vuex.Store({
           }
         })
         .then(({ data }) => {
+          console.log("im in houseresource");
+          console.log(data);
           commit("SET_HOUSE_RESOURCES", data);
         });
     },
