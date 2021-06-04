@@ -384,28 +384,43 @@
       <CarServices :dataforrominaCar="dataforrominaCar" />
     </div>
     <div>
-      <v-row no-gutters>
-        <v-col cols="12">
-          <v-carousel
-            cycle
-            class="myslideshow"
-            show-arrows-on-hover
-            hide-delimiter-background
-            height="auto"
+      <v-carousel cycle dark delimiter-icon="mdi-minus">
+        <v-carousel-item v-for="(picitem, i) in slideshowpictahlel" :key="i">
+          <h1 style="text-align: center" class="mt-3 mb-0">تحلیل قیمت ماشین</h1>
+          <v-sheet
+            height="100%"
+            color="white"
+            style="display: flex ; justify-contetn : space-between"
           >
-            <v-carousel-item
-              v-for="(pic, i) in slideshowpictahlel"
-              :key="i"
-              :src="pic.src"
-              contain
-              elevation="24"
-              class="sildeshowimg"
-              style="boxshadow: 5px #2d3b47 ; border: groove"
-            >
-            </v-carousel-item>
-          </v-carousel>
-        </v-col>
-      </v-row>
+            <v-row class="fill-height " align="center" justify="center">
+              <v-col md="4" sm="5" xs="6">
+                <v-card-text
+                  class="justify-left  text-left"
+                  tile
+                  style="color : black ; background-color: white"
+                >
+                  <div class="property">
+                    <span style="font-size : 15px ; margin-left:10px"
+                      >{{ picitem.text }}
+                    </span>
+                  </div>
+                </v-card-text>
+              </v-col>
+
+              <v-col md="4" sm="3" xs="3" id="picture">
+                <v-avatar
+                  id="pic"
+                  tile
+                  size="cover"
+                  style="margin-right : 20px "
+                >
+                  <v-img contain :src="picitem.src" />
+                </v-avatar>
+              </v-col>
+            </v-row>
+          </v-sheet>
+        </v-carousel-item>
+      </v-carousel>
     </div>
     <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
       <v-row align="center" justify="space-around">
@@ -503,7 +518,7 @@ export default {
     this.$store
       .dispatch("getcarresource")
       .then(() => {
-        this.carresource = this.carresourcegetter.images;
+        this.carresource = this.carresourcegetter.imagesAndTexts;
         console.log("im here");
         console.log(this.carresource);
         this.onimageinslideshow();
@@ -518,7 +533,7 @@ export default {
               this.$store
                 .dispatch("getcarresource")
                 .then(() => {
-                  this.carresource = this.carresourcegetter.images;
+                  this.carresource = this.carresourcegetter.imagesAndTexts;
                   console.log("im here");
                   console.log(this.carresource);
                   this.onimageinslideshow();
@@ -627,11 +642,12 @@ export default {
       var myobject;
       console.log("im in func");
       for (let i = 0; i < this.carresource.length; i++) {
-        mysrces = this.carresourceimage(this.carresource[i]);
+        mysrces = this.carresourceimage(this.carresource[i].image);
         console.log(mysrces);
         console.log(i);
         myobject = {
-          src: mysrces
+          src: mysrces,
+          text: this.carresource[i].text
         };
         this.slideshowpictahlel.push(myobject);
         console.log(this.slideshowpictahlel);
@@ -649,6 +665,19 @@ export default {
 * {
   font-family: IRANSans;
   color: #2d3b47;
+}
+#pic {
+  display: inline;
+  width: 450px;
+  height: 450px;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.property {
+  margin: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 .h1class {
   text-align: center;
