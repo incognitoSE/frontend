@@ -266,6 +266,23 @@ export default new Vuex.Store({
           console.log(data);
           commit("SET_INCREASE_CREDIT_USER", data);
         });
+    },
+    changepassworld(password) {
+      console.log("im in change part");
+      console.log(password);
+      const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .post("http://127.0.0.1:8000/User/changepassword/", password, {
+          headers: {
+            Authorization: `Bearer ${myaccesstoken}`,
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        })
+        .then(data => {
+          console.log(data);
+          console.log("im in then changepassworld");
+        });
     }
   },
   getters: {

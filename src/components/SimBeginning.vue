@@ -282,7 +282,7 @@
                   dense
                   placeholder="دائمی"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  v-model="formDataSim.daemi"
+                  v-model.number="formDataSim.daemi"
                   :rules="mataghrulse"
                   shaped
                   reverse
