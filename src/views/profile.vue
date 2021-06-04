@@ -52,10 +52,7 @@
           <v-card class="mx-auto" elevation="2" max-width="700" outlined shaped>
             <v-list-item three-line>
               <v-list-item-content>
-                <div
-                  class="text-overline mb-4"
-                  style="  text-align: right;"
-                >
+                <div class="text-overline mb-4" style="  text-align: right;">
                   <h1>!کاربر گرامی به رابین خوش آمدید</h1>
                 </div>
                 <v-list-item-title class="text-h5 mb-1">
@@ -232,7 +229,7 @@ export default {
         })
         .then(response => {
           console.log(response.data);
-        });*/
+        });
       console.log("im in changepass");
       console.log(this.formDatasingup.password);
       this.$store
@@ -270,14 +267,14 @@ export default {
   },
   //};
 
-    onsubmitinfsingup(event) {
-      event.preventDefault();
+  onsubmitinfsingup(event) {
+    event.preventDefault();
 
-      this.formDatasingup.name = "";
-      this.formDatasingup.email = "";
-      this.formDatasingup.password = "";
-      this.errors = "";
-      this.succ = "";*/
+    this.formDatasingup.name = "";
+    this.formDatasingup.email = "";
+    this.formDatasingup.password = "";
+    this.errors = "";
+    this.succ = "";
     //this.password = " ";
     this.$refs.singupform.resetValidation();
     //}

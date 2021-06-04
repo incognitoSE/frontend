@@ -16,16 +16,19 @@
             v-if="!ismonyform"
             style="color: rgba(255, 255, 255, 1)"
           >
-            :اعتبار باقی مانده
-            {{ money }}</v-list-item-subtitle
+            اعتبار باقی مانده:
+            {{ money }}
+            تومان
+            </v-list-item-subtitle
           >
           <v-list-item-subtitle
             v-if="ismonyform"
             style="color: rgba(255, 255, 255, 1)"
           >
             :اعتبار باقی مانده
-            {{ increasemoney.current_amount }}</v-list-item-subtitle
-          >
+
+            {{ increasemoney.current_amount }}
+          </v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-icon
           ><v-icon color="rgba(255, 255, 255, 1)"
