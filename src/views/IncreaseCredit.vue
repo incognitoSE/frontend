@@ -161,7 +161,7 @@ export default {
         // "Another Notification"
       ],
       value: 1000,
-      money: 0,
+      money: null,
       amount: 0,
 
       numberRule: val => {
@@ -198,7 +198,10 @@ export default {
       this.amount = parseInt(this.value);
       this.$store
         .dispatch("usercredit", { amount: this.amount })
-        .then(() => console.log("yess money"));
+        .then(() => console.log("yess money"))
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
