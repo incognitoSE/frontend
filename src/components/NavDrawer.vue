@@ -78,6 +78,7 @@ export default {
     return {
       money: null,
       drawer: true,
+      username:" ",
       ItemNavDrawer: [
         {
           title: "اطلاعات کاربری",

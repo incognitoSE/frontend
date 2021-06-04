@@ -6,22 +6,20 @@
           <v-spacer></v-spacer>
 
           <v-col
-            ><v-card-title >
+            ><v-card-title>
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title style="text-align: center;">
                     <div class="counter">
-                      <i
-                        class="fa fa-coffee fa-2x"
-                        style="text-align: center;"
-                      ><h1>+570</h1></i>
+                      <i class="fa fa-coffee fa-2x" style="text-align: center;"
+                        ><h1>{{ users }}</h1></i
+                      >
                       <h1
                         class="timer count-title count-number"
                         data-to="1700"
                         data-speed="1500"
                         style="text-align: center; "
                       >
-                       
                         <v-card-text><p>تعداد کاربران سامانه</p></v-card-text>
                       </h1>
                     </div>
@@ -38,17 +36,15 @@
                 <v-list-item-content>
                   <v-list-item-title style="text-align: center;">
                     <div class="counter">
-                      <i
-                        class="fa fa-coffee fa-2x"
-                        style="text-align: center;"
-                      ><h1>+1300</h1></i>
+                      <i class="fa fa-coffee fa-2x" style="text-align: center;"
+                        ><h1>{{ history }}</h1></i
+                      >
                       <h1
                         class="timer count-title count-number"
                         data-to="1700"
                         data-speed="1500"
                         style="text-align: center; "
                       >
-                       
                         <v-card-text
                           ><p>تعداد استفاده از سامانه</p></v-card-text
                         >
@@ -58,7 +54,7 @@
                 </v-list-item-content>
               </v-list-item></v-card-title
             >
-            
+
             <v-card-text></v-card-text>
           </v-col>
 
@@ -70,7 +66,21 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      users: 24,
+      history: 223,
+      created() {
+        axios.get("http://127.0.0.1:8000/User/stats/").then(response => {
+          this.users = response.data.users;
+          this.history = response.data.history;
+        });
+      }
+    };
+  }
+};
 </script>
 
 <style scope>

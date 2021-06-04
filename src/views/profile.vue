@@ -81,30 +81,32 @@
               <v-row>
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
-                  <v-text-field
-                    v-model="username"
+                  <p
                     label="نام کاربری"
                     filled
                     shaped
                     class="centered-input"
                     reverse
                     readonly
-                  ></v-text-field>
+                  >
+                    {{ username }}&nbsp;&nbsp;&nbsp;:نام کاربری
+                  </p>
                 </v-col>
                 <v-col></v-col>
               </v-row>
               <v-row>
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
-                  <v-text-field
-                    v-model="useremail"
+                  <p
                     label="ایمیل"
                     filled
                     shaped
                     class="centered-input"
                     reverse
                     readonly
-                  ></v-text-field>
+                  >
+                    {{ email }}&nbsp;&nbsp;&nbsp;:ایمیل
+                  </p>
                 </v-col>
                 <v-col></v-col>
               </v-row>
@@ -194,6 +196,8 @@ export default {
   computed: { ...authcomputed },
   data() {
     return {
+      username:"ali",
+      email:"alimahvash@yahoo.ca",
       formDatasingup: {
         password: ""
       },
