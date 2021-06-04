@@ -57,7 +57,7 @@
                   style="  text-align: right;
 "
                 >
-                  <h1>!کاربر {{ username }} به رابین خوش آمدید</h1>
+                  <h1>!کاربر گرامی به رابین خوش آمدید</h1>
                 </div>
                 <v-list-item-title class="text-h5 mb-1">
                   <p>
@@ -89,7 +89,7 @@
                     reverse
                     readonly
                   >
-                    {{ username }}&nbsp;&nbsp;&nbsp;:نام کاربری
+                    {{ usernameform }}&nbsp;&nbsp;&nbsp;:نام کاربری
                   </p>
                 </v-col>
                 <v-col></v-col>
@@ -105,7 +105,7 @@
                     reverse
                     readonly
                   >
-                    {{ email }}&nbsp;&nbsp;&nbsp;:ایمیل
+                    {{ useremailform }}&nbsp;&nbsp;&nbsp;:ایمیل
                   </p>
                 </v-col>
                 <v-col></v-col>
@@ -192,8 +192,6 @@ export default {
   computed: { ...authcomputed },
   data() {
     return {
-      username: "ali",
-      email: "alimahvash@yahoo.ca",
       formDatasingup: {
         password: ""
       },
