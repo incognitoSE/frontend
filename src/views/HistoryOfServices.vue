@@ -46,12 +46,18 @@
             :headers="headers"
             :items="desserts"
             class="elevation-1"
+
+                :single-expand="singleExpand"
+    :expanded.sync="expanded"
+    item-key="name"
+    show-expand
+
           >
-            <template v-slot:item.actions="{ item }">
+            <!-- <template v-slot:item.actions="{ item }">
               <v-icon small @click="editItem(item)">
                 mdi-arrow-up-bold-box-outline
               </v-icon>
-            </template>
+            </template> -->
             <template v-slot:no-data>
               <v-alert dense outlined type="error">
                 هیچ <strong>سرویسی</strong> استفاده نشده است
@@ -113,6 +119,11 @@
                 </v-dialog>
               </v-toolbar>
             </template>
+             <template v-slot:expanded-item="{ headers, item }">
+      <td :colspan="headers.length">
+        More info about {{ item.data }}
+      </td>
+    </template>
           </v-data-table>
         </v-col>
       </v-row>
@@ -132,6 +143,10 @@ export default {
       // "You're now friends with Andrew",
       // "Another Notification"
     ],
+
+    expanded: [],
+        singleExpand: false,
+
     dialog: false,
     dialogDelete: false,
     headers: [
@@ -228,11 +243,12 @@ export default {
   methods: {
     initialize() {
       this.desserts = [
-        // {
-        //   date: "13/2/1379",
-        //   price: "1200T",
-        //   model: "ماشین"
-        // },
+        {
+          date: "13/2/1379",
+          price: "1200T",
+          model: "ماشین",
+          data:"sdasdasda"
+         },
         // {
         //   date: "13/2/1379",
         //   price: "1200T",

@@ -81,7 +81,7 @@ export default {
       email: "",
       money: null,
       drawer: true,
-
+      username:" ",
       ItemNavDrawer: [
         {
           title: "اطلاعات کاربری",
