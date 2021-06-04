@@ -186,13 +186,13 @@
 
 <script>
 import axios from "axios";
+import { authcomputed } from "../store/helper.js";
 export default {
+  computed: { ...authcomputed },
   data() {
     return {
-      username: "ali",
-      email: "alimahvash@yahoo.ca",
       formDatasingup: {
-        password: null
+        password: ""
       },
       formvalidi: false,
       showpassword: false,
@@ -221,14 +221,13 @@ export default {
     });
   },
   methods: {
-
     onsubmitinchangepassword(event) {
       event.preventDefault();
       if (this.$refs.singupform.validate()) {
         console.log("im in changepass");
         console.log(this.formDatasingup.password);
         this.$store
-          .dispatch("changepassworld", {
+          .dispatch("changepassword", {
             password: this.formDatasingup.password
           })
           .then(() => {
@@ -261,13 +260,7 @@ export default {
       }
       this.$refs.singupform.resetValidation();
     }
-
-
   }
-
-
-
-  
 };
 </script>
 
