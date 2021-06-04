@@ -18,7 +18,7 @@
                   میخورد</v-expansion-panel-header
                 >
                 <v-expansion-panel-content class="text-lg-right ">
-                  رابین به هیچ دردی نمیخورد
+                  رابین به درد میخورد
                 </v-expansion-panel-content>
               </v-expansion-panel>
               <v-expansion-panel>
