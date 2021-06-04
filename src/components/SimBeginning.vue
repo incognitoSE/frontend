@@ -345,29 +345,60 @@
       <SimResult :formsimcardforali="formsimcardforali" />
       <SimServices :dataforrominaSIM="dataforrominaSIM" />
     </div>
-    <div>
-      <v-row no-gutters>
-        <v-col cols="12">
-          <v-carousel
-            cycle
-            class="myslideshow"
-            show-arrows-on-hover
-            hide-delimiter-background
-            height="auto"
+     <div>
+      <v-card outlined tile >
+        <v-card-text style="border-style: groove ; border-color:#2d3b47" >
+          <div
+            style="text-align: center ; font-size : 20px ; font-weight: bold ; margin: 12px"
           >
-            <v-carousel-item
-              v-for="(pic, i) in slideshowpictahlel"
-              :key="i"
-              :src="pic.src"
-              contain
-              elevation="24"
-              class="sildeshowimg"
-              style="boxshadow: 5px #2d3b47 ; border: groove"
-            >
-            </v-carousel-item>
-          </v-carousel>
-        </v-col>
-      </v-row>
+            درباره قیمت سیم کارت
+          </div>
+          <div style="font-size : 16px; margin: 20px ; padding:12px">
+            {{ simmaintext }}
+          </div>
+        </v-card-text>
+      </v-card>
+    </div>
+    <div>
+      <v-carousel cycle dark delimiter-icon="mdi-minus">
+        <v-carousel-item v-for="(picitem, i) in slideshowpictahlel" :key="i">
+          <h1 style="text-align: center" class="mt-3 mb-0">
+            تحلیل قیمت سیم کارت
+          </h1>
+          <v-sheet
+            height="100%"
+            color="white"
+            style="display: flex ; justify-contetn : space-between"
+          >
+            <v-row class="fill-height " align="center" justify="center">
+              <v-col md="4" sm="5" xs="6">
+                <v-card-text
+                  class="justify-left  text-left"
+                  tile
+                  style="color : black ; background-color: white"
+                >
+                  <div class="property">
+                    <span style="font-size : 15px ; margin-left:10px"
+                      >{{ picitem.text }}
+                    </span>
+                  </div>
+                </v-card-text>
+              </v-col>
+
+              <v-col md="4" sm="3" xs="3" id="picture">
+                <v-avatar
+                  id="pic"
+                  tile
+                  size="cover"
+                  style="margin-right : 20px "
+                >
+                  <v-img contain :src="picitem.src" />
+                </v-avatar>
+              </v-col>
+            </v-row>
+          </v-sheet>
+        </v-carousel-item>
+      </v-carousel>
     </div>
     <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
       <v-row align="center" justify="space-around">
@@ -401,6 +432,7 @@ export default {
     return {
       formvaildesim: false,
       simresource: [],
+      simmaintext: null,
       slideshowpictahlel: [],
       formDataSim: {
         number: null,
@@ -441,7 +473,10 @@ export default {
     this.$store
       .dispatch("getsimresource")
       .then(() => {
-        this.simresource = this.simresourcegetter.images;
+
+        this.simresource = this.simresourcegetter.imagesAndTexts;
+        // this.simresource = this.simresourcegetter.images;
+        this.simmaintext = this.simresourcegetter.mainText;
         console.log("im here");
         console.log(this.simresource);
         this.onimageinslideshow();
@@ -456,7 +491,7 @@ export default {
               this.$store
                 .dispatch("getsimresource")
                 .then(() => {
-                  this.simresource = this.simresourcegetter.images;
+                  this.simresource = this.simresourcegetter.imagesAndTexts;
                   console.log("im here");
                   console.log(this.simresource);
                   this.onimageinslideshow();
@@ -552,11 +587,12 @@ export default {
       var myobject;
       console.log("im in func");
       for (let i = 0; i < this.simresource.length; i++) {
-        mysrces = this.simresourceimage(this.simresource[i]);
+        mysrces = this.simresourceimage(this.simresource[i].image);
         console.log(mysrces);
         console.log(i);
         myobject = {
-          src: mysrces
+          src: mysrces,
+          text: this.simresource[i].text
         };
         this.slideshowpictahlel.push(myobject);
         console.log(this.slideshowpictahlel);
@@ -574,6 +610,19 @@ export default {
 * {
   font-family: IRANSans;
   color: #2d3b47;
+}
+#pic {
+  display: inline;
+  width: 450px;
+  height: 450px;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.property {
+  margin: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 .h1class {
   text-align: center;

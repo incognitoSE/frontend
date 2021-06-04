@@ -19,8 +19,7 @@
             اعتبار باقی مانده:
             {{ money }}
             تومان
-            </v-list-item-subtitle
-          >
+          </v-list-item-subtitle>
           <v-list-item-subtitle
             v-if="ismonyform"
             style="color: rgba(255, 255, 255, 1)"
