@@ -54,10 +54,9 @@
               <v-list-item-content>
                 <div
                   class="text-overline mb-4"
-                  style="  text-align: right;
-"
+                  style="  text-align: right;"
                 >
-                  <h1>!کاربر {{ username }} به رابین خوش آمدید</h1>
+                  <h1>!کاربر گرامی به رابین خوش آمدید</h1>
                 </div>
                 <v-list-item-title class="text-h5 mb-1">
                   <p>
@@ -89,7 +88,7 @@
                     reverse
                     readonly
                   >
-                    {{ username }}&nbsp;&nbsp;&nbsp;:نام کاربری
+                    {{ usernameform }}&nbsp;&nbsp;&nbsp;:نام کاربری
                   </p>
                 </v-col>
                 <v-col></v-col>
@@ -105,7 +104,7 @@
                     reverse
                     readonly
                   >
-                    {{ email }}&nbsp;&nbsp;&nbsp;:ایمیل
+                    {{ useremailform }}&nbsp;&nbsp;&nbsp;:ایمیل
                   </p>
                 </v-col>
                 <v-col></v-col>
@@ -114,9 +113,9 @@
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
                   <v-form
-                    @submit="onsubmitinfsingup"
                     ref="singupform"
                     v-model="formvalidi"
+                    submit="onsubmitinchangepassword"
                   >
                     <v-text-field
                       v-model="formDatasingup.password"
@@ -204,12 +203,7 @@ export default {
       snackbar: false,
       text: "رمز با موفقیت تغییر پیدا کرد",
       timeout: 2000,
-      notifications: [
-        // "Mike John Responded to your email",
-        // "You have 5 new tasks",
-        // "You're now friends with Andrew",
-        // "Another Notification"
-      ],
+      notifications: [],
 
       passwordrules: {
         required: value =>
@@ -238,8 +232,43 @@ export default {
         })
         .then(response => {
           console.log(response.data);
+        });*/
+      console.log("im in changepass");
+      console.log(this.formDatasingup.password);
+      this.$store
+        .dispatch("changepassworld", {
+          password: this.formDatasingup.password
+        })
+        .then(() => {
+          this.snackbar = true;
+        })
+        .catch(err => {
+          console.log(err.response);
+          if (err.response.status === 401 && this.loggedin) {
+            this.$store
+              .dispatch("refreshtoken")
+              .then(() => {
+                console.log("yes it ok");
+                this.$store
+                  .dispatch("changepassworld", {
+                    email: this.useremailform
+                  })
+                  .then(() => {
+                    console.log("yes im done");
+                    this.snackbar = true;
+                  })
+                  .catch(errrr => console.log(errrr.response));
+              })
+              .catch(er => {
+                console.log(er);
+                this.$store.dispatch("logout");
+                this.$router.push({ name: "Home" });
+              });
+          }
         });
-    },
+    }
+  },
+  //};
 
     onsubmitinfsingup(event) {
       event.preventDefault();
@@ -248,10 +277,21 @@ export default {
       this.formDatasingup.email = "";
       this.formDatasingup.password = "";
       this.errors = "";
-      this.succ = "";
-      this.$refs.singupform.resetValidation();
-    }
+      this.succ = "";*/
+    //this.password = " ";
+    this.$refs.singupform.resetValidation();
+    //}
   }
+  /* onclosesingup() {
+    this.dialog = false;
+    this.formDatasingup.name = "";
+    this.formDatasingup.email = "";
+    this.formDatasingup.password = "";
+    this.errors = "";
+    this.succ = "";
+    this.$refs.singupform.resetValidation();
+  }*/
+  //}
 };
 </script>
 

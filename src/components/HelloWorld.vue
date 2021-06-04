@@ -8,7 +8,7 @@
           <v-btn @click="logout" rounded small text style="color: #ffffff"
             >خروج</v-btn
           >
-          <v-btn rounded small text style="color: #ffffff" to=/dashboard/profile>داشبورد </v-btn>
+          <v-btn rounded small text style="color: #ffffff" to=/profile>داشبورد </v-btn>
           <router-view></router-view>
         </div>
 
