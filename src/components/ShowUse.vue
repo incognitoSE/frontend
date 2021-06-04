@@ -70,12 +70,14 @@ import axios from "axios";
 export default {
   data() {
     return {
-      users: 24,
-      history: 223,
+      users: null,
+      history: history,
       created() {
         axios.get("http://127.0.0.1:8000/User/stats/").then(response => {
           this.users = response.data.users;
           this.history = response.data.history;
+          console.log(response.data);
+          console.log("sdasdasd");
         });
       }
     };
