@@ -677,7 +677,7 @@ export default {
         this.houseresource = this.houseresourcegetter.imagesAndTexts;
         console.log("im here");
         this.housemaintext = this.houseresourcegetter.mainText;
-        this.houseresource = this.houseresourcegetter.imagesANDTextts;
+        // this.houseresource = this.houseresourcegetter.imagesANDTextts;
         //  console.log(this.houseresource.Texts.imagesAndTexts);
         // console.log(this.houseresource.mainText);
         this.onimageinslideshow();
