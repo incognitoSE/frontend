@@ -113,7 +113,11 @@
               <v-row>
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
-                  <v-form ref="singupform" v-model="formvalidi">
+                  <v-form
+                    ref="singupform"
+                    v-model="formvalidi"
+                    submit="onsubmitinchangepassword"
+                  >
                     <v-text-field
                       v-model="formDatasingup.password"
                       label=" رمز عبور جدید"
@@ -238,10 +242,11 @@ export default {
         .then(response => {
           console.log(response.data);
         });*/
-      console.log(this.useremailform);
+      console.log("im in changepass");
+      console.log(this.formDatasingup.password);
       this.$store
         .dispatch("changepassworld", {
-          email: this.useremailform
+          password: this.formDatasingup.password
         })
         .then(() => {
           this.snackbar = true;
@@ -271,46 +276,47 @@ export default {
           }
         });
     }
-  }
-};
+  },
+  //};
 
-/* onsubmitinfsingup(event) {
-      event.preventDefault();
-      if (this.$refs.singupform.validate()) {
-        this.$store
-          .dispatch("register", {
-            name: this.formDatasingup.name,
-            email: this.formDatasingup.email,
-            password: this.formDatasingup.password
-          })
-          .then(() => {
-            console.log("im in then");
-            this.succ = ".ثبت نام با موفقیت انجام شد";
-          })
-          .catch(error => {
-            console.log(error.response);
-            console.log("im in err");
-            this.errors = "  کاربری با این ایمیل وجود دارد";
-          });
-        this.formDatasingup.name = "";
-        this.formDatasingup.email = "";
-        this.formDatasingup.password = "";
-        this.errors = "";
-        this.succ = "";
-        this.$refs.singupform.resetValidation();
-      }
-    },
-    onclosesingup() {
-      this.dialog = false;
-      this.formDatasingup.name = "";
+  onsubmitinchangepassword(event) {
+    event.preventDefault();
+    /*if (this.$refs.singupform.validate()) {
+      this.$store
+        .dispatch("register", {
+          name: this.formDatasingup.name,
+          email: this.formDatasingup.email,
+          password: this.formDatasingup.password
+        })
+        .then(() => {
+          console.log("im in then");
+          this.succ = ".ثبت نام با موفقیت انجام شد";
+        })
+        .catch(error => {
+          console.log(error.response);
+          console.log("im in err");
+          this.errors = "  کاربری با این ایمیل وجود دارد";
+        });*/
+    /*  this.formDatasingup.name = "";
       this.formDatasingup.email = "";
       this.formDatasingup.password = "";
       this.errors = "";
-      this.succ = "";
-      this.$refs.singupform.resetValidation();
-    }
+      this.succ = "";*/
+    //this.password = " ";
+    this.$refs.singupform.resetValidation();
+    //}
   }
-};*/
+  /* onclosesingup() {
+    this.dialog = false;
+    this.formDatasingup.name = "";
+    this.formDatasingup.email = "";
+    this.formDatasingup.password = "";
+    this.errors = "";
+    this.succ = "";
+    this.$refs.singupform.resetValidation();
+  }*/
+  //}
+};
 </script>
 
 <style scoped>
