@@ -10,12 +10,14 @@ export default new Vuex.Store({
     house: null,
     simcard: null,
     car: null,
+    ismoney: false,
     houseresource: null,
     carresource: null,
     simresource: null,
     historyofservices: null,
     historyofpayment: null,
     increaseofcredit: null,
+    increasemoney: null,
     username: null,
     useremail: null
   },
@@ -74,6 +76,10 @@ export default new Vuex.Store({
     },
     SET_SIM_RESOURCES(state, simresurse) {
       state.simresource = simresurse;
+    },
+    SET_INCREASE_CREDIT_USER(state, increasmoney) {
+      state.increasemoney = increasmoney;
+      state.ismoney = true;
     }
   },
 
@@ -246,7 +252,7 @@ export default new Vuex.Store({
           commit("SET_INCREASE_CREDIT", data);
         });
     },
-    usercredit(useramount) {
+    usercredit({ commit }, useramount) {
       const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
       return axios
         .post("http://127.0.0.1:8000/User/userwallet/", useramount, {
@@ -258,6 +264,7 @@ export default new Vuex.Store({
         })
         .then(data => {
           console.log(data);
+          commit("SET_INCREASE_CREDIT_USER", data);
         });
     }
   },
@@ -287,6 +294,9 @@ export default new Vuex.Store({
     usernameform(state) {
       return state.username;
     },
+    ismonyform(state){
+       return state.ismoney;
+    },
     useremailform(state) {
       return state.useremail;
     },
@@ -301,6 +311,9 @@ export default new Vuex.Store({
     },
     increasecreditform(state) {
       return state.increaseofcredit;
+    },
+    increasemoney(state) {
+      return state.increasemoney.data;
     },
     getemail(state) {
       return state.email;

@@ -68,79 +68,80 @@
           <h2 style="text-align:center;">مقدار {{ money }} تومان</h2>
           <br />
           <br />
+          <v-form @submit="increment4" ref="formmony">
+            <v-row>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col> </v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+            </v-row>
+            <v-row>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col
+                ><v-btn
+                  style="background-color: #2d3b47; color:white;"
+                  dark
+                  @click="increment"
+                  >5,000</v-btn
+                ></v-col
+              >
+              <v-col
+                ><v-btn
+                  style="background-color: #2d3b47;  color:white;"
+                  @click="increment1"
+                  >10,000</v-btn
+                ></v-col
+              >
+              <v-col
+                ><v-btn
+                  style="background-color: #2d3b47; color:white;"
+                  @click="increment2"
+                  >20,000</v-btn
+                ></v-col
+              >
 
-          <v-row>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col> </v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-          </v-row>
-          <v-row>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col
-              ><v-btn
-                style="background-color: #2d3b47; color:white;"
-                dark
-                @click="increment"
-                >5,000</v-btn
-              ></v-col
-            >
-            <v-col
-              ><v-btn
-                style="background-color: #2d3b47;  color:white;"
-                @click="increment1"
-                >10,000</v-btn
-              ></v-col
-            >
-            <v-col
-              ><v-btn
-                style="background-color: #2d3b47; color:white;"
-                @click="increment2"
-                >20,000</v-btn
-              ></v-col
-            >
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+            </v-row>
+            <v-row>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-text-field
+                value="1000"
+                prefix="تومان"
+                v-model="value"
+                type="number"
+                :rules="[numberRule]"
+              ></v-text-field>
 
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-          </v-row>
-          <v-row>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-text-field
-              value="1000"
-              prefix="تومان"
-              v-model="value"
-              type="number"
-              :rules="[numberRule]"
-            ></v-text-field>
-
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-          </v-row>
-          <v-row>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-btn color="success" @click="increment4">افزایش اعتبار</v-btn>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-          </v-row>
-          <v-row
-            ><div><br /></div
-          ></v-row>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+            </v-row>
+            <v-row>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-btn color="success" type="submit">افزایش اعتبار</v-btn>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+              <v-col></v-col>
+            </v-row>
+            <v-row
+              ><div><br /></div
+            ></v-row>
+          </v-form>
         </v-container>
       </v-card>
     </v-col>
@@ -163,6 +164,7 @@ export default {
       value: 1000,
       money: null,
       amount: 0,
+      formmoney: {},
 
       numberRule: val => {
         if (val < 0) return "عدد مثبت وارد کنید";
@@ -193,15 +195,64 @@ export default {
     increment2() {
       this.value = 20000;
     },
-    increment4() {
+    /* increment4() {
       this.money = parseInt(this.money) + parseInt(this.value);
       this.amount = parseInt(this.value);
       this.$store
         .dispatch("usercredit", { amount: this.amount })
-        .then(() => console.log("yess money"))
+        .then(() => {
+          console.log("yess money");
+          this.money = this.increasecreditform.current_amount;
+        })
         .catch(err => {
           console.log(err);
         });
+    },*/
+    increment4(event) {
+      this.amount = parseInt(this.value);
+      event.preventDefault();
+      //var cleartime;
+      this.formmoney = {
+        amount: this.amount
+      };
+      if (this.$refs.formmony.validate()) {
+        this.$store
+          .dispatch("usercredit", {
+            amount: this.amount
+          })
+          .then(() => {
+            console.log("yesssss");
+            console.log("yess money");
+            this.money = this.increasemoney.current_amount;
+            console.log(this.money);
+            console.log(this.increasemoney.current_amount);
+          })
+          .catch(err => {
+            console.log(err.response);
+            if (err.response.status === 401 && this.loggedin) {
+              this.$store
+                .dispatch("refreshtoken")
+                .then(() => {
+                  console.log("yes it ok");
+                  this.$store
+                    .dispatch("usercredit", {
+                      amount: this.formmoney.amount
+                    })
+                    .then(() => {
+                      console.log("yes im done");
+                      this.money = this.increasemoney.current_amount;
+                    })
+                    .catch(errrr => console.log(errrr.response));
+                })
+                .catch(er => {
+                  console.log(er);
+                  this.$store.dispatch("logout");
+                  this.$router.push({ name: "Home" });
+                });
+            }
+          });
+        //this.$refs.formhouse.resetValidation();
+      }
     }
   }
 };

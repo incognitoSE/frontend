@@ -13,6 +13,8 @@ export const authcomputed = {
     "simcardform",
     "usernameform",
     "useremailform",
+    "increasemoney",
+    "ismonyform",
     "carresourcegetter",
     "houseresourcegetter",
     "simresourcegetter"
