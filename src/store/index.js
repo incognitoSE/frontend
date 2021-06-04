@@ -276,10 +276,10 @@ export default new Vuex.Store({
     simcardform(state) {
       return state.simcard;
     },
-    username(state) {
+    usernameform(state) {
       return state.username;
     },
-    useremail(state) {
+    useremailform(state) {
       return state.useremail;
     },
     userform(state) {

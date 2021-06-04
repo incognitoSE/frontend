@@ -57,7 +57,7 @@
                   style="  text-align: right;
 "
                 >
-                  <h1>!کاربر علی ماهوش به رابین خوش آمدید</h1>
+                  <h1>!کاربر {{ username }} به رابین خوش آمدید</h1>
                 </div>
                 <v-list-item-title class="text-h5 mb-1">
                   <p>
@@ -97,7 +97,7 @@
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
                   <v-text-field
-                    v-model="email"
+                    v-model="useremail"
                     label="ایمیل"
                     filled
                     shaped
@@ -208,8 +208,6 @@ export default {
         // "You're now friends with Andrew",
         // "Another Notification"
       ],
-      username: "alimahvash",
-      email: "alimahvashm@yahoo.ca",
 
       passwordrules: {
         required: value =>
