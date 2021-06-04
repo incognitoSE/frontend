@@ -113,11 +113,7 @@
               <v-row>
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
-                  <v-form
-                    @submit="onsubmitinfsingup"
-                    ref="singupform"
-                    v-model="formvalidi"
-                  >
+                  <v-form ref="singupform" v-model="formvalidi">
                     <v-text-field
                       v-model="formDatasingup.password"
                       label=" رمز عبور جدید"
@@ -136,7 +132,7 @@
                     <div class="text-center">
                       <v-btn
                         color="primary"
-                        @click="increment4, (snackbar = true)"
+                        @click="change"
                         :disabled="!formvalidi"
                         type="submit"
                       >
@@ -196,8 +192,8 @@ export default {
   computed: { ...authcomputed },
   data() {
     return {
-      username:"ali",
-      email:"alimahvash@yahoo.ca",
+      username: "ali",
+      email: "alimahvash@yahoo.ca",
       formDatasingup: {
         password: ""
       },
@@ -206,12 +202,7 @@ export default {
       snackbar: false,
       text: "رمز با موفقیت تغییر پیدا کرد",
       timeout: 2000,
-      notifications: [
-        // "Mike John Responded to your email",
-        // "You have 5 new tasks",
-        // "You're now friends with Andrew",
-        // "Another Notification"
-      ],
+      notifications: [],
 
       passwordrules: {
         required: value =>
@@ -242,16 +233,50 @@ export default {
   },
   methods: {
     change() {
-      axios
+      /*  axios
         .post("http://127.0.0.1:8000/User/changepassword/", {
-          password: this.password
+          email: this.email
         })
         .then(response => {
           console.log(response.data);
+        });*/
+      console.log(this.useremailform);
+      this.$store
+        .dispatch("changepassworld", {
+          email: this.useremailform
+        })
+        .then(() => {
+          this.snackbar = true;
+        })
+        .catch(err => {
+          console.log(err.response);
+          if (err.response.status === 401 && this.loggedin) {
+            this.$store
+              .dispatch("refreshtoken")
+              .then(() => {
+                console.log("yes it ok");
+                this.$store
+                  .dispatch("changepassworld", {
+                    email: this.useremailform
+                  })
+                  .then(() => {
+                    console.log("yes im done");
+                    this.snackbar = true;
+                  })
+                  .catch(errrr => console.log(errrr.response));
+              })
+              .catch(er => {
+                console.log(er);
+                this.$store.dispatch("logout");
+                this.$router.push({ name: "Home" });
+              });
+          }
         });
-    },
+    }
+  }
+};
 
-    onsubmitinfsingup(event) {
+/* onsubmitinfsingup(event) {
       event.preventDefault();
       if (this.$refs.singupform.validate()) {
         this.$store
@@ -287,7 +312,7 @@ export default {
       this.$refs.singupform.resetValidation();
     }
   }
-};
+};*/
 </script>
 
 <style scoped>

@@ -259,6 +259,23 @@ export default new Vuex.Store({
         .then(data => {
           console.log(data);
         });
+    },
+    changepassworld(email) {
+      console.log("im in email part");
+      console.log(email);
+      const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .post("http://127.0.0.1:8000/User/changepassword/", email, {
+          headers: {
+            Authorization: `Bearer ${myaccesstoken}`,
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        })
+        .then(data => {
+          console.log(data);
+          console.log("im in then changepassworld");
+        });
     }
   },
   getters: {
