@@ -282,7 +282,7 @@
                   dense
                   placeholder="دائمی"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  v-model="formDataSim.location"
+                  v-model="formDataSim.daemi"
                   :rules="mataghrulse"
                   shaped
                   reverse
@@ -396,9 +396,6 @@ export default {
   components: {
     SimResult,
     SimServices
-  },
-  computed: {
-    ...authcomputed
   },
   data() {
     return {
