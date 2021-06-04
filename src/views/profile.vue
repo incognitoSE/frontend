@@ -136,7 +136,7 @@
                     <div class="text-center">
                       <v-btn
                         color="primary"
-                        @click="increment4, (snackbar = true)"
+                        @click="changes"
                         :disabled="!formvalidi"
                         type="submit"
                       >
@@ -190,16 +190,14 @@
 </template>
 
 <script>
-import { authcomputed } from "../store/helper.js";
 import axios from "axios";
 export default {
-  computed: { ...authcomputed },
   data() {
     return {
-      username:"ali",
-      email:"alimahvash@yahoo.ca",
+      username: "ali",
+      email: "alimahvash@yahoo.ca",
       formDatasingup: {
-        password: ""
+        password: null
       },
       formvalidi: false,
       showpassword: false,
@@ -231,20 +229,12 @@ export default {
     axios.get("http://127.0.0.1:8000/User/notifications/").then(response => {
       this.notifications = response.data;
     });
-    this.$store
-      .dispatch("increasecredit")
-      .then(() => {
-        this.money = this.increasecreditform.current_amount;
-      })
-      .catch(error => {
-        console.log("there was an error" + error.response);
-      });
   },
   methods: {
-    change() {
+    changes() {
       axios
         .post("http://127.0.0.1:8000/User/changepassword/", {
-          password: this.password
+          password: this.formDatasingup.password
         })
         .then(response => {
           console.log(response.data);
@@ -253,32 +243,7 @@ export default {
 
     onsubmitinfsingup(event) {
       event.preventDefault();
-      if (this.$refs.singupform.validate()) {
-        this.$store
-          .dispatch("register", {
-            name: this.formDatasingup.name,
-            email: this.formDatasingup.email,
-            password: this.formDatasingup.password
-          })
-          .then(() => {
-            console.log("im in then");
-            this.succ = ".ثبت نام با موفقیت انجام شد";
-          })
-          .catch(error => {
-            console.log(error.response);
-            console.log("im in err");
-            this.errors = "  کاربری با این ایمیل وجود دارد";
-          });
-        this.formDatasingup.name = "";
-        this.formDatasingup.email = "";
-        this.formDatasingup.password = "";
-        this.errors = "";
-        this.succ = "";
-        this.$refs.singupform.resetValidation();
-      }
-    },
-    onclosesingup() {
-      this.dialog = false;
+
       this.formDatasingup.name = "";
       this.formDatasingup.email = "";
       this.formDatasingup.password = "";
