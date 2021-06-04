@@ -139,6 +139,8 @@ export default {
   },
   methods: {
     submitinfo(e) {
+      console.log("this is login");
+      console.log(this.emailRules);
       e.preventDefault();
       if (this.$refs.userinfo.validate()) {
         this.$store

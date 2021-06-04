@@ -122,8 +122,7 @@ export default new Vuex.Store({
     senddatasimcard({ commit }, simcarddata) {
       const mytoken = JSON.parse(localStorage.getItem("user")).access;
       return axios
-        .post("http://127.0.0.1:8000/HEstimator/simcard/", simcarddata, {
-          //check url
+        .post("http://127.0.0.1:8000/SEstimator/Simcard/", simcarddata, {
           headers: {
             Authorization: `Bearer ${mytoken}`,
             Accept: "application/json",

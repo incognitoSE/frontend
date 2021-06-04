@@ -365,14 +365,6 @@
             >
             </v-carousel-item>
           </v-carousel>
-          <!-- <v-card>
-            <v-img
-              :src="houseresourceimage"
-              class="white--text align-end"
-              sizes="cover"
-            ></v-img>
-            <v-card-title>عکس تحلیل</v-card-title>
-          </v-card>-->
         </v-col>
       </v-row>
     </div>

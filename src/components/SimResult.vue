@@ -28,7 +28,7 @@
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                      {{ formhouseforali.price }}
+                      {{ formsimcardforali.price }}
                       <br />
                       تومان
                     </h2>
@@ -45,31 +45,30 @@
             <v-list-item-content>
               <v-list-item-title style="color: white">
                 شماره همراه :
-                {{ formhouseforali.currenthouse.number }}
-                متر مربع</v-list-item-title
-              >
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title style="color: white"
-                >نوع : {{ formhouseforali.currenthouse.daemi }}
+                {{ formsimcardforali.currentsimcard.number }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >نوع روند :
-                {{ formhouseforali.currenthouse.rond }}</v-list-item-title
+                >دائمی :{{ formsimcardforali.currentsimcard.daemi }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title style="color: white"
+                >رند :
+                {{ formsimcardforali.currentsimcard.rond }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title style="color: white"
-                >وضعیت :
-                {{ formhouseforali.currenthouse.stock }}</v-list-item-title
+                >صفر :
+                {{ formsimcardforali.currentsimcard.stock }}</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>

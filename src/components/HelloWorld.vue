@@ -51,6 +51,7 @@
             :src="pic.src"
             elevation="24"
             style="boxshadow: 5px #2d3b47 ; border: groove"
+               
           >
           </v-carousel-item>
         </v-carousel>
