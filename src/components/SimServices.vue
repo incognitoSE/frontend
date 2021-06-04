@@ -2,17 +2,16 @@
   <div>
     <br />
     <h1 style="text-align: center">سیم کارت های مشابه</h1>
-    <div v-if="dataforrominaSIM.houses.length != 0">
+    <div v-if="dataforrominaSIM.simcards.length != 0">
       <v-carousel hide-delimiters>
         <v-carousel-item
-          v-for="(sample, i) in dataforrominaSIM.houses"
+          v-for="(sample, i) in dataforrominaSIM.simcards"
           :key="i"
         >
           <v-sheet
             height="100%"
             color="white"
             style="display: flex ; justify-contetn : space-between"
-            
           >
             <v-row class="fill-height" align="center" justify="center">
               <v-col md="4" sm="4" xs="3">
@@ -50,25 +49,25 @@
                     <span style="font-size : 20px ; margin-left:10px"
                       >{{ sample.number }}
                     </span>
-                    <span style="font-size : 20px ; color : 	#888888"
-                      >:شماره همراه</span
+                    <span style="font-size : 20px ; color : 	#888888">
+                      :شماره همراه</span
                     >
                   </div>
                   <div class="property">
                     <span style="font-size : 20px"> {{ sample.rond }}</span>
-                    <span style="font-size : 20px ;color : 	#888888"
-                      >:نوع روند</span
-                    >
+                    <span style="font-size : 20px ;color : 	#888888">:رند </span>
                   </div>
                   <div class="property">
                     <span style="font-size : 20px"> {{ sample.stock }}</span>
                     <span style="font-size : 20px ; color : 	#888888"
-                      >:وضعیت</span
-                    >
+                      >:صفر
+                    </span>
                   </div>
                   <div class="property">
                     <span style="font-size : 20px ">{{ sample.daemi }}</span>
-                    <span style="font-size : 20px ; color : 	#888888">:نوع</span>
+                    <span style="font-size : 20px ; color : 	#888888"
+                      >:دائمی</span
+                    >
                   </div>
                 </v-card-text>
               </v-col>

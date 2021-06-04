@@ -11,7 +11,7 @@
     <template v-slot:prepend>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>{{ username }}</v-list-item-title>
+          <v-list-item-title>{{ usernameform }}</v-list-item-title>
           <v-list-item-subtitle style="color: rgba(255, 255, 255, 1)">
             :اعتبار باقی مانده
             {{ money }}</v-list-item-subtitle
@@ -76,9 +76,6 @@ export default {
   },
   data() {
     return {
-
-      name: "",
-      email: "",
       money: null,
       drawer: true,
       username:" ",
@@ -86,7 +83,7 @@ export default {
         {
           title: "اطلاعات کاربری",
           icon: "mdi-information-outline",
-          path: "/dashboard/profile"
+          path: "/profile"
         },
         {
           title: "افزایش اعتبار",
@@ -105,14 +102,6 @@ export default {
         }
       ]
     };
-  },
-  created: {
-   /* myuser() {
-      this.name = this.userform.name;
-      this.email = this.userform.email;
-      console.log(this.name);
-      console.log(this.email);
-    }*/
   }
 };
 </script>

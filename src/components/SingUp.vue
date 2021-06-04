@@ -155,6 +155,7 @@ export default {
             console.log("im in err");
             this.errors = "  کاربری با این ایمیل وجود دارد";
           });
+        this.$store.commit("SAVE_EMAIL", this.formDatasingup.email);
         this.formDatasingup.name = "";
         this.formDatasingup.email = "";
         this.formDatasingup.password = "";

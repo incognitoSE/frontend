@@ -68,6 +68,13 @@
             </div>
             <v-divider></v-divider>
             <v-card-actions>
+              <v-btn
+                type="submit"
+                large
+                style="color: #ffffff ; background-color : #2d3b47;"
+              >
+                فراموشی رمز
+              </v-btn>
               <v-spacer></v-spacer>
               <v-btn
                 type="submit"
@@ -132,11 +139,12 @@ export default {
   },
   methods: {
     submitinfo(e) {
+      console.log("this is login");
+      console.log(this.emailRules);
       e.preventDefault();
       if (this.$refs.userinfo.validate()) {
         this.$store
           .dispatch("login", {
-
             email: this.logininfo.email,
             password: this.logininfo.password
           })
@@ -149,7 +157,7 @@ export default {
             console.log(error.response);
             this.errors = ".ایمیل/پسورداشتباه است یا قبلا ثبت نام نکرده اید";
           });
-
+        this.$store.commit("SAVE_EMAIL", this.logininfo.email);
         this.logininfo.email = "";
         this.logininfo.password = "";
         this.errors = "";

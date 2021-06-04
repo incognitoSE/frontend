@@ -57,7 +57,7 @@
                   style="  text-align: right;
 "
                 >
-                  <h1>!کاربر علی ماهوش به رابین خوش آمدید</h1>
+                  <h1>!کاربر {{ username }} به رابین خوش آمدید</h1>
                 </div>
                 <v-list-item-title class="text-h5 mb-1">
                   <p>
@@ -196,6 +196,8 @@ export default {
   computed: { ...authcomputed },
   data() {
     return {
+      username:"ali",
+      email:"alimahvash@yahoo.ca",
       formDatasingup: {
         password: ""
       },
@@ -210,8 +212,6 @@ export default {
         // "You're now friends with Andrew",
         // "Another Notification"
       ],
-      username: "alimahvash",
-      email: "alimahvashm@yahoo.ca",
 
       passwordrules: {
         required: value =>

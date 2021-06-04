@@ -54,9 +54,10 @@
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <v-col cols="11" md="10" lg="11">
-                <v-text-field
+                <v-combobox
+                  :items="itemsm"
                   dense
-                  placeholder="نوع رند"
+                  placeholder="رند"
                   min="10000000000"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
@@ -66,32 +67,7 @@
                   reverse
                   clearable
                   :maxlength="11"
-                ></v-text-field>
-              </v-col>
-              <v-spacer></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-            </v-row>
-            <v-row>
-              <v-spacer></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-              <v-spacer class="hidden-md-and-down"></v-spacer>
-              <v-col cols="11" md="10" lg="11">
-                <v-text-field
-                  dense
-                  placeholder="موجودی"
-                  min="1200"
-                  max="5000"
-                  step="1"
-                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  shaped
-                  v-model.number="formDataSim.stock"
-                  :rules="salesaketrules"
-                  reverse
-                  clearable
-                  :maxlength="12"
-                ></v-text-field>
+                ></v-combobox>
               </v-col>
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
@@ -106,8 +82,33 @@
                 <v-combobox
                   :items="itemsm"
                   dense
-                  type="text"
-                  placeholder="نوع"
+                  placeholder="صفر"
+                  min="1200"
+                  max="5000"
+                  step="1"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="formDataSim.stock"
+                  :rules="salesaketrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-combobox>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <v-col cols="11" md="10" lg="11">
+                <v-combobox
+                  :items="itemsm"
+                  dense
+                  placeholder="دائمی"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   v-model="formDataSim.daemi"
                   :rules="mataghrulse"
@@ -144,25 +145,31 @@
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
+            <v-snackbar
+              v-if="nomony"
+              :timeout="snackbar.timeout"
+              :multi-line="snackbar.mode === 'multi-line'"
+              :color="snackbar.color"
+              v-model="snackbar.visible"
+              auto-height
+            >
+              <v-layout align-center>
+                <v-icon large dark pl-4 color="rgba(45, 59, 71, 1)">{{
+                  snackbar.icon
+                }}</v-icon>
+                <v-layout column>
+                  <div class="mx-auto">
+                    <strong>{{ snackbar.title }} </strong>
+                  </div>
+                  <div class="mx-auto">{{ snackbar.text }}</div>
+                  <div class="mx-auto">{{ snackbar.text2 }}</div>
+                </v-layout>
+              </v-layout>
+            </v-snackbar>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
           </v-form>
           <v-spacer></v-spacer>
           <v-spacer></v-spacer>
-        </v-row>
-      </div>
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
-          >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
         </v-row>
       </div>
     </div>
@@ -219,9 +226,10 @@
               ><v-spacer class="hidden-lg-and-up"></v-spacer>
               <v-spacer class="hidden-md-and-down"></v-spacer>
               <v-col cols="11" md="10" lg="11">
-                <v-text-field
+                <v-combobox
+                  :items="itemsm"
                   dense
-                  placeholder="نوع روند"
+                  placeholder="رند"
                   min="1"
                   step="1"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
@@ -231,32 +239,7 @@
                   reverse
                   clearable
                   :maxlength="12"
-                ></v-text-field>
-              </v-col>
-              <v-spacer></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-            </v-row>
-            <v-row>
-              <v-spacer></v-spacer>
-              <v-spacer class="hidden-lg-and-up"></v-spacer>
-              <v-spacer class="hidden-md-and-down"></v-spacer>
-              <v-col cols="11" md="10" lg="11">
-                <v-text-field
-                  dense
-                  placeholder="موجودی"
-                  min="1200"
-                  max="5000"
-                  step="1"
-                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
-                  shaped
-                  v-model.number="formDataSim.stock"
-                  :rules="salesaketrules"
-                  reverse
-                  clearable
-                  :maxlength="12"
-                ></v-text-field>
+                ></v-combobox>
               </v-col>
               <v-spacer></v-spacer>
               <v-spacer class="hidden-lg-and-up"></v-spacer>
@@ -271,8 +254,33 @@
                 <v-combobox
                   :items="itemsm"
                   dense
-                  type="text"
-                  placeholder="نوع"
+                  placeholder="صفر"
+                  min="1200"
+                  max="5000"
+                  step="1"
+                  class="mytext ml-lg-6 ml-md-4 ml-sm-3"
+                  shaped
+                  v-model.number="formDataSim.stock"
+                  :rules="salesaketrules"
+                  reverse
+                  clearable
+                  :maxlength="12"
+                ></v-combobox>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+            </v-row>
+            <v-row>
+              <v-spacer></v-spacer>
+              <v-spacer class="hidden-lg-and-up"></v-spacer>
+              <v-spacer class="hidden-md-and-down"></v-spacer>
+              <v-col cols="11" md="10" lg="11">
+                <v-combobox
+                  :items="itemsm"
+                  dense
+                  placeholder="دائمی"
                   class="mytext ml-lg-6 ml-md-4 ml-sm-3"
                   v-model="formDataSim.location"
                   :rules="mataghrulse"
@@ -307,29 +315,74 @@
             >
               <h3 style="color:#CFD8DC">تخمین قیمت</h3></v-btn
             >
+            <v-snackbar
+              v-if="nomony"
+              :timeout="snackbar.timeout"
+              :multi-line="snackbar.mode === 'multi-line'"
+              :color="snackbar.color"
+              v-model="snackbar.visible"
+              auto-height
+            >
+              <v-layout align-center>
+                <v-icon large dark pl-4 color="rgba(45, 59, 71, 1)">{{
+                  snackbar.icon
+                }}</v-icon>
+                <v-layout column>
+                  <div class="mx-auto">
+                    <strong>{{ snackbar.title }} </strong>
+                  </div>
+                  <div class="mx-auto">{{ snackbar.text }}</div>
+                  <div class="mx-auto">{{ snackbar.text2 }}</div>
+                </v-layout>
+              </v-layout>
+            </v-snackbar>
             <v-spacer class="hidden-lg-and-up"></v-spacer>
           </v-form>
           <v-spacer></v-spacer>
           <v-spacer></v-spacer>
         </v-row>
       </div>
-      <SimResult :formhouseforali="formhouseforali" />
+      <SimResult :formsimcardforali="formsimcardforali" />
       <SimServices :dataforrominaSIM="dataforrominaSIM" />
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
+    </div>
+    <div>
+      <v-row no-gutters>
+        <v-col cols="12">
+          <v-carousel
+            cycle
+            class="myslideshow"
+            show-arrows-on-hover
+            hide-delimiter-background
+            height="auto"
           >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
-        </v-row>
-      </div>
+            <v-carousel-item
+              v-for="(pic, i) in slideshowpictahlel"
+              :key="i"
+              :src="pic.src"
+              contain
+              elevation="24"
+              class="sildeshowimg"
+              style="boxshadow: 5px #2d3b47 ; border: groove"
+            >
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
+      </v-row>
+    </div>
+    <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
+      <v-row align="center" justify="space-around">
+        <v-btn
+          text
+          class="white--text my-12"
+          color="blue-grey"
+          :to="{ name: 'Home' }"
+        >
+          <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
+          <v-icon right color="rgba(255, 255, 255, 1)">
+            mdi-arrow-right-bold
+          </v-icon>
+        </v-btn>
+      </v-row>
     </div>
   </div>
 </template>
@@ -337,25 +390,43 @@
 <script>
 import SimResult from "@/components/SimResult.vue";
 import SimServices from "@/components/SimServices.vue";
+import { authcomputed } from "../store/helper.js";
 export default {
+  computed: { ...authcomputed },
   components: {
     SimResult,
     SimServices
   },
+  computed: {
+    ...authcomputed
+  },
   data() {
     return {
       formvaildesim: false,
+      simresource: [],
+      slideshowpictahlel: [],
       formDataSim: {
         number: null,
-        daemi: "",
+        daemi: null,
         rond: null,
         stock: null
       },
+      snackbar: {
+        color: null,
+        icon: null,
+        text: null,
+        mode: null,
+        title: null,
+        visibale: false,
+        text2: null,
+        timeout: 5000
+      },
+      nomony: false,
       formsimcardstore: {},
       showkole: true,
-      itemsm: ["دائمی", "اعتباری"],
+      itemsm: ["بله", "خیر"],
       formsimcardforali: {},
-      dataforrominaSIM: { currenthouse: {}, price: "", houses: [] }, //should change based on json file
+      dataforrominaSIM: { currentsimcard: {}, price: "", simcards: [] },
       metrazrules: [
         value => !!value || "شماره مورد نظر را وارد کنید",
         value => value >= 1000000000 || "تعداد ارقام شماره تلفن صحیح نمیباشد"
@@ -363,11 +434,45 @@ export default {
       mataghrulse: [
         value => !!value || "نوع سیمکارت مورد نظر خود را مشخص کنید"
       ],
-      tedadeotaghrules: [value => !!value || "نوع روند مورد نظر را مشخص کنید"],
+      tedadeotaghrules: [value => !!value || "نوع رند مورد نظر را مشخص کنید"],
       salesaketrules: [
         value => !!value || "وضعیت شماره مورد نظر خود را مشخص کنید"
       ]
     };
+  },
+  created() {
+    this.$store
+      .dispatch("getsimresource")
+      .then(() => {
+        this.simresource = this.simresourcegetter.images;
+        console.log("im here");
+        console.log(this.simresource);
+        this.onimageinslideshow();
+      })
+      .catch(err => {
+        console.log(err);
+        if (err.response.status === 401 && this.loggedin) {
+          this.$store
+            .dispatch("refreshtoken")
+            .then(() => {
+              console.log("yes it ok");
+              this.$store
+                .dispatch("getsimresource")
+                .then(() => {
+                  this.simresource = this.simresourcegetter.images;
+                  console.log("im here");
+                  console.log(this.simresource);
+                  this.onimageinslideshow();
+                })
+                .catch(errrr => console.log(errrr.response));
+            })
+            .catch(er => {
+              console.log(er);
+              this.$store.dispatch("logout");
+              this.$router.push({ name: "Home" });
+            });
+        }
+      });
   },
   methods: {
     onsubmitinsimcard(event) {
@@ -387,8 +492,8 @@ export default {
             stock: this.formDataSim.stock
           })
           .then(() => {
-            this.dataforrominaSIM = this.$store.getters.simcardform;
-            this.formsimcardforali = this.$store.getters.simcardform;
+            this.dataforrominaSIM = this.simcardform;
+            this.formsimcardforali = this.simcardform;
           })
           .catch(err => {
             console.log(err.response);
@@ -411,17 +516,53 @@ export default {
                 })
                 .catch(er => {
                   console.log(er);
+                  console.log("im in last error");
                   this.$store.dispatch("logout");
                   this.$router.push({ name: "Home" });
                 });
             }
+            if (err.response.status === 402 && this.loggedin) {
+              this.nomony = true;
+              this.snackbar = {
+                color: "warning",
+                icon: "mdi-alert",
+                mode: "multi-line",
+                timeout: 5000,
+                title: "توجه",
+                text: "شما اعتبار کافی برای استفاده از سرویس ندارید",
+                text2: "شما را به صفحه افزایش اعتبار هدایت می کنیم",
+                visible: true
+              };
+              setTimeout(() => {
+                this.$router.push({ name: "IncreaseCredit" });
+              }, 5000);
+            }
           });
+
         this.formDataSim.number = null;
-        this.formDataSim.daemi = "";
+        this.formDataSim.daemi = null;
         this.formDataSim.rond = null;
         this.formDataSim.stock = null;
         this.$refs.formsimcard.resetValidation();
         this.showkole = false;
+      }
+    },
+    simresourceimage(mysrc) {
+      return `data:image/png;base64, ${mysrc}`;
+    },
+    onimageinslideshow() {
+      var mysrces;
+      var myobject;
+      console.log("im in func");
+      for (let i = 0; i < this.simresource.length; i++) {
+        mysrces = this.simresourceimage(this.simresource[i]);
+        console.log(mysrces);
+        console.log(i);
+        myobject = {
+          src: mysrces
+        };
+        this.slideshowpictahlel.push(myobject);
+        console.log(this.slideshowpictahlel);
       }
     }
   }

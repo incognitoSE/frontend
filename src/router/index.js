@@ -39,7 +39,7 @@ const routes = [
           )
       },
       {
-        path: "",
+        path: "/profile",
         name: "profile",
         component: () =>
           import(
@@ -62,8 +62,8 @@ const routes = [
             /* webpackChunkName: "HistoryOfServices" */ "../views/HistoryOfServices.vue"
           )
       }
-    ]
-    // meta: { requiresAuth: true }
+    ],
+    meta: { requiresAuth: true }
   },
   {
     path: "/servicehouse",
