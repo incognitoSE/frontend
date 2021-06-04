@@ -12,10 +12,23 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>{{ usernameform }}</v-list-item-title>
-          <v-list-item-subtitle style="color: rgba(255, 255, 255, 1)">
-            :اعتبار باقی مانده
-            {{ money }}</v-list-item-subtitle
+          <v-list-item-subtitle
+            v-if="!ismonyform"
+            style="color: rgba(255, 255, 255, 1)"
           >
+            اعتبار باقی مانده:
+            {{ money }}
+            تومان
+            </v-list-item-subtitle
+          >
+          <v-list-item-subtitle
+            v-if="ismonyform"
+            style="color: rgba(255, 255, 255, 1)"
+          >
+            :اعتبار باقی مانده
+
+            {{ increasemoney.current_amount }}
+          </v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-icon
           ><v-icon color="rgba(255, 255, 255, 1)"
@@ -74,11 +87,21 @@ export default {
   computed: {
     ...authcomputed
   },
+  created() {
+    this.$store
+      .dispatch("increasecredit")
+      .then(() => {
+        this.money = this.increasecreditform.current_amount;
+      })
+      .catch(error => {
+        console.log("there was an error" + error.response);
+      });
+  },
   data() {
     return {
       money: null,
       drawer: true,
-      username:" ",
+
       ItemNavDrawer: [
         {
           title: "اطلاعات کاربری",

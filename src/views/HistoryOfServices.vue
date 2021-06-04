@@ -46,12 +46,10 @@
             :headers="headers"
             :items="desserts"
             class="elevation-1"
-
-                :single-expand="singleExpand"
-    :expanded.sync="expanded"
-    item-key="name"
-    show-expand
-
+            :single-expand="singleExpand"
+            :expanded.sync="expanded"
+            item-key="name"
+            show-expand
           >
             <!-- <template v-slot:item.actions="{ item }">
               <v-icon small @click="editItem(item)">
@@ -119,11 +117,11 @@
                 </v-dialog>
               </v-toolbar>
             </template>
-             <template v-slot:expanded-item="{ headers, item }">
-      <td :colspan="headers.length">
-        More info about {{ item.data }}
-      </td>
-    </template>
+            <template v-slot:expanded-item="{ headers, item }">
+              <td :colspan="headers.length">
+                {{ item.data }}
+              </td>
+            </template>
           </v-data-table>
         </v-col>
       </v-row>
@@ -145,17 +143,12 @@ export default {
     ],
 
     expanded: [],
-        singleExpand: false,
+    singleExpand: false,
 
     dialog: false,
     dialogDelete: false,
     headers: [
-      {
-        text: "مشاهده اطلاعات ورودی",
-        value: "actions",
-        align: "center",
-        sortable: false
-      },
+   
       {
         text: "تاریخ",
         align: "center",
@@ -247,8 +240,8 @@ export default {
           date: "13/2/1379",
           price: "1200T",
           model: "ماشین",
-          data:"sdasdasda"
-         },
+          data: "sdasdasda"
+        }
         // {
         //   date: "13/2/1379",
         //   price: "1200T",

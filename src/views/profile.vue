@@ -52,11 +52,7 @@
           <v-card class="mx-auto" elevation="2" max-width="700" outlined shaped>
             <v-list-item three-line>
               <v-list-item-content>
-                <div
-                  class="text-overline mb-4"
-                  style="  text-align: right;
-"
-                >
+                <div class="text-overline mb-4" style="  text-align: right;">
                   <h1>!کاربر گرامی به رابین خوش آمدید</h1>
                 </div>
                 <v-list-item-title class="text-h5 mb-1">
@@ -189,14 +185,14 @@
 </template>
 
 <script>
-import { authcomputed } from "../store/helper.js";
 import axios from "axios";
 export default {
-  computed: { ...authcomputed },
   data() {
     return {
+      username: "ali",
+      email: "alimahvash@yahoo.ca",
       formDatasingup: {
-        password: ""
+        password: null
       },
       formvalidi: false,
       showpassword: false,
@@ -223,16 +219,9 @@ export default {
     axios.get("http://127.0.0.1:8000/User/notifications/").then(response => {
       this.notifications = response.data;
     });
-    this.$store
-      .dispatch("increasecredit")
-      .then(() => {
-        this.money = this.increasecreditform.current_amount;
-      })
-      .catch(error => {
-        console.log("there was an error" + error.response);
-      });
   },
   methods: {
+
     onsubmitinchangepassword(event) {
       event.preventDefault();
       if (this.$refs.singupform.validate()) {
@@ -272,7 +261,13 @@ export default {
       }
       this.$refs.singupform.resetValidation();
     }
+
+
   }
+
+
+
+  
 };
 </script>
 
