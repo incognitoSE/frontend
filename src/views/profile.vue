@@ -112,7 +112,7 @@
                   <v-form
                     ref="singupform"
                     v-model="formvalidi"
-                    submit="onsubmitinchangepassword"
+                    @submit="onsubmitinchangepassword"
                   >
                     <v-text-field
                       v-model="formDatasingup.password"
@@ -132,7 +132,6 @@
                     <div class="text-center">
                       <v-btn
                         color="primary"
-                        @click="changes"
                         :disabled="!formvalidi"
                         type="submit"
                       >
@@ -187,13 +186,13 @@
 
 <script>
 import axios from "axios";
+import { authcomputed } from "../store/helper.js";
 export default {
+  computed: { ...authcomputed },
   data() {
     return {
-      username: "ali",
-      email: "alimahvash@yahoo.ca",
       formDatasingup: {
-        password: null
+        password: ""
       },
       formvalidi: false,
       showpassword: false,
@@ -222,73 +221,46 @@ export default {
     });
   },
   methods: {
-    changes() {
-      axios
-        .post("http://127.0.0.1:8000/User/changepassword/", {
-          password: this.formDatasingup.password
-        })
-        .then(response => {
-          console.log(response.data);
-        });
-      console.log("im in changepass");
-      console.log(this.formDatasingup.password);
-      this.$store
-        .dispatch("changepassworld", {
-          password: this.formDatasingup.password
-        })
-        .then(() => {
-          this.snackbar = true;
-        })
-        .catch(err => {
-          console.log(err.response);
-          if (err.response.status === 401 && this.loggedin) {
-            this.$store
-              .dispatch("refreshtoken")
-              .then(() => {
-                console.log("yes it ok");
-                this.$store
-                  .dispatch("changepassworld", {
-                    email: this.useremailform
-                  })
-                  .then(() => {
-                    console.log("yes im done");
-                    this.snackbar = true;
-                  })
-                  .catch(errrr => console.log(errrr.response));
-              })
-              .catch(er => {
-                console.log(er);
-                this.$store.dispatch("logout");
-                this.$router.push({ name: "Home" });
-              });
-          }
-        });
+    onsubmitinchangepassword(event) {
+      event.preventDefault();
+      if (this.$refs.singupform.validate()) {
+        console.log("im in changepass");
+        console.log(this.formDatasingup.password);
+        this.$store
+          .dispatch("changepassword", {
+            password: this.formDatasingup.password
+          })
+          .then(() => {
+            this.snackbar = true;
+          })
+          .catch(err => {
+            console.log(err.response);
+            if (err.response.status === 401 && this.loggedin) {
+              this.$store
+                .dispatch("refreshtoken")
+                .then(() => {
+                  console.log("yes it ok");
+                  this.$store
+                    .dispatch("changepassworld", {
+                      email: this.useremailform
+                    })
+                    .then(() => {
+                      console.log("yes im done");
+                      this.snackbar = true;
+                    })
+                    .catch(errrr => console.log(errrr.response));
+                })
+                .catch(er => {
+                  console.log(er);
+                  this.$store.dispatch("logout");
+                  this.$router.push({ name: "Home" });
+                });
+            }
+          });
+      }
+      this.$refs.singupform.resetValidation();
     }
-  },
-  //};
-
-  onsubmitinfsingup(event) {
-    event.preventDefault();
-
-    this.formDatasingup.name = "";
-    this.formDatasingup.email = "";
-    this.formDatasingup.password = "";
-    this.errors = "";
-    this.succ = "";
-    //this.password = " ";
-    this.$refs.singupform.resetValidation();
-    //}
   }
-  /* onclosesingup() {
-    this.dialog = false;
-    this.formDatasingup.name = "";
-    this.formDatasingup.email = "";
-    this.formDatasingup.password = "";
-    this.errors = "";
-    this.succ = "";
-    this.$refs.singupform.resetValidation();
-  }*/
-  //}
 };
 </script>
 

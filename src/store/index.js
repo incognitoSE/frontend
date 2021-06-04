@@ -80,6 +80,9 @@ export default new Vuex.Store({
     SET_INCREASE_CREDIT_USER(state, increasmoney) {
       state.increasemoney = increasmoney;
       state.ismoney = true;
+    },
+    SHOW_PASS(){
+      console.log("im in showpass");
     }
   },
 
@@ -267,7 +270,7 @@ export default new Vuex.Store({
           commit("SET_INCREASE_CREDIT_USER", data);
         });
     },
-    changepassworld(password) {
+    changepassword({ commit }, password) {
       console.log("im in change part");
       console.log(password);
       const myaccesstoken = JSON.parse(localStorage.getItem("user")).access;
@@ -282,6 +285,7 @@ export default new Vuex.Store({
         .then(data => {
           console.log(data);
           console.log("im in then changepassworld");
+          commit("SHOW_PASS");
         });
     }
   },
@@ -311,8 +315,8 @@ export default new Vuex.Store({
     usernameform(state) {
       return state.username;
     },
-    ismonyform(state){
-       return state.ismoney;
+    ismonyform(state) {
+      return state.ismoney;
     },
     useremailform(state) {
       return state.useremail;
