@@ -57,7 +57,7 @@
                   style="  text-align: right;
 "
                 >
-                  <h1>!کاربر علی ماهوش به رابین خوش آمدید</h1>
+                  <h1>!کاربر {{ username }} به رابین خوش آمدید</h1>
                 </div>
                 <v-list-item-title class="text-h5 mb-1">
                   <p>
@@ -97,7 +97,7 @@
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
                   <v-text-field
-                    v-model="email"
+                    v-model="useremail"
                     label="ایمیل"
                     filled
                     shaped
@@ -111,14 +111,56 @@
               <v-row>
                 <v-col></v-col>
                 <v-col cols="12" sm="6">
-                  <v-text-field
-                    v-model="password"
-                    label=" رمز عبور جدید"
-                    filled
-                    shaped
-                    class="centered-input"
-                    reverse
-                  ></v-text-field>
+                  <v-form
+                    @submit="onsubmitinfsingup"
+                    ref="singupform"
+                    v-model="formvalidi"
+                  >
+                    <v-text-field
+                      v-model="formDatasingup.password"
+                      label=" رمز عبور جدید"
+                      filled
+                      shaped
+                      class="centered-input"
+                      reverse
+                      :type="showpassword ? 'text' : 'password'"
+                      required
+                      prepend-inner-icon="mdi-lock"
+                      :append-icon="showpassword ? 'mdi-eye' : 'mdi-eye-off'"
+                      @click:append="showpassword = !showpassword"
+                      solo
+                      :rules="[passwordrules.required, passwordrules.password]"
+                    ></v-text-field>
+                    <div class="text-center">
+                      <v-btn
+                        color="primary"
+                        @click="increment4, (snackbar = true)"
+                        :disabled="!formvalidi"
+                        type="submit"
+                      >
+                        تغییر رمز عبور
+                      </v-btn>
+
+                      <v-snackbar
+                        color="green"
+                        v-model="snackbar"
+                        :timeout="timeout"
+                      >
+                        {{ text }}
+
+                        <template v-slot:action="{ attrs }">
+                          <v-btn
+                            color="white"
+                            text
+                            v-bind="attrs"
+                            @click="snackbar = false"
+                          >
+                            بستن
+                          </v-btn>
+                        </template>
+                      </v-snackbar>
+                    </div>
+                  </v-form>
                 </v-col>
                 <v-col></v-col>
               </v-row>
@@ -131,26 +173,6 @@
             <v-col></v-col>
             <v-col></v-col>
 
-            <div class="text-center">
-              <v-btn color="primary" @click="increment4, (snackbar = true)">
-                تغییر رمز عبور
-              </v-btn>
-
-              <v-snackbar color="green" v-model="snackbar" :timeout="timeout">
-                {{ text }}
-
-                <template v-slot:action="{ attrs }">
-                  <v-btn
-                    color="white"
-                    text
-                    v-bind="attrs"
-                    @click="snackbar = false"
-                  >
-                    بستن
-                  </v-btn>
-                </template>
-              </v-snackbar>
-            </div>
             <v-col></v-col>
             <v-col></v-col>
             <v-col></v-col>
@@ -172,6 +194,11 @@ export default {
   computed: { ...authcomputed },
   data() {
     return {
+      formDatasingup: {
+        password: ""
+      },
+      formvalidi: false,
+      showpassword: false,
       snackbar: false,
       text: "رمز با موفقیت تغییر پیدا کرد",
       timeout: 2000,
@@ -181,9 +208,19 @@ export default {
         // "You're now friends with Andrew",
         // "Another Notification"
       ],
-      username: "alimahvash",
-      email: "alimahvashm@yahoo.ca",
-      password: ""
+
+      passwordrules: {
+        required: value =>
+          !!value ||
+          "در صورت تمایل به تغییر رمز لطفا رمز جدید خود را وارد کنید",
+        password: value => {
+          const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&*])(?=.{8,})/;
+          return (
+            pattern.test(value) ||
+            "رمز شما باید حداقل 8 حرف با حداقل یک حرف بزرگ ، یک عدد و یک کاراکتر خاص باشد"
+          );
+        }
+      }
     };
   },
   created() {
@@ -202,8 +239,48 @@ export default {
   methods: {
     change() {
       axios
-        .post("http://127.0.0.1:8000/User/changepassword/", this.password)
-        .then(console.log(this.password));
+        .post("http://127.0.0.1:8000/User/changepassword/", {
+          password: this.password
+        })
+        .then(response => {
+          console.log(response.data);
+        });
+    },
+
+    onsubmitinfsingup(event) {
+      event.preventDefault();
+      if (this.$refs.singupform.validate()) {
+        this.$store
+          .dispatch("register", {
+            name: this.formDatasingup.name,
+            email: this.formDatasingup.email,
+            password: this.formDatasingup.password
+          })
+          .then(() => {
+            console.log("im in then");
+            this.succ = ".ثبت نام با موفقیت انجام شد";
+          })
+          .catch(error => {
+            console.log(error.response);
+            console.log("im in err");
+            this.errors = "  کاربری با این ایمیل وجود دارد";
+          });
+        this.formDatasingup.name = "";
+        this.formDatasingup.email = "";
+        this.formDatasingup.password = "";
+        this.errors = "";
+        this.succ = "";
+        this.$refs.singupform.resetValidation();
+      }
+    },
+    onclosesingup() {
+      this.dialog = false;
+      this.formDatasingup.name = "";
+      this.formDatasingup.email = "";
+      this.formDatasingup.password = "";
+      this.errors = "";
+      this.succ = "";
+      this.$refs.singupform.resetValidation();
     }
   }
 };

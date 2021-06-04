@@ -172,21 +172,6 @@
           <v-spacer></v-spacer>
         </v-row>
       </div>
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
-          >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
-        </v-row>
-      </div>
     </div>
     <div v-else>
       <div id="main_div">
@@ -359,21 +344,45 @@
       </div>
       <SimResult :formsimcardforali="formsimcardforali" />
       <SimServices :dataforrominaSIM="dataforrominaSIM" />
-      <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
-        <v-row align="center" justify="space-around">
-          <v-btn
-            text
-            class="white--text my-12"
-            color="blue-grey"
-            :to="{ name: 'Home' }"
+    </div>
+    <div>
+      <v-row no-gutters>
+        <v-col cols="12">
+          <v-carousel
+            cycle
+            class="myslideshow"
+            show-arrows-on-hover
+            hide-delimiter-background
+            height="auto"
           >
-            <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
-            <v-icon right color="rgba(255, 255, 255, 1)">
-              mdi-arrow-right-bold
-            </v-icon>
-          </v-btn>
-        </v-row>
-      </div>
+            <v-carousel-item
+              v-for="(pic, i) in slideshowpictahlel"
+              :key="i"
+              :src="pic.src"
+              contain
+              elevation="24"
+              class="sildeshowimg"
+              style="boxshadow: 5px #2d3b47 ; border: groove"
+            >
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
+      </v-row>
+    </div>
+    <div style="background-color:rgba(45, 59, 71, 1)" class="divlasti">
+      <v-row align="center" justify="space-around">
+        <v-btn
+          text
+          class="white--text my-12"
+          color="blue-grey"
+          :to="{ name: 'Home' }"
+        >
+          <h4 style="color:rgba(255, 255, 255, 1)">برگشت به صفحه اصلی</h4>
+          <v-icon right color="rgba(255, 255, 255, 1)">
+            mdi-arrow-right-bold
+          </v-icon>
+        </v-btn>
+      </v-row>
     </div>
   </div>
 </template>
@@ -383,6 +392,7 @@ import SimResult from "@/components/SimResult.vue";
 import SimServices from "@/components/SimServices.vue";
 import { authcomputed } from "../store/helper.js";
 export default {
+  computed: { ...authcomputed },
   components: {
     SimResult,
     SimServices
@@ -393,6 +403,8 @@ export default {
   data() {
     return {
       formvaildesim: false,
+      simresource: [],
+      slideshowpictahlel: [],
       formDataSim: {
         number: null,
         daemi: null,
@@ -427,6 +439,40 @@ export default {
         value => !!value || "وضعیت شماره مورد نظر خود را مشخص کنید"
       ]
     };
+  },
+  created() {
+    this.$store
+      .dispatch("getsimresource")
+      .then(() => {
+        this.simresource = this.simresourcegetter.images;
+        console.log("im here");
+        console.log(this.simresource);
+        this.onimageinslideshow();
+      })
+      .catch(err => {
+        console.log(err);
+        if (err.response.status === 401 && this.loggedin) {
+          this.$store
+            .dispatch("refreshtoken")
+            .then(() => {
+              console.log("yes it ok");
+              this.$store
+                .dispatch("getsimresource")
+                .then(() => {
+                  this.simresource = this.simresourcegetter.images;
+                  console.log("im here");
+                  console.log(this.simresource);
+                  this.onimageinslideshow();
+                })
+                .catch(errrr => console.log(errrr.response));
+            })
+            .catch(er => {
+              console.log(er);
+              this.$store.dispatch("logout");
+              this.$router.push({ name: "Home" });
+            });
+        }
+      });
   },
   methods: {
     onsubmitinsimcard(event) {
@@ -499,6 +545,24 @@ export default {
         this.formDataSim.stock = null;
         this.$refs.formsimcard.resetValidation();
         this.showkole = false;
+      }
+    },
+    simresourceimage(mysrc) {
+      return `data:image/png;base64, ${mysrc}`;
+    },
+    onimageinslideshow() {
+      var mysrces;
+      var myobject;
+      console.log("im in func");
+      for (let i = 0; i < this.simresource.length; i++) {
+        mysrces = this.simresourceimage(this.simresource[i]);
+        console.log(mysrces);
+        console.log(i);
+        myobject = {
+          src: mysrces
+        };
+        this.slideshowpictahlel.push(myobject);
+        console.log(this.slideshowpictahlel);
       }
     }
   }

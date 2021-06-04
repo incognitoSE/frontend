@@ -11,6 +11,8 @@ export default new Vuex.Store({
     simcard: null,
     car: null,
     houseresource: null,
+    carresource: null,
+    simresource: null,
     historyofservices: null,
     historyofpayment: null,
     increaseofcredit: null,
@@ -65,6 +67,13 @@ export default new Vuex.Store({
       state.email = credentioal;
       console.log("im in saveemail");
       console.log(state.email);
+    },
+
+    SET_CAR_RESOURCES(state, carresurse) {
+      state.carresource = carresurse;
+    },
+    SET_SIM_RESOURCES(state, simresurse) {
+      state.simresource = simresurse;
     }
   },
 
@@ -81,6 +90,34 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           commit("SET_HOUSE_RESOURCES", data);
+        });
+    },
+    getcarresource({ commit }) {
+      const mytoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .get("http://127.0.0.1:8000/CEstimator/Car/", {
+          headers: {
+            Authorization: `Bearer ${mytoken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        })
+        .then(({ data }) => {
+          commit("SET_CAR_RESOURCES", data);
+        });
+    },
+    getsimresource({ commit }) {
+      const mytoken = JSON.parse(localStorage.getItem("user")).access;
+      return axios
+        .get("http://127.0.0.1:8000/SEstimator/Simcard/", {
+          headers: {
+            Authorization: `Bearer ${mytoken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        })
+        .then(({ data }) => {
+          commit("SET_SIM_RESOURCES", data);
         });
     },
     login({ commit }, credentials) {
@@ -228,6 +265,12 @@ export default new Vuex.Store({
     houseresourcegetter(state) {
       return state.houseresource;
     },
+    carresourcegetter(state) {
+      return state.carresource;
+    },
+    simresourcegetter(state) {
+      return state.simresource;
+    },
     loggedin(state) {
       return !!state.user;
     },
@@ -241,10 +284,10 @@ export default new Vuex.Store({
     simcardform(state) {
       return state.simcard;
     },
-    username(state) {
+    usernameform(state) {
       return state.username;
     },
-    useremail(state) {
+    useremailform(state) {
       return state.useremail;
     },
     userform(state) {

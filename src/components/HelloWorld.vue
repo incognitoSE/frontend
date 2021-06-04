@@ -8,7 +8,7 @@
           <v-btn @click="logout" rounded small text style="color: #ffffff"
             >خروج</v-btn
           >
-          <v-btn rounded small text style="color: #ffffff" to=/dashboard/HistoryOfServices>داشبورد </v-btn>
+          <v-btn rounded small text style="color: #ffffff" to=/dashboard/profile>داشبورد </v-btn>
           <router-view></router-view>
         </div>
 
@@ -44,11 +44,16 @@
           class="myslideshow"
           show-arrows-on-hover
           hide-delimiter-background
+          style="width:100%"
+        
         >
           <v-carousel-item
             v-for="(pic, i) in slideshowpic"
             :key="i"
             :src="pic.src"
+             contain
+             
+             
             elevation="24"
             style="boxshadow: 5px #2d3b47 ; border: groove"
                
