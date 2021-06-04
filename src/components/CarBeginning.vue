@@ -384,6 +384,20 @@
       <CarServices :dataforrominaCar="dataforrominaCar" />
     </div>
     <div>
+      <v-card outlined tile>
+        <v-card-text style="border-style: groove ; border-color:#2d3b47">
+          <div
+            style="text-align: center ; font-size : 20px ; font-weight: bold ; margin: 12px"
+          >
+            درباره قیمت ماشین
+          </div>
+          <div style="font-size : 16px; margin: 20px ; padding:12px">
+            {{ carmaintext }}
+          </div>
+        </v-card-text>
+      </v-card>
+    </div>
+    <div>
       <v-carousel cycle dark delimiter-icon="mdi-minus">
         <v-carousel-item v-for="(picitem, i) in slideshowpictahlel" :key="i">
           <h1 style="text-align: center" class="mt-3 mb-0">تحلیل قیمت ماشین</h1>
@@ -453,6 +467,7 @@ export default {
   data() {
     return {
       carresource: [],
+      carmaintext: null,
       slideshowpictahlel: [],
       formvaildecar: false,
       snackbar: {
@@ -519,6 +534,8 @@ export default {
       .dispatch("getcarresource")
       .then(() => {
         this.carresource = this.carresourcegetter.imagesAndTexts;
+        // this.carresource = this.carresourcegetter.images;
+        this.carmaintext = this.carresourcegetter.mainText;
         console.log("im here");
         console.log(this.carresource);
         this.onimageinslideshow();

@@ -345,6 +345,20 @@
       <houseservices :dataforromina="dataforromina" />
     </div>
     <div>
+      <v-card outlined tile >
+        <v-card-text style="border-style: groove ; border-color:#2d3b47" >
+          <div
+            style="text-align: center ; font-size : 20px ; font-weight: bold ; margin: 12px"
+          >
+            درباره قیمت خانه
+          </div>
+          <div style="font-size : 16px; margin: 20px ; padding:12px">
+            {{ housemaintext }}
+          </div>
+        </v-card-text>
+      </v-card>
+    </div>
+    <div>
       <v-carousel cycle dark delimiter-icon="mdi-minus">
         <v-carousel-item v-for="(picitem, i) in slideshowpictahlel" :key="i">
           <h1 style="text-align: center" class="mt-3 mb-0">تحلیل قیمت خانه</h1>
@@ -383,7 +397,8 @@
         </v-carousel-item>
       </v-carousel>
     </div>
-    <!-- <div>
+    <!-- 
+    <div>
       <v-row no-gutters>
         <v-col cols="12">
           <v-carousel
@@ -444,6 +459,7 @@ export default {
     return {
       houseimage: null,
       houseresource: [],
+      housemaintext: null,
       formvaildehome: false,
       slideshowpictahlel: [],
       snackbar: {
@@ -660,7 +676,10 @@ export default {
       .then(() => {
         this.houseresource = this.houseresourcegetter.imagesAndTexts;
         console.log("im here");
-        console.log(this.houseresource);
+        this.housemaintext = this.houseresourcegetter.mainText;
+        this.houseresource = this.houseresourcegetter.imagesANDTextts;
+        //  console.log(this.houseresource.Texts.imagesAndTexts);
+        // console.log(this.houseresource.mainText);
         this.onimageinslideshow();
       })
       .catch(err => {

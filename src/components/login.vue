@@ -23,19 +23,25 @@
               <v-container style="background-color:#ffffff">
                 <v-row>
                   <v-col cols="12">
-                    <v-text-field
-                      solo
-                      style="padding:20px"
-                      color="#2d3b47"
-                      placeholder=" ایمیل"
-                      type="email"
-                      reverse
-                      prepend-inner-icon="mdi-email"
-                      v-model="logininfo.email"
-                      :rules="emailRules"
-                      required
+                    <v-form
+                      @submit="submitinfo"
+                      ref="userinfo"
+                      v-model="formemail"
                     >
-                    </v-text-field>
+                      <v-text-field
+                        solo
+                        style="padding:20px"
+                        color="#2d3b47"
+                        placeholder=" ایمیل"
+                        type="email"
+                        reverse
+                        prepend-inner-icon="mdi-email"
+                        v-model="logininfo.email"
+                        :rules="emailRules"
+                        required
+                      >
+                      </v-text-field>
+                    </v-form>
                   </v-col>
                   <v-col cols="12">
                     <v-text-field
@@ -68,13 +74,37 @@
             </div>
             <v-divider></v-divider>
             <v-card-actions>
-              <v-btn
+              <!-- <v-btn
                 type="submit"
                 large
                 style="color: #ffffff ; background-color : #2d3b47;"
               >
                 فراموشی رمز
+              </v-btn> -->
+              <v-btn
+                large
+                style="color: #ffffff ; background-color : #2d3b47;"
+                @click="sendemail, (snackbar = true)"
+              
+                href="http://127.0.0.1:8000/User/password_reset/"
+                target="_blank"
+              >
+                فراموشی رمز
               </v-btn>
+              <!-- <v-snackbar v-model="snackbar" color="green">
+                {{ text }}
+
+                <template v-slot:action="{ attrs }">
+                  <v-btn
+                    color="white"
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                  >
+                    Close
+                  </v-btn>
+                </template>
+              </v-snackbar> -->
               <v-spacer></v-spacer>
               <v-btn
                 type="submit"
@@ -100,10 +130,14 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
+      snackbar: false,
+      text: `ایمیل خود را در لینک باز شده وارد کنید`,
       formvalidi: false,
+      formemail: false,
       passfield: false,
       dialog: false,
       errors: "",
@@ -138,6 +172,15 @@ export default {
     };
   },
   methods: {
+    sendemail() {
+      axios
+        .post("http://127.0.0.1:8000/User/password_reset/", {
+          email: this.logininfo.email
+        })
+        .then(response => {
+          console.log(response.data);
+        });
+    },
     submitinfo(e) {
       console.log("this is login");
       console.log(this.emailRules);

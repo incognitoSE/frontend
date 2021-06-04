@@ -345,6 +345,20 @@
       <SimResult :formsimcardforali="formsimcardforali" />
       <SimServices :dataforrominaSIM="dataforrominaSIM" />
     </div>
+     <div>
+      <v-card outlined tile >
+        <v-card-text style="border-style: groove ; border-color:#2d3b47" >
+          <div
+            style="text-align: center ; font-size : 20px ; font-weight: bold ; margin: 12px"
+          >
+            درباره قیمت سیم کارت
+          </div>
+          <div style="font-size : 16px; margin: 20px ; padding:12px">
+            {{ simmaintext }}
+          </div>
+        </v-card-text>
+      </v-card>
+    </div>
     <div>
       <v-carousel cycle dark delimiter-icon="mdi-minus">
         <v-carousel-item v-for="(picitem, i) in slideshowpictahlel" :key="i">
@@ -418,6 +432,7 @@ export default {
     return {
       formvaildesim: false,
       simresource: [],
+      simmaintext: null,
       slideshowpictahlel: [],
       formDataSim: {
         number: null,
@@ -458,7 +473,10 @@ export default {
     this.$store
       .dispatch("getsimresource")
       .then(() => {
+
         this.simresource = this.simresourcegetter.imagesAndTexts;
+        // this.simresource = this.simresourcegetter.images;
+        this.simmaintext = this.simresourcegetter.mainText;
         console.log("im here");
         console.log(this.simresource);
         this.onimageinslideshow();

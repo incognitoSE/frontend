@@ -51,7 +51,7 @@
             v-for="(pic, i) in slideshowpic"
             :key="i"
             :src="pic.src"
-             contain
+            contain
              
              
             elevation="24"
@@ -92,7 +92,7 @@ export default {
           src: require("../assets/charttwo.png")
         },
         {
-          src: require("../assets/chartthree.png")
+          src: require("../assets/chartthreetemp3.jpg")
         }
       ]
     };
