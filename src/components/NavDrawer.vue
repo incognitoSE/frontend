@@ -24,9 +24,10 @@
             v-if="ismonyform"
             style="color: rgba(255, 255, 255, 1)"
           >
-            :اعتبار باقی مانده
+            اعتبار باقی مانده:
 
             {{ increasemoney.current_amount }}
+            تومان
           </v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-icon

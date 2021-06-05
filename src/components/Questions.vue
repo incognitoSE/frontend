@@ -13,13 +13,11 @@
             <v-expansion-panels focusable>
               <v-expansion-panel>
                 <v-expansion-panel-header class="text-lg-right"
-                  ><v-spacer></v-spacer> 
-                  رابین چیست و به چه دردی
-                  میخورد
-                  </v-expansion-panel-header
-                >
+                  ><v-spacer></v-spacer>
+                  رابین چیست و به چه دردی میخورد
+                </v-expansion-panel-header>
                 <v-expansion-panel-content class="text-lg-right ">
-                  رابین به هیچ دردی نمیخورد
+                  رابین به همه دردی میخورد
                 </v-expansion-panel-content>
               </v-expansion-panel>
               <v-expansion-panel>
@@ -110,8 +108,6 @@ export default {
 </script>
 
 <style scope>
-
-
 @font-face {
   font-family: IRANSans;
   src: url("../../public/fonts/BYekan.ttf");

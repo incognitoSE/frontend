@@ -236,12 +236,12 @@ export default {
   methods: {
     initialize() {
       this.desserts = [
-        {
-          date: "13/2/1379",
-          price: "1200T",
-          model: "ماشین",
-          data: "sdasdasda"
-        }
+        // {
+        //   date: "13/2/1379",
+        //   price: "1200T",
+        //   model: "ماشین",
+        //   data: "sdasdasda"
+        // }
         // {
         //   date: "13/2/1379",
         //   price: "1200T",
