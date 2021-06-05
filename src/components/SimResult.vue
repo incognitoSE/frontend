@@ -28,7 +28,7 @@
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                      {{ formsimcardforali.price }}
+                      {{ formsimcardforali.price[0] }}
                       <br />
                       تومان
                     </h2>
