@@ -28,7 +28,7 @@
                       data-speed="1500"
                       style="text-align: center; color: white"
                     >
-                      {{ formcarforali.price[0] }}
+                      {{ formcarforali.price }}
                       <br />
                       تومان
                     </h2>
